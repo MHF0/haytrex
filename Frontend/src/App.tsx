@@ -3,6 +3,7 @@ import NotFound from "./pages/NotFound";
 import LoginRegisterPage from "./pages/LoginRegisterPage";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </Router>
     </>

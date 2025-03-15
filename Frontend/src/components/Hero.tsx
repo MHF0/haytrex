@@ -60,12 +60,11 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Lighter Gradient Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroImage})`,
-          filter: "brightness(0.4)",
+          backgroundImage: `linear-gradient(rgba(25, 47, 89, 0.75), rgba(61, 51, 121, 0.65)), url(${HeroImage})`,
         }}
       ></div>
 
@@ -84,7 +83,7 @@ const Hero: React.FC = () => {
           </h1>
 
           <p
-            className="text-lg md:text-xl text-gray-200 mb-10"
+            className="text-lg md:text-xl text-gray-100 mb-10"
             style={{
               opacity: Math.max(1 - scrollPosition / 400, 0.2),
               transform: `translateY(${Math.min(scrollPosition * 0.15, 30)}px)`,
