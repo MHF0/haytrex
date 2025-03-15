@@ -80,13 +80,13 @@ const LoginRegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-900">
-      <div className="w-full max-w-md p-8 mx-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+    <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50">
+      <div className="w-full max-w-md p-8 mx-4 bg-white rounded-lg shadow-lg">
         {/* Header Section */}
         <div className="text-center mb-6">
           <div className="mb-2">
             <svg
-              className="w-12 h-12 mx-auto text-indigo-600 dark:text-indigo-400"
+              className="w-12 h-12 mx-auto text-indigo-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -100,10 +100,10 @@ const LoginRegisterPage: React.FC = () => {
               ></path>
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <h2 className="text-2xl font-bold text-gray-800">
             {activeTab === "login" ? "Welcome Back!" : "Join Us Today!"}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
+          <p className="text-gray-600 mt-2">
             {activeTab === "login"
               ? "Login with your mobile number"
               : "Register with your mobile number"}
@@ -117,8 +117,8 @@ const LoginRegisterPage: React.FC = () => {
             disabled={isSubmitting}
             className={`flex-1 py-2 font-medium text-sm transition-colors duration-300 ${
               activeTab === "login"
-                ? "text-indigo-600 border-b-2 border-indigo-600 dark:text-indigo-400 dark:border-indigo-400"
-                : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                ? "text-indigo-600 border-b-2 border-indigo-600"
+                : "text-gray-500 hover:text-gray-700"
             }`}
             onClick={() => handleTabChange("login")}
           >
@@ -129,8 +129,8 @@ const LoginRegisterPage: React.FC = () => {
             disabled={isSubmitting}
             className={`flex-1 py-2 font-medium text-sm transition-colors duration-300 ${
               activeTab === "register"
-                ? "text-indigo-600 border-b-2 border-indigo-600 dark:text-indigo-400 dark:border-indigo-400"
-                : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                ? "text-indigo-600 border-b-2 border-indigo-600"
+                : "text-gray-500 hover:text-gray-700"
             }`}
             onClick={() => handleTabChange("register")}
           >
@@ -144,7 +144,7 @@ const LoginRegisterPage: React.FC = () => {
             <div className="mb-4">
               <label
                 htmlFor="fullName"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Full Name
               </label>
@@ -154,7 +154,7 @@ const LoginRegisterPage: React.FC = () => {
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                 placeholder="Enter your full name"
                 required={activeTab === "register"}
                 disabled={showOtpField || isSubmitting}
@@ -165,12 +165,12 @@ const LoginRegisterPage: React.FC = () => {
           <div className="mb-4">
             <label
               htmlFor="mobileNumber"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Mobile Number
             </label>
             <div className="flex">
-              <div className="bg-gray-100 border border-gray-300 rounded-l-lg px-3 py-2 text-gray-600 flex items-center dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+              <div className="bg-gray-100 border border-gray-300 rounded-l-lg px-3 py-2 text-gray-600 flex items-center">
                 +1
               </div>
               <input
@@ -179,7 +179,7 @@ const LoginRegisterPage: React.FC = () => {
                 name="mobileNumber"
                 value={formData.mobileNumber}
                 onChange={handleInputChange}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                 placeholder="Enter your mobile number"
                 required
                 pattern="[0-9]{10}"
@@ -187,7 +187,7 @@ const LoginRegisterPage: React.FC = () => {
                 disabled={showOtpField || isSubmitting}
               />
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-xs text-gray-500 mt-1">
               Format: 10-digit number without spaces
             </p>
           </div>
@@ -196,7 +196,7 @@ const LoginRegisterPage: React.FC = () => {
             <div className="mb-4">
               <label
                 htmlFor="otp"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Verification Code (OTP)
               </label>
@@ -206,7 +206,7 @@ const LoginRegisterPage: React.FC = () => {
                 name="otp"
                 value={formData.otp}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                 placeholder="Enter 6-digit OTP"
                 required
                 pattern="[0-9]{6}"
@@ -214,17 +214,17 @@ const LoginRegisterPage: React.FC = () => {
                 disabled={isSubmitting}
               />
               <div className="flex justify-between items-center mt-2">
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-500">
                   OTP sent to +1 {formData.mobileNumber}
                 </p>
                 {otpTimer > 0 ? (
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-gray-500">
                     Resend in {otpTimer}s
                   </span>
                 ) : (
                   <button
                     type="button"
-                    className="text-xs text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
+                    className="text-xs text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
                     onClick={handleRequestOtp}
                     disabled={isSubmitting}
                   >
@@ -238,7 +238,7 @@ const LoginRegisterPage: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 px-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors disabled:bg-indigo-400 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:disabled:bg-indigo-700 dark:disabled:opacity-60"
+            className="w-full py-3 px-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors disabled:bg-indigo-400"
           >
             {isSubmitting ? (
               <div className="flex items-center justify-center">
@@ -279,7 +279,7 @@ const LoginRegisterPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setShowOtpField(false)}
-              className="w-full mt-3 py-2 px-4 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+              className="w-full mt-3 py-2 px-4 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
               disabled={isSubmitting}
             >
               Back
@@ -288,14 +288,14 @@ const LoginRegisterPage: React.FC = () => {
         </form>
 
         {/* Footer */}
-        <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
+        <div className="mt-6 text-center text-sm text-gray-600">
           {activeTab === "login" ? (
             <p>
               Don't have an account?{" "}
               <button
                 type="button"
                 onClick={() => handleTabChange("register")}
-                className="text-indigo-600 hover:text-indigo-800 font-medium transition-colors dark:text-indigo-400 dark:hover:text-indigo-300"
+                className="text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
                 disabled={isSubmitting}
               >
                 Sign up
@@ -307,7 +307,7 @@ const LoginRegisterPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleTabChange("login")}
-                className="text-indigo-600 hover:text-indigo-800 font-medium transition-colors dark:text-indigo-400 dark:hover:text-indigo-300"
+                className="text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
                 disabled={isSubmitting}
               >
                 Sign in

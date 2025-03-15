@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  Moon,
-  Sun,
   User,
   Home,
   Phone,
@@ -18,30 +16,10 @@ interface NavItem {
 }
 
 const Header: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
   const location = useLocation();
   const isLoggedIn = false; // Replace with actual auth state
 
-  // Check system preference and localStorage on mount
-  useEffect(() => {
-    // First check localStorage
-    const savedMode = localStorage.getItem('darkMode');
-    
-    if (savedMode === 'true') {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else if (savedMode === 'false') {
-      setDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      // If no localStorage setting, check system preference
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setDarkMode(true);
-        document.documentElement.classList.add("dark");
-        localStorage.setItem('darkMode', 'true');
-      }
-    }
-  }, []);
+  // No need for any dark mode state or effects
 
   const navItems: NavItem[] = [
     { name: "Home", to: "/", icon: <Home size={20} /> },
@@ -53,29 +31,16 @@ const Header: React.FC = () => {
   // Filter nav items based on authentication status
   const filteredNavItems = navItems.filter(item => !item.requiresAuth || isLoggedIn);
 
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    
-    if (newDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem('darkMode', 'true');
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem('darkMode', 'false');
-    }
-  };
-
   return (
     <>
       {/* Desktop Header */}
-      <header className="bg-white dark:bg-gray-900 shadow-md hidden md:block">
+      <header className="bg-white shadow-md hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
-                <span className="text-xl font-bold text-indigo-600 dark:text-indigo-400">
+                <span className="text-xl font-bold text-indigo-600">
                   HAYTREX
                 </span>
               </Link>
@@ -90,8 +55,8 @@ const Header: React.FC = () => {
                     to={item.to}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                       location.pathname === item.to
-                        ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300"
-                        : "text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+                        ? "bg-indigo-100 text-indigo-700"
+                        : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
                     {item.name}
@@ -99,20 +64,11 @@ const Header: React.FC = () => {
                 ))}
               </nav>
 
-              {/* Dark Mode Toggle */}
-              {/* <button
-                onClick={toggleDarkMode}
-                className="ml-6 p-2 rounded-full text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-200"
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button> */}
-
               {/* Login/Register or Profile */}
               {isLoggedIn ? (
                 <Link
                   to="/profile"
-                  className="ml-4 flex items-center px-4 py-2 rounded-md text-sm font-medium bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"
+                  className="ml-4 flex items-center px-4 py-2 rounded-md text-sm font-medium bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition-colors duration-200"
                 >
                   <User size={18} className="mr-2" />
                   Profile
@@ -120,7 +76,7 @@ const Header: React.FC = () => {
               ) : (
                 <Link
                   to="/login"
-                  className="ml-4 px-4 py-2 rounded-md text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-colors duration-200 shadow-sm hover:shadow"
+                  className="ml-4 px-4 py-2 rounded-md text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow"
                 >
                   Login / Register
                 </Link>
@@ -130,26 +86,20 @@ const Header: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Top Mini Header (just logo and dark mode) */}
-      <header className="bg-white dark:bg-gray-900 shadow-sm md:hidden fixed top-0 left-0 right-0 z-10">
+      {/* Mobile Top Mini Header (just logo) */}
+      <header className="bg-white shadow-sm md:hidden fixed top-0 left-0 right-0 z-10">
         <div className="px-4 py-2 flex justify-between items-center">
           <Link to="/" className="flex items-center">
-            <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
+            <span className="text-lg font-bold text-indigo-600">
               HAYTREX
             </span>
           </Link>
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-200"
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+          {/* Removed dark mode toggle button */}
         </div>
       </header>
 
       {/* Mobile Bottom Tab Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg z-10 border-t border-gray-200 dark:border-gray-800">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg z-10 border-t border-gray-200">
         <div className="flex justify-around">
           {filteredNavItems.map((item) => (
             <Link
@@ -157,14 +107,14 @@ const Header: React.FC = () => {
               to={item.to}
               className={`flex flex-col items-center py-2 px-3 ${
                 location.pathname === item.to
-                  ? "text-indigo-600 dark:text-indigo-400"
-                  : "text-gray-600 dark:text-gray-400"
+                  ? "text-indigo-600"
+                  : "text-gray-600"
               }`}
             >
               <div
                 className={`p-1 rounded-full ${
                   location.pathname === item.to
-                    ? "bg-indigo-100 dark:bg-indigo-900/30"
+                    ? "bg-indigo-100"
                     : ""
                 }`}
               >
@@ -178,14 +128,14 @@ const Header: React.FC = () => {
               to="/profile"
               className={`flex flex-col items-center py-2 px-3 ${
                 location.pathname === "/profile"
-                  ? "text-indigo-600 dark:text-indigo-400"
-                  : "text-gray-600 dark:text-gray-400"
+                  ? "text-indigo-600"
+                  : "text-gray-600"
               }`}
             >
               <div
                 className={`p-1 rounded-full ${
                   location.pathname === "/profile"
-                    ? "bg-indigo-100 dark:bg-indigo-900/30"
+                    ? "bg-indigo-100"
                     : ""
                 }`}
               >
@@ -198,14 +148,14 @@ const Header: React.FC = () => {
               to="/login"
               className={`flex flex-col items-center py-2 px-3 ${
                 location.pathname === "/login"
-                  ? "text-indigo-600 dark:text-indigo-400"
-                  : "text-gray-600 dark:text-gray-400"
+                  ? "text-indigo-600"
+                  : "text-gray-600"
               }`}
             >
               <div
                 className={`p-1 rounded-full ${
                   location.pathname === "/login"
-                    ? "bg-indigo-100 dark:bg-indigo-900/30"
+                    ? "bg-indigo-100"
                     : ""
                 }`}
               >
