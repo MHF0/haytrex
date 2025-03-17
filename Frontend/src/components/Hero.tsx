@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
           {/* Big CTA Button */}
           <button
             className="py-4 px-8 text-lg font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            onClick={() => navigate("/request")}
+            onClick={() => navigate("/services")}
             style={{
               opacity: Math.max(1 - scrollPosition / 700, 0.5),
               transform: `translateY(${Math.min(scrollPosition * 0.03, 5)}px)`,

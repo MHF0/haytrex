@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-import ServiceGrid from "../components/Service";
+// import ServiceGrid from "../components/Service";
 import FeaturedServices from "../components/FeturedService";
 import HowItWorks from "../components/HowItsWork";
 import UserReview from "../components/UserReview";
@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Hero />
-      <ServiceGrid />
+      {/* <ServiceGrid /> */}
       <FeaturedServices />
       <HowItWorks />
       <UserReview />
