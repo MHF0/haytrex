@@ -20,9 +20,6 @@ import {
 } from "lucide-react";
 import { MOCK_SERVICE, ServiceDetail } from "../assets/data/singlePageData";
 
-
-
-
 // Render star ratings
 const StarRating: React.FC<{ rating: number, size?: number }> = ({ rating, size = 16 }) => {
   return (
@@ -53,6 +50,7 @@ const SingleService: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [expandedFAQs, setExpandedFAQs] = useState<Record<number, boolean>>({});
+  const [isSaved, setIsSaved] = useState(false);
   
   // Fetch service data
   useEffect(() => {
@@ -93,6 +91,25 @@ const SingleService: React.FC = () => {
         selectedTime 
       } 
     });
+  };
+
+  // Handle save/bookmark
+  const handleSaveService = () => {
+    setIsSaved(!isSaved);
+    // In a real app, you would also save this to user's account
+  };
+
+  // Handle share
+  const handleShareService = () => {
+    // In a real app, this would open a share dialog
+    // For now, just copy URL to clipboard
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => {
+        alert("Service URL copied to clipboard!");
+      })
+      .catch(err => {
+        console.error('Failed to copy URL: ', err);
+      });
   };
 
   // Handle time slot selection
@@ -411,124 +428,135 @@ const SingleService: React.FC = () => {
           </div>
 
           {/* Right Column - Booking and Sidebar */}
-          <div className="space-y-6">
-            {/* Booking Card */}
-            <div className="bg-white p-6 rounded-lg shadow-sm sticky top-24">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Book this Service</h3>
-              
-              {/* Price */}
-              <div className="flex items-baseline mb-6">
-                <span className="text-2xl font-bold text-indigo-600 mr-2">
-                  {service.price.currency}{service.price.amount}
-                </span>
-                <span className="text-gray-600">/{service.price.unit}</span>
-              </div>
-              
-              {/* Date Selection */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Select Date
-                </label>
-                <div className="flex overflow-x-auto pb-2 -mx-2">
-                  {getAvailableDates().map((date, index) => (
-                    <div key={index} className="px-1.5 flex-shrink-0">
-                      <button
-                        className={`w-20 py-2 rounded-lg border text-center focus:outline-none ${
-                          selectedDate && date.toDateString() === selectedDate.toDateString()
-                            ? "bg-indigo-600 border-indigo-600 text-white"
-                            : "border-gray-300 hover:border-indigo-400 text-gray-800"
-                        }`}
-                        onClick={() => setSelectedDate(date)}
-                      >
-                        <span className="block text-xs">{formatDate(date).split(',')[0]}</span>
-                        <span className="font-medium">{date.getDate()}</span>
-                      </button>
-                    </div>
-                  ))}
+          <div>
+            {/* Fixed position container for right sidebar */}
+            <div className="lg:sticky lg:top-24 space-y-4">
+              {/* Booking Card */}
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Book this Service</h3>
+                
+                {/* Price */}
+                <div className="flex items-baseline mb-6">
+                  <span className="text-2xl font-bold text-indigo-600 mr-2">
+                    {service.price.currency}{service.price.amount}
+                  </span>
+                  <span className="text-gray-600">/{service.price.unit}</span>
                 </div>
-              </div>
-              
-              {/* Time Selection */}
-              {selectedDate && (
+                
+                {/* Date Selection */}
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Select Time
+                    Select Date
                   </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {getTimeSlots().map((time, index) => (
-                      <button
-                        key={index}
-                        className={`py-2 text-sm rounded-lg border text-center focus:outline-none ${
-                          selectedTime === time
-                            ? "bg-indigo-600 border-indigo-600 text-white"
-                            : "border-gray-300 hover:border-indigo-400 text-gray-800"
-                        }`}
-                        onClick={() => handleTimeSelection(time)}
-                      >
-                        {time}
-                      </button>
+                  <div className="flex overflow-x-auto pb-2 -mx-2">
+                    {getAvailableDates().map((date, index) => (
+                      <div key={index} className="px-1.5 flex-shrink-0">
+                        <button
+                          className={`w-20 py-2 rounded-lg border text-center focus:outline-none ${
+                            selectedDate && date.toDateString() === selectedDate.toDateString()
+                              ? "bg-indigo-600 border-indigo-600 text-white"
+                              : "border-gray-300 hover:border-indigo-400 text-gray-800"
+                          }`}
+                          onClick={() => setSelectedDate(date)}
+                        >
+                          <span className="block text-xs">{formatDate(date).split(',')[0]}</span>
+                          <span className="font-medium">{date.getDate()}</span>
+                        </button>
+                      </div>
                     ))}
                   </div>
                 </div>
-              )}
-              
-              {/* Book Now Button */}
-              <button
-                className={`w-full py-3 px-4 rounded-lg flex items-center justify-center font-medium text-white transition-colors ${
-                  selectedDate && selectedTime 
-                    ? "bg-indigo-600 hover:bg-indigo-700"
-                    : "bg-gray-400 cursor-not-allowed"
-                }`}
-                disabled={!(selectedDate && selectedTime)}
-                onClick={handleBookNow}
-              >
-                <Calendar className="mr-2" size={18} />
-                Book Now
-              </button>
-              
-              <div className="mt-4 flex items-center justify-center text-sm text-gray-600">
-                <Users size={16} className="mr-1" />
-                {service.bookingsCount}+ people booked this service
-              </div>
-            </div>
-            
-            {/* Share and Save */}
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="flex justify-center gap-4">
-                <button className="flex items-center text-sm text-gray-700 hover:text-indigo-600 transition-colors">
-                  <Share2 size={16} className="mr-1" />
-                  Share
+                
+                {/* Time Selection */}
+                {selectedDate && (
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Select Time
+                    </label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {getTimeSlots().map((time, index) => (
+                        <button
+                          key={index}
+                          className={`py-2 text-sm rounded-lg border text-center focus:outline-none ${
+                            selectedTime === time
+                              ? "bg-indigo-600 border-indigo-600 text-white"
+                              : "border-gray-300 hover:border-indigo-400 text-gray-800"
+                          }`}
+                          onClick={() => handleTimeSelection(time)}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Book Now Button */}
+                <button
+                  className={`w-full py-3 px-4 rounded-lg flex items-center justify-center font-medium text-white transition-colors ${
+                    selectedDate && selectedTime 
+                      ? "bg-indigo-600 hover:bg-indigo-700"
+                      : "bg-gray-400 cursor-not-allowed"
+                  }`}
+                  disabled={!(selectedDate && selectedTime)}
+                  onClick={handleBookNow}
+                >
+                  <Calendar className="mr-2" size={18} />
+                  Book Now
                 </button>
-                <div className="border-r border-gray-200"></div>
-                <button className="flex items-center text-sm text-gray-700 hover:text-indigo-600 transition-colors">
-                  <Bookmark size={16} className="mr-1" />
-                  Save
-                </button>
-              </div>
-            </div>
-            
-            {/* Location */}
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="flex items-start">
-                <MapPin className="text-indigo-600 mr-2 mt-1 flex-shrink-0" size={18} />
-                <div>
-                  <h4 className="font-medium text-gray-800 mb-1">Service Area</h4>
-                  <p className="text-sm text-gray-600">This service is available in Boston and surrounding areas within a 30-mile radius.</p>
+                
+                <div className="mt-4 flex items-center justify-center text-sm text-gray-600">
+                  <Users size={16} className="mr-1" />
+                  {service.bookingsCount}+ people booked this service
                 </div>
               </div>
-            </div>
-            
-            {/* Customer Support */}
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-center">
-                <h4 className="font-medium text-gray-800 mb-2">Need help?</h4>
-                <p className="text-sm text-gray-600 mb-3">Our customer support team is here for you</p>
-                <Link 
-                  to="/contact" 
-                  className="inline-flex items-center justify-center px-4 py-2 border border-indigo-600 text-sm font-medium rounded-md text-indigo-600 hover:bg-indigo-50"
-                >
-                  Contact Support
-                </Link>
+              
+              {/* Share and Save */}
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="flex justify-center gap-4">
+                  <button 
+                    onClick={handleShareService}
+                    className="flex items-center text-sm text-gray-700 hover:text-indigo-600 transition-colors"
+                  >
+                    <Share2 size={16} className="mr-1" />
+                    Share
+                  </button>
+                  <div className="border-r border-gray-200"></div>
+                  <button 
+                    onClick={handleSaveService}
+                    className={`flex items-center text-sm transition-colors ${
+                      isSaved ? "text-indigo-600" : "text-gray-700 hover:text-indigo-600"
+                    }`}
+                  >
+                    <Bookmark size={16} className={`mr-1 ${isSaved ? "fill-indigo-600" : ""}`} />
+                    {isSaved ? "Saved" : "Save"}
+                  </button>
+                </div>
+              </div>
+              
+              {/* Location */}
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="flex items-start">
+                  <MapPin className="text-indigo-600 mr-2 mt-1 flex-shrink-0" size={18} />
+                  <div>
+                    <h4 className="font-medium text-gray-800 mb-1">Service Area</h4>
+                    <p className="text-sm text-gray-600">This service is available in Boston and surrounding areas within a 30-mile radius.</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Customer Support */}
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="text-center">
+                  <h4 className="font-medium text-gray-800 mb-2">Need help?</h4>
+                  <p className="text-sm text-gray-600 mb-3">Our customer support team is here for you</p>
+                  <Link 
+                    to="/contact" 
+                    className="inline-flex items-center justify-center px-4 py-2 border border-indigo-600 text-sm font-medium rounded-md text-indigo-600 hover:bg-indigo-50"
+                  >
+                    Contact Support
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
