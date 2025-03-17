@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Services from "./pages/Services";
+import SingleService from "./pages/SingleService";
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/:serviceId" element={<SingleService />} />
+
               {/* <Route path="/requests" element={<MyRequests />} /> */}
               {/* <Route path="/contact" element={<Contact />} /> */}
               <Route path="/login" element={<LoginRegisterPage />} />
