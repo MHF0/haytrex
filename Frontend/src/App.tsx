@@ -1,36 +1,40 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NotFound from "./pages/NotFound";
-import LoginRegisterPage from "./pages/LoginRegisterPage";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Footer from "./components/Footer";
-import Services from "./pages/Services";
-import SingleService from "./pages/SingleService";
+import { Toaster } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import ServiceDetail from './pages/ServiceDetail';
+import About from './pages/About';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import Consultation from './pages/Consultation';
+import BusinessMap from './pages/BusinessMap';
+import WorkFeed from './pages/WorkFeed';
+import Terms from './pages/Terms';
 
-const App = () => {
-  return (
-    <>
-      <Router>
-        <div className="min-h-screen bg-gray-50">
-          <Header />
-          <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/:serviceId" element={<SingleService />} />
+const queryClient = new QueryClient();
 
-              {/* <Route path="/requests" element={<MyRequests />} /> */}
-              {/* <Route path="/contact" element={<Contact />} /> */}
-              <Route path="/login" element={<LoginRegisterPage />} />
-              {/* <Route path="/profile" element={<Profile />} /> */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/service/:serviceId" element={<ServiceDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/consultation" element={<Consultation />} />
+          <Route path="/business-map" element={<BusinessMap />} />
+          <Route path="/work-feed" element={<WorkFeed />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;

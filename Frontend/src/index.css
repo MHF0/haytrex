@@ -1,15 +1,87 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
 
-@theme {
-  --font-display: "Satoshi", "sans-serif";
-  --breakpoint-3xl: 1920px;
-  --color-avocado-100: oklch(0.99 0 0);
-  --color-avocado-200: oklch(0.98 0.04 113.22);
-  --color-avocado-300: oklch(0.94 0.11 115.03);
-  --color-avocado-400: oklch(0.92 0.19 114.08);
-  --color-avocado-500: oklch(0.84 0.18 117.33);
-  --color-avocado-600: oklch(0.53 0.12 118.34);
-  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
-  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
-  /* ... */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 217 78% 31%; /* Dark blue */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 205 90% 40%; /* New blue from reference image */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 78% 31%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 78% 31%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 205 90% 40%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217 78% 31%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Roboto', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl font-bold md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl font-bold md:text-4xl;
+  }
+  h3 {
+    @apply text-2xl font-bold md:text-3xl;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .container {
+    @apply px-4 md:px-6;
+  }
+  .hover-effect {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .hover-scale {
+    @apply hover:scale-105 transition-transform duration-300;
+  }
 }
