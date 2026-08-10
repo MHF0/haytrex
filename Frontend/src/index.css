@@ -85,3 +85,268 @@
     @apply hover:scale-105 transition-transform duration-300;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/*  Motion layer                                                       */
+/*  Interaction and scroll effects. Colors are inherited from the       */
+/*  existing theme tokens only - nothing here introduces a new hue.     */
+/* ------------------------------------------------------------------ */
+@layer utilities {
+  /* Scroll reveal. The `is-visible` class is applied by <Reveal>. */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal-left { transform: translate3d(-42px, 0, 0); }
+  .reveal-right { transform: translate3d(42px, 0, 0); }
+  .reveal-down { transform: translate3d(0, -30px, 0); }
+  .reveal-zoom { transform: scale(0.92); }
+  .reveal-blur { filter: blur(12px); transform: translate3d(0, 18px, 0); }
+  .reveal-rotate { transform: translate3d(0, 34px, 0) rotate(-2.5deg); }
+
+  .reveal.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+
+  /* Lift a card on hover, with a shadow that grows from the theme shadow. */
+  .lift {
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.45s ease;
+    will-change: transform;
+  }
+  .lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 45px -20px hsl(var(--primary) / 0.45);
+  }
+
+  /* Diagonal light sweep across a surface on hover. */
+  .shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      hsl(var(--background) / 0.55) 50%,
+      transparent 80%
+    );
+    transform: translateX(-160%) skewX(-18deg);
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .shine:hover::after {
+    transform: translateX(320%) skewX(-18deg);
+  }
+
+  /* Cursor-tracked spotlight. --mx / --my are set by TiltCard. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      340px circle at var(--mx, 50%) var(--my, 50%),
+      hsl(var(--accent) / 0.14),
+      transparent 68%
+    );
+  }
+  .spotlight:hover::before { opacity: 1; }
+
+  /* 3D tilt driven by --rx / --ry from TiltCard. */
+  .tilt {
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .tilt-raise { transform: translateZ(38px); }
+
+  /* Animated gradient text using the blue/indigo pair already in the page. */
+  .text-gradient-animate {
+    background-image: linear-gradient(
+      100deg,
+      theme("colors.blue.600"),
+      theme("colors.indigo.600"),
+      theme("colors.sky.500"),
+      theme("colors.blue.600")
+    );
+    background-size: 260% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-x 7s ease infinite;
+  }
+
+  /* A sweep of light that travels through display text. */
+  .text-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .text-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      transparent 35%,
+      hsl(var(--background) / 0.75) 50%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+    animation: shimmer 4.5s ease-in-out infinite;
+  }
+
+  /* Word-by-word headline entrance. --i is the word index. */
+  .word-rise {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.85em) rotate(3deg);
+    animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 75ms + var(--base-delay, 0ms));
+  }
+
+  /* Underline that draws itself in on hover. */
+  .link-sweep {
+    position: relative;
+  }
+  .link-sweep::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    background: hsl(var(--accent));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-sweep:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Soft drifting blobs for section backgrounds. */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* Rotating conic border for a featured card. */
+  .glow-border {
+    position: relative;
+  }
+  .glow-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0turn,
+      hsl(var(--accent) / 0.85) 0.12turn,
+      transparent 0.3turn,
+      transparent 1turn
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    animation: border-travel 5s linear infinite;
+  }
+  .glow-border:hover::before { opacity: 1; }
+
+  /* Icon tile that pops and rotates when its card is hovered. */
+  .icon-pop {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s ease;
+  }
+  .group:hover .icon-pop {
+    transform: scale(1.12) rotate(-6deg);
+  }
+
+  /* Arrow nudged forward on hover of the parent group. */
+  .arrow-nudge {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .arrow-nudge {
+    transform: translateX(5px);
+  }
+
+  /* Marquee track: duplicate the children so the loop is seamless. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 32s linear infinite;
+  }
+  .marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-mask:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Numbers that line up in columns. */
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* Thin progress bar pinned to the top of the viewport. */
+  .scroll-progress {
+    transform-origin: 0 50%;
+    transition: transform 0.12s linear;
+  }
+}
+
+/* Respect the OS reduced-motion setting: keep content visible, drop movement. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .word-rise {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .tilt { transform: none !important; }
+}
