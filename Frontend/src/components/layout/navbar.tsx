@@ -51,12 +51,6 @@ export function Navbar() {
     "Market entry strategies",
     "Growth planning and scaling"
   ],
-  immigration_services: [
-    "Business visa applications",
-    "Investor visa guidance (E-2, EB-5)",
-    "Immigration planning for entrepreneurs",
-    "Compliance with US immigration laws"
-  ],
   business_plan: [
     "Market research & analysis",
     "Financial projections",
@@ -108,9 +102,11 @@ export function Navbar() {
                   >
                     Strategic advice for business growth and optimization
                   </ListItem>
-                  <ListItem 
-                    title="Accounting Services" 
-                    href="/service/immigration_services" 
+                  {/* Accounting has no detail page of its own yet, so this
+                      points at the services listing rather than a dead URL. */}
+                  <ListItem
+                    title="Accounting Services"
+                    href="/services"
                     newTab={false}
                     className="hover:bg-accent/10"
                   >

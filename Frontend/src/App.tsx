@@ -2,6 +2,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ClickRipple, CursorRing, RouteWipe } from '@/components/motion/interactions';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import ServiceDetail from './pages/ServiceDetail';
@@ -20,6 +21,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
+        {/* Site-wide pointer and navigation flourishes. */}
+        <CursorRing />
+        <ClickRipple />
+        <RouteWipe />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/service/:serviceId" element={<ServiceDetail />} />

@@ -7,15 +7,9 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import {
-  ArrowRight,
-  Building2,
-  LineChart,
-  FileText,
-  Plane,
-} from "lucide-react";
+import { ArrowRight, Building2, LineChart, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Reveal } from "@/components/motion/reveal";
+import { Curtain, Reveal } from "@/components/motion/reveal";
 import { Magnetic, TiltCard } from "@/components/motion/tilt-card";
 import { useParallax } from "@/hooks/use-motion";
 
@@ -93,12 +87,6 @@ const serviceFeatures = {
     "Market entry strategies",
     "Growth planning and scaling",
   ],
-  immigration_services: [
-    "Business visa applications",
-    "Investor visa guidance (E-2, EB-5)",
-    "Immigration planning for entrepreneurs",
-    "Compliance with US immigration laws",
-  ],
   business_plan: [
     "Market research & analysis",
     "Financial projections",
@@ -145,7 +133,7 @@ export function ServicesSection() {
             </Reveal>
           </div>
 
-          <Reveal direction="right" delay={120}>
+          <Curtain delay={120} className="rounded-xl">
             <TiltCard intensity={5} className="rounded-xl">
               <div
                 ref={imageRef}
@@ -163,10 +151,10 @@ export function ServicesSection() {
                 />
               </div>
             </TiltCard>
-          </Reveal>
+          </Curtain>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <ServiceCard
             title="Business Formation"
             description="Establish your business entity with proper legal structure and compliance."
@@ -184,19 +172,11 @@ export function ServicesSection() {
           />
 
           <ServiceCard
-            title="Immigration Services"
-            description="Expert guidance for business visas and immigration planning for entrepreneurs."
-            icon={<Plane className="h-6 w-6" />}
-            serviceId="immigration_services"
-            delay={220}
-          />
-
-          <ServiceCard
             title="Business Plan Development"
             description="Professional business plans for funding and strategic direction."
             icon={<FileText className="h-6 w-6" />}
             serviceId="business_plan"
-            delay={330}
+            delay={220}
           />
         </div>
       </div>

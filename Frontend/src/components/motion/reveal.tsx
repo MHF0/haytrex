@@ -57,6 +57,31 @@ export function Reveal({
   );
 }
 
+interface CurtainProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Milliseconds to wait before the curtain starts lifting. */
+  delay?: number;
+}
+
+/**
+ * Unveils its children downwards, settling from a slight overscale. The
+ * observer sits on the outer element and the clip on an inner one, because a
+ * clipped element reports no intersection area and would never be seen.
+ */
+export function Curtain({ delay = 0, className, children, ...rest }: CurtainProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
+  return (
+    <div ref={ref} className={className} {...rest}>
+      <div
+        className={cn("curtain", inView && "is-visible")}
+        style={{ ["--reveal-delay" as string]: `${delay}ms` }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 interface StaggerProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Gap in milliseconds between each child's entrance. */
   step?: number;

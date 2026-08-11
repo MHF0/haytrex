@@ -2,9 +2,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { COMPANY, STATS } from "@/lib/constants";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import { Reveal } from "@/components/motion/reveal";
+import { Curtain, Reveal } from "@/components/motion/reveal";
 import { Magnetic, TiltCard } from "@/components/motion/tilt-card";
-import { CountUp } from "@/components/motion/count-up";
+import { Odometer } from "@/components/motion/interactions";
 import { useParallax } from "@/hooks/use-motion";
 
 const PILLARS = [
@@ -35,24 +35,26 @@ export function AboutSection() {
     <section className="section bg-background relative overflow-hidden" id="about">
       <div className="container relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <Reveal direction="left" className="order-2 md:order-1">
-            <TiltCard intensity={5} className="rounded-xl">
-              <div
-                ref={imageRef}
-                className="rounded-xl overflow-hidden shadow-custom group relative transition-shadow duration-500 hover:shadow-hover"
-                style={{ transform: `translateY(${offset}px)` }}
-              >
-                <img
-                  src="/assets/images/business/about-us.jpg"
-                  alt="About Haytrex"
-                  className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
-                />
+          <div className="order-2 md:order-1">
+            <Curtain className="rounded-xl">
+              <TiltCard intensity={5} className="rounded-xl">
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                  aria-hidden="true"
-                />
-              </div>
-            </TiltCard>
+                  ref={imageRef}
+                  className="rounded-xl overflow-hidden shadow-custom group relative transition-shadow duration-500 hover:shadow-hover"
+                  style={{ transform: `translateY(${offset}px)` }}
+                >
+                  <img
+                    src="/assets/images/business/about-us.jpg"
+                    alt="About Haytrex"
+                    className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    aria-hidden="true"
+                  />
+                </div>
+              </TiltCard>
+            </Curtain>
 
             {/* Metrics strip beneath the photograph. */}
             <div className="grid grid-cols-3 gap-4 mt-6">
@@ -63,17 +65,13 @@ export function AboutSection() {
                   className="rounded-lg border border-border/60 bg-muted/30 px-3 py-4 text-center lift"
                 >
                   <div className="text-xl md:text-2xl font-bold text-primary">
-                    {metric.plain ? (
-                      <span className="tabular">{metric.value}</span>
-                    ) : (
-                      <CountUp to={metric.value} suffix={metric.suffix} />
-                    )}
+                    <Odometer value={metric.value} suffix={metric.suffix} />
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">{metric.label}</p>
                 </Reveal>
               ))}
             </div>
-          </Reveal>
+          </div>
 
           <div className="order-1 md:order-2">
             <Reveal direction="right">

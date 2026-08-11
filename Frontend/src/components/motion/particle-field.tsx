@@ -8,6 +8,8 @@ interface ParticleFieldProps {
   count?: number;
   /** Overall opacity of the layer. Kept low so it sits behind the content. */
   opacity?: number;
+  /** Wash slow blue light behind the nodes. */
+  aurora?: boolean;
   className?: string;
 }
 
@@ -19,12 +21,29 @@ interface Node {
   r: number;
 }
 
+interface Glow {
+  /** Ellipse centre as a fraction of the canvas, plus its drift phase. */
+  x: number;
+  y: number;
+  radius: number;
+  hue: string;
+  phase: number;
+  speed: number;
+  driftX: number;
+  driftY: number;
+}
+
 /**
  * A slow constellation of connected points, drawn in the brand accent blue.
  * Purely decorative: it is hidden from assistive tech, pauses when scrolled
  * out of view, and renders nothing at all under reduced-motion settings.
  */
-export function ParticleField({ count = 46, opacity = 0.5, className }: ParticleFieldProps) {
+export function ParticleField({
+  count = 46,
+  opacity = 0.5,
+  aurora = false,
+  className,
+}: ParticleFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduced = useReducedMotion();
 
@@ -41,8 +60,16 @@ export function ParticleField({ count = 46, opacity = 0.5, className }: Particle
     let nodes: Node[] = [];
     let frame = 0;
     let running = true;
+    let clock = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const pointer = { x: -9999, y: -9999 };
+
+    // Slow washes of brand light, drifting on independent cycles.
+    const glows: Glow[] = [
+      { x: 0.18, y: 0.28, radius: 0.55, hue: COLORS.accent.light, phase: 0, speed: 0.00042, driftX: 0.07, driftY: 0.05 },
+      { x: 0.78, y: 0.22, radius: 0.48, hue: COLORS.primary.light, phase: 2.1, speed: 0.00031, driftX: 0.06, driftY: 0.07 },
+      { x: 0.55, y: 0.78, radius: 0.6, hue: COLORS.accent.default, phase: 4.2, speed: 0.00025, driftX: 0.08, driftY: 0.04 },
+    ];
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -67,6 +94,27 @@ export function ParticleField({ count = 46, opacity = 0.5, className }: Particle
       if (!running) return;
 
       ctx.clearRect(0, 0, width, height);
+      clock += 1;
+
+      if (aurora) {
+        // Each wash is a radial gradient orbiting its own anchor point.
+        const span = Math.max(width, height);
+        for (const glow of glows) {
+          const t = clock * glow.speed + glow.phase;
+          const cx = (glow.x + Math.cos(t) * glow.driftX) * width;
+          const cy = (glow.y + Math.sin(t * 1.3) * glow.driftY) * height;
+          const r = glow.radius * span;
+
+          const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+          gradient.addColorStop(0, glow.hue);
+          gradient.addColorStop(1, "transparent");
+
+          ctx.globalAlpha = 0.16;
+          ctx.fillStyle = gradient;
+          ctx.fillRect(0, 0, width, height);
+        }
+        ctx.globalAlpha = 1;
+      }
 
       for (const node of nodes) {
         node.x += node.vx;
@@ -151,7 +199,7 @@ export function ParticleField({ count = 46, opacity = 0.5, className }: Particle
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("pointerleave", clearPointer);
     };
-  }, [count, reduced]);
+  }, [count, reduced, aurora]);
 
   if (reduced) return null;
 

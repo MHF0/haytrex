@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Clock, DollarSign, Zap, Globe } from "lucide-react";
+import { CheckCircle2, Clock, DollarSign, Zap } from "lucide-react";
 
 export default function Consultation() {
   return (
@@ -23,7 +23,7 @@ export default function Consultation() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {/* Free 15-Minute Consultation Option */}
         <Card className="border-2 hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden relative">
           <div className="absolute -rotate-45 bg-green-500 text-white px-8 py-1 font-semibold -left-10 -top-1">
@@ -136,64 +136,6 @@ export default function Consultation() {
             </a>
             <div className="text-center text-sm text-muted-foreground">
               Secure payment • Money-back guarantee
-            </div>
-          </CardFooter>
-        </Card>
-
-        {/* Immigration Services Consultation Option */}
-        <Card className="border-2 hover:border-purple-400 hover:shadow-lg transition-all duration-300 bg-gradient-to-b from-purple-50 to-white overflow-hidden relative">
-          <div className="absolute -rotate-45 bg-purple-700 text-white px-6 py-1 font-semibold -left-8 -top-1">
-            SPECIALIZED
-          </div>
-          <CardHeader className="text-center pb-2">
-            <div className="flex items-center justify-center mb-2">
-              <Globe className="h-10 w-10 text-purple-600" />
-            </div>
-            <CardTitle className="text-2xl">Immigration Consultation</CardTitle>
-            <CardDescription className="text-lg">
-              Work Authorization Support
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="text-center">
-            <div className="flex justify-center items-center gap-2 mb-4">
-              <span className="text-3xl font-bold">$100</span>
-              <Badge variant="outline" className="text-purple-700 bg-purple-50">
-                SPECIALIZED
-              </Badge>
-            </div>
-            <ul className="text-left space-y-3 my-6">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                <span>Review of immigration status and options</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                <span>Work authorization application guidance</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                <span>State-specific requirements explained</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                <span>Documentation requirements checklist</span>
-              </li>
-            </ul>
-          </CardContent>
-          <CardFooter className="flex flex-col gap-4 pt-2">
-            <a
-              href="https://calendly.com/haytrex-info/consultation-meeting-clone"
-              className="w-full"
-            >
-              <Button
-                className="w-full bg-purple-700 hover:bg-purple-800"
-                size="lg"
-              >
-                Book Immigration Consultation
-              </Button>
-            </a>
-            <div className="text-center text-sm text-muted-foreground">
-              Expert guidance • Confidential service
             </div>
           </CardFooter>
         </Card>

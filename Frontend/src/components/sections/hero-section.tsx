@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Reveal, SplitHeading } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/tilt-card";
-import { CountUp } from "@/components/motion/count-up";
+import { Odometer, ScrambleText } from "@/components/motion/interactions";
 import { ParticleField } from "@/components/motion/particle-field";
 import { useParallax } from "@/hooks/use-motion";
 
@@ -35,7 +35,7 @@ export function HeroSection() {
               style={{ animationDelay: "120ms" }}
             >
               <Sparkles className="h-3.5 w-3.5 animate-bounce-subtle" />
-              Business foundations and custom software
+              <ScrambleText text="Business foundations and custom software" delay={500} />
             </div>
 
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
@@ -98,11 +98,7 @@ export function HeroSection() {
             {HERO_STATS.map((stat) => (
               <div key={stat.label} className="pt-4 text-center md:text-left">
                 <div className="text-2xl md:text-3xl font-bold text-primary">
-                  {stat.plain ? (
-                    <span className="tabular">{stat.value}</span>
-                  ) : (
-                    <CountUp to={stat.value} suffix={stat.suffix} />
-                  )}
+                  <Odometer value={stat.value} suffix={stat.suffix} />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-snug">{stat.label}</p>
               </div>
@@ -158,8 +154,8 @@ export function HeroSection() {
               style={{ animationDelay: "1.6s" }}
             >
               <p className="text-xs text-muted-foreground">Portals from</p>
-              <p className="text-lg font-bold text-primary tabular">
-                $<CountUp to={99} />
+              <p className="text-lg font-bold text-primary">
+                <Odometer value={99} prefix="$" />
                 <span className="text-xs font-normal text-muted-foreground">/mo</span>
               </p>
             </div>
@@ -167,8 +163,9 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Decorative layers: the original dotted grid, plus drifting blobs and a node field. */}
-      <ParticleField className="z-0" opacity={0.45} />
+      {/* Decorative layers: the original dotted grid, plus drifting light,
+          a node field and the slow blobs. */}
+      <ParticleField className="z-0" opacity={0.55} aurora />
       <div
         aria-hidden="true"
         className="blob -top-24 -left-24 h-96 w-96 bg-blue-600/20 animate-float-slow"

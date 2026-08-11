@@ -13,19 +13,40 @@ import { MapPin, ClipboardCheck, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { ScrollProgress } from "@/components/motion/particle-field";
+import { Marquee } from "@/components/motion/interactions";
+import { useScrollSkew } from "@/hooks/use-motion";
+
+const CAPABILITIES = [
+  "Business formation",
+  "Custom business portals",
+  "Website design & development",
+  "Invoicing & proposals",
+  "Client self-service",
+  "Analytics & reporting",
+  "Business plans",
+  "Consulting",
+];
 
 export default function Home() {
+  const skewRef = useScrollSkew<HTMLElement>(0.9);
+
   // Function to open links in new tabs
   const openInNewTab = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
-  
+
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollProgress />
       <Navbar />
-      <main className="flex-1">
+      <main ref={skewRef} className="flex-1 skew-scroll">
         <HeroSection />
+
+        {/* Capability ticker bridging the hero and the services grid. */}
+        <div className="border-y border-border/60 bg-background/70 py-4">
+          <Marquee items={CAPABILITIES} />
+        </div>
+
         <ServicesSection />
         <DigitalServicesSection />
         <AboutSection />
