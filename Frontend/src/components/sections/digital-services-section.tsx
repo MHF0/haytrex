@@ -12,6 +12,7 @@ import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { digitalServices, type DigitalService } from "@/data/digital-services";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic, TiltCard } from "@/components/motion/tilt-card";
+import { COMPANY } from "@/lib/constants";
 
 /** The card a visitor sees on the main page, before opening the detail popup. */
 function ServiceCard({
@@ -177,7 +178,7 @@ function ServiceDialog({
                 size="lg"
                 className="bg-accent hover:bg-accent-dark text-white hover-effect group shine shadow-lg shadow-accent/20"
                 onClick={() =>
-                  (window.location.href = `https://calendly.com/haytrex-info/consultation-meeting`)
+                  (window.location.href = COMPANY.calendly)
                 }
               >
                 <span className="relative z-10 flex items-center">

@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,19 +20,46 @@ interface ContactSectionProps {
   initialContactType?: string | null;
 }
 
+/** Readable labels for the field names, used to lay out the email body. */
+const FIELD_LABELS: Record<string, string> = {
+  name: "Name",
+  email: "Email",
+  phone: "Phone",
+  subject: "Subject",
+  company: "Company",
+  service: "Service interested in",
+  callTime: "Best time to call",
+  message: "Message",
+};
+
 export function ContactSection({ initialContactType = null }: ContactSectionProps) {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real app, this would send the form data to a backend
-    alert("Message sent successfully! We'll get back to you soon.");
-  };
-  
-  // Handle form type based on initialContactType
-  const [formType, setFormType] = React.useState<'general' | 'consultation' | 'callback'>('general');
-  
   // Language selection state
   const [language, setLanguage] = React.useState('english');
-  
+
+  /**
+   * There is no backend to post to, so a submission is composed into an email
+   * addressed to the company and handed to the visitor's mail client. Nothing
+   * is claimed to have been sent that has not been.
+   */
+  const sendByEmail = (subject: string) => (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const lines = Array.from(data.entries())
+      .filter(([, value]) => String(value).trim() !== "")
+      .map(([field, value]) => `${FIELD_LABELS[field] ?? field}: ${value}`);
+
+    lines.push(`Preferred language: ${language}`);
+
+    window.location.href =
+      `mailto:${COMPANY.email}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(lines.join("\n"))}`;
+  };
+
+  // Handle form type based on initialContactType
+  const [formType, setFormType] = React.useState<'general' | 'consultation' | 'callback'>('general');
+
   React.useEffect(() => {
     if (initialContactType === 'consultation') {
       setFormType('consultation');
@@ -144,26 +172,26 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
               
               {/* General Form */}
               {formType === 'general' && (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={sendByEmail("General enquiry from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name</Label>
-                      <Input id="name" placeholder="John Doe" required />
+                      <Input id="name" name="name" placeholder="John Doe" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john@example.com" required />
+                      <Input id="email" name="email" type="email" placeholder="john@example.com" required />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone (Optional)</Label>
-                      <Input id="phone" placeholder="(555) 123-4567" />
+                      <Input id="phone" name="phone" placeholder="(555) 123-4567" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="subject">Subject</Label>
-                      <Input id="subject" placeholder="How can we help you?" required />
+                      <Input id="subject" name="subject" placeholder="How can we help you?" required />
                     </div>
                   </div>
                   
@@ -188,7 +216,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   
                   <div className="space-y-2">
                     <Label htmlFor="message">Your Message</Label>
-                    <Textarea id="message" placeholder="Please describe how we can assist you..." required className="min-h-[150px]" />
+                    <Textarea id="message" name="message" placeholder="Please describe how we can assist you..." required className="min-h-[150px]" />
                   </div>
                   
                   <Button type="submit" className="w-full">
@@ -196,40 +224,40 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   </Button>
                   
                   <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
                   </p>
                 </form>
               )}
 
               {/* Consultation Form */}
               {formType === 'consultation' && (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={sendByEmail("Consultation request from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="consult-name">Full Name</Label>
-                      <Input id="consult-name" placeholder="John Doe" required />
+                      <Input id="consult-name" name="name" placeholder="John Doe" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="consult-email">Email</Label>
-                      <Input id="consult-email" type="email" placeholder="john@example.com" required />
+                      <Input id="consult-email" name="email" type="email" placeholder="john@example.com" required />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="consult-phone">Phone Number</Label>
-                      <Input id="consult-phone" placeholder="(555) 123-4567" required />
+                      <Input id="consult-phone" name="phone" placeholder="(555) 123-4567" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="consult-company">Company (Optional)</Label>
-                      <Input id="consult-company" placeholder="Your Company" />
+                      <Input id="consult-company" name="company" placeholder="Your Company" />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="consult-service">Service Interested In</Label>
-                      <Input id="consult-service" placeholder="Business Formation, Strategic Planning, etc." required />
+                      <Input id="consult-service" name="service" placeholder="Business Formation, Strategic Planning, etc." required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="language" className="flex items-center gap-2">
@@ -252,7 +280,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   
                   <div className="space-y-2">
                     <Label htmlFor="consult-details">Additional Details</Label>
-                    <Textarea id="consult-details" placeholder="Please provide any specific questions or information about your business needs..." className="min-h-[150px]" />
+                    <Textarea id="consult-details" name="message" placeholder="Please provide any specific questions or information about your business needs..." className="min-h-[150px]" />
                   </div>
                   
                   <Button type="submit" className="w-full">
@@ -260,29 +288,29 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   </Button>
                   
                   <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
                   </p>
                 </form>
               )}
 
               {/* Callback Form */}
               {formType === 'callback' && (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={sendByEmail("Callback request from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="callback-name">Full Name</Label>
-                      <Input id="callback-name" placeholder="John Doe" required />
+                      <Input id="callback-name" name="name" placeholder="John Doe" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="callback-phone">Phone Number</Label>
-                      <Input id="callback-phone" placeholder="(555) 123-4567" required />
+                      <Input id="callback-phone" name="phone" placeholder="(555) 123-4567" required />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="callback-time">Best Time to Call</Label>
-                      <Input id="callback-time" placeholder="e.g., Weekdays 2-5pm EST" required />
+                      <Input id="callback-time" name="callTime" placeholder="e.g., Weekdays 2-5pm EST" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="language" className="flex items-center gap-2">
@@ -305,7 +333,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   
                   <div className="space-y-2">
                     <Label htmlFor="callback-reason">Reason for Callback</Label>
-                    <Textarea id="callback-reason" placeholder="Please briefly describe what you'd like to discuss..." className="min-h-[150px]" required />
+                    <Textarea id="callback-reason" name="message" placeholder="Please briefly describe what you'd like to discuss..." className="min-h-[150px]" required />
                   </div>
                   
                   <Button type="submit" className="w-full">
@@ -313,7 +341,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   </Button>
                   
                   <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
                   </p>
                 </form>
               )}

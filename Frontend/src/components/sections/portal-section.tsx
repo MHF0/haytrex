@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Activity, UserPlus, MessagesSquare, CreditCard, ChevronRight } from "lucide-react";
-import { PORTAL } from "@/lib/constants";
+import { COMPANY, PORTAL } from "@/lib/constants";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic, TiltCard } from "@/components/motion/tilt-card";
 import { PortalMock } from "@/components/sections/portal-mock";
@@ -89,7 +89,7 @@ export function PortalSection() {
                   size="lg"
                   className="group shine bg-accent text-white shadow-lg shadow-accent/20 hover:bg-accent-dark hover-effect"
                   onClick={() =>
-                    (window.location.href = `https://calendly.com/haytrex-info/consultation-meeting`)
+                    (window.location.href = COMPANY.calendly)
                   }
                 >
                   <span className="relative z-10 flex items-center">

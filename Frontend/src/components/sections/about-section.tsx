@@ -123,7 +123,7 @@ export function AboutSection() {
                 <Button
                   className="bg-accent hover:bg-accent-dark text-white hover-effect group shine shadow-lg shadow-accent/20"
                   onClick={() =>
-                    (window.location.href = `https://calendly.com/haytrex-info/consultation-meeting`)
+                    (window.location.href = COMPANY.calendly)
                   }
                 >
                   <span className="relative z-10 flex items-center">

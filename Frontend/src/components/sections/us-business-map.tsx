@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { COMPANY } from "@/lib/constants";
 
 // Regions definition
 const regions = {
@@ -732,7 +733,7 @@ export function USBusinessMap() {
             formation options across different regions and states. For
             personalized guidance based on your specific business needs,
             <a
-              href="https://calendly.com/haytrex-info/consultation-meeting"
+              href={COMPANY.calendly}
               target="_blank"
               className="text-primary hover:underline"
             >

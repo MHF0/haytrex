@@ -13,6 +13,8 @@ export const COMPANY = {
   address: "1120 Avenue of the Americas, New York, NY 10036",
   phone: "(646) 640-0050",
   email: "info@haytrex.com",
+  /** Every "book a meeting" action on the site points here. */
+  calendly: "https://calendly.com/ceo-haytrex/30min",
   socialMedia: {
     twitter: "https://twitter.com/haytrex",
     facebook: "https://facebook.com/haytrex",
@@ -36,7 +38,7 @@ export const PORTAL = {
  * animated counters - edit the numbers here and both sections follow.
  */
 export const STATS = {
-  clientsServed: 500,
+  clientsServed: 200,
   countriesReached: 30,
 };
 

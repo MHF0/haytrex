@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Clock, DollarSign, Zap } from "lucide-react";
+import { COMPANY } from "@/lib/constants";
 
 export default function Consultation() {
   return (
@@ -66,7 +67,7 @@ export default function Consultation() {
           </CardContent>
           <CardFooter className="flex flex-col gap-4 pt-2">
             <a
-              href="https://calendly.com/haytrex-info/30min"
+              href={COMPANY.calendly}
               className="w-full"
             >
               <Button
@@ -124,7 +125,7 @@ export default function Consultation() {
           </CardContent>
           <CardFooter className="flex flex-col gap-4 pt-2">
             <a
-              href="https://calendly.com/haytrex-info/consultation-meeting"
+              href={COMPANY.calendly}
               className="w-full"
             >
               <Button

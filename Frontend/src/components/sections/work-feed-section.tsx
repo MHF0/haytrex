@@ -324,7 +324,7 @@ export function WorkFeedSection() {
             <br />
             Interested in seeing how we can help your business?{" "}
             <a
-              href="https://calendly.com/haytrex-info/consultation-meeting"
+              href={COMPANY.calendly}
               target="_blank"
               className="text-primary hover:underline"
             >

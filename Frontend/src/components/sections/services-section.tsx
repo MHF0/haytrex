@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { Curtain, Reveal } from "@/components/motion/reveal";
 import { Magnetic, TiltCard } from "@/components/motion/tilt-card";
 import { useParallax } from "@/hooks/use-motion";
+import { COMPANY } from "@/lib/constants";
 
 interface ServiceCardProps {
   title: string;
@@ -116,7 +117,7 @@ export function ServicesSection() {
                 <Button
                   className="bg-accent hover:bg-accent-dark text-white hover-effect group shine shadow-lg shadow-accent/20"
                   onClick={() =>
-                    (window.location.href = `https://calendly.com/haytrex-info/consultation-meeting`)
+                    (window.location.href = COMPANY.calendly)
                   }
                 >
                   <span className="relative z-10 flex items-center">
