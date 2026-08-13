@@ -49,9 +49,9 @@ export function PortalSection() {
 
           <Reveal delay={180}>
             <p className="mt-4 text-lg text-muted-foreground">
-              {PORTAL.name} is the custom work management portal we build around your business —
-              giving your team live tracking, seamless communication, and complete financial
-              oversight from a single platform.
+              We build custom work management portals for your business — giving your team live
+              tracking, seamless communication, and complete financial oversight from a single
+              platform.
             </p>
           </Reveal>
         </div>

@@ -21,13 +21,13 @@ export const COMPANY = {
   }
 };
 
-/**
- * The portal product is branded separately from the agency that builds it.
- * Change `name` here and every mention across the portal section follows.
- */
+/** Copy shown inside the portal demo mock. */
 export const PORTAL = {
-  name: "Hi Ivy",
-  demoUrl: "portal.hiivy.com",
+  /** Greeting at the top of the mock's workspace. */
+  greeting: "Hi Ivy",
+  greetingSub: "3 tasks due today",
+  demoUrl: "portal.haytrex.com",
+  workspaceLabel: "Workspace",
   tagline: "All in One Portal.",
 };
 

@@ -141,7 +141,7 @@ export function PortalMock() {
           {/* Sidebar */}
           <aside className="hidden w-[38%] max-w-[190px] shrink-0 bg-primary p-4 sm:block">
             <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
-              {PORTAL.name}
+              {PORTAL.workspaceLabel}
             </p>
             <nav className="space-y-1">
               {NAV.map((item, index) => {
@@ -173,8 +173,8 @@ export function PortalMock() {
           {/* Workspace */}
           <div className="min-w-0 flex-1 p-4 sm:p-5">
             <div className="mb-4">
-              <p className="font-semibold text-primary">Good morning, Alex</p>
-              <p className="text-xs text-muted-foreground">3 tasks due today</p>
+              <p className="font-semibold text-primary">{PORTAL.greeting}</p>
+              <p className="text-xs text-muted-foreground">{PORTAL.greetingSub}</p>
             </div>
 
             {/* Stat cards */}
