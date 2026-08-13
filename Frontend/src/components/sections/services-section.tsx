@@ -31,28 +31,23 @@ const ServiceCard = ({
 }: ServiceCardProps) => (
   <Reveal delay={delay} className="h-full">
     <TiltCard intensity={6} className="h-full rounded-lg">
-      <Card className="group border border-border/40 shadow-sm bg-background/60 backdrop-blur-sm h-full flex flex-col lift shine">
+      <Card className="group card-fill border border-border/40 shadow-sm bg-background/60 backdrop-blur-sm h-full flex flex-col lift">
         <CardHeader className="space-y-1">
-          <div className="bg-primary/10 p-3 w-12 h-12 flex items-center justify-center rounded-lg mb-2 text-primary icon-pop">
+          <div className="fill-icon bg-primary/10 p-3 w-12 h-12 flex items-center justify-center rounded-lg mb-2 text-primary icon-pop">
             {icon}
           </div>
-          <CardTitle className="text-xl font-bold text-primary group-hover:text-accent transition-colors duration-300">
-            <Link to={`/service/${serviceId}`} className="link-sweep">
-              {title}
-            </Link>
+          <CardTitle className="fill-title text-xl font-bold text-primary">
+            <Link to={`/service/${serviceId}`}>{title}</Link>
           </CardTitle>
-          <CardDescription className="text-muted-foreground font-normal">
+          <CardDescription className="fill-body text-muted-foreground font-normal">
             {description}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex-grow">
           <ul className="space-y-2 text-sm">
             {serviceFeatures[serviceId].map((feature, index) => (
-              <li
-                key={index}
-                className="flex items-start transition-transform duration-300 hover:translate-x-1"
-              >
-                <ArrowRight className="h-4 w-4 mr-2 text-accent shrink-0 mt-1 transition-transform duration-300 group-hover:translate-x-0.5" />
+              <li key={index} className="fill-body flex items-start">
+                <ArrowRight className="h-4 w-4 mr-2 shrink-0 mt-1 text-accent transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
                 <span>{feature}</span>
               </li>
             ))}
@@ -62,7 +57,7 @@ const ServiceCard = ({
           <Link to={`/service/${serviceId}`} className="w-full">
             <Button
               variant="outline"
-              className="w-full border-primary text-primary hover:bg-primary-dark/10 group/btn"
+              className="fill-link fill-rule w-full border-primary text-primary group/btn group-hover:bg-white/10 group-hover:border-white/40 group-hover:text-white group-hover:hover:bg-white/20"
             >
               Learn More
               <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />

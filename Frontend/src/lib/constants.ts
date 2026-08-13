@@ -22,6 +22,16 @@ export const COMPANY = {
 };
 
 /**
+ * The portal product is branded separately from the agency that builds it.
+ * Change `name` here and every mention across the portal section follows.
+ */
+export const PORTAL = {
+  name: "Hi Ivy",
+  demoUrl: "portal.hiivy.com",
+  tagline: "All in One Portal.",
+};
+
+/**
  * Headline figures shown in the hero and About sections. These drive the
  * animated counters - edit the numbers here and both sections follow.
  */

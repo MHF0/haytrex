@@ -163,6 +163,18 @@ export function HeroSection() {
         </div>
       </div>
 
+      {/* Scroll cue, echoing the reference design. */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-8 z-10 hidden flex-col items-center gap-2 md:flex animate-fade-in"
+        style={{ animationDelay: "1500ms" }}
+        aria-hidden="true"
+      >
+        <span className="text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+          Scroll
+        </span>
+        <span className="scroll-cue-track h-10 w-[2px] rounded-full bg-border" />
+      </div>
+
       {/* Decorative layers: the original dotted grid, plus drifting light,
           a node field and the slow blobs. */}
       <ParticleField className="z-0" opacity={0.55} aurora />

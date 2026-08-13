@@ -439,6 +439,77 @@
     will-change: transform;
   }
 
+  /* Card that floods with brand gradient on hover, inverting its contents to
+     read on the darker ground. The fill is a pseudo-element wiping up from
+     the bottom, so nothing about the card's own background is disturbed. */
+  .card-fill {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .card-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(150deg, theme("colors.blue.600"), theme("colors.indigo.600"));
+    transform: translateY(101%);
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card-fill:hover::before,
+  .card-fill:focus-within::before {
+    transform: translateY(0);
+  }
+
+  /* Contents recoloured while the fill is up. */
+  .card-fill:hover .fill-title,
+  .card-fill:focus-within .fill-title,
+  .card-fill:hover .fill-link,
+  .card-fill:focus-within .fill-link {
+    color: #fff;
+  }
+  .card-fill:hover .fill-body,
+  .card-fill:focus-within .fill-body {
+    color: hsl(0 0% 100% / 0.82);
+  }
+  .card-fill:hover .fill-icon,
+  .card-fill:focus-within .fill-icon {
+    background-color: hsl(0 0% 100% / 0.16);
+    color: #fff;
+  }
+  .card-fill:hover .fill-rule,
+  .card-fill:focus-within .fill-rule {
+    border-color: hsl(0 0% 100% / 0.25);
+  }
+  .fill-title,
+  .fill-body,
+  .fill-link,
+  .fill-icon,
+  .fill-rule {
+    transition:
+      color 0.4s ease,
+      background-color 0.4s ease,
+      border-color 0.4s ease;
+  }
+
+  /* Scroll cue: a hairline that pulses down its track. */
+  .scroll-cue-track {
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-cue-track::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 42%;
+    border-radius: 2px;
+    background: hsl(var(--accent));
+    animation: cue 2.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
   /* Heading rule that draws itself in when the heading arrives. */
   .rule-draw {
     transform: scaleX(0);
@@ -456,6 +527,11 @@
     transform: scale(2.6);
     opacity: 0;
   }
+}
+
+@keyframes cue {
+  0% { transform: translateY(-105%); }
+  100% { transform: translateY(240%); }
 }
 
 @keyframes wipe {

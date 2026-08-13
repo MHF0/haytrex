@@ -6,6 +6,7 @@ import { AboutSection } from "@/components/sections/about-section";
 
 import { ContactSection } from "@/components/sections/contact-section";
 import { DigitalServicesSection } from "@/components/sections/digital-services-section";
+import { PortalSection } from "@/components/sections/portal-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -48,6 +49,7 @@ export default function Home() {
         </div>
 
         <ServicesSection />
+        <PortalSection />
         <DigitalServicesSection />
         <AboutSection />
 
