@@ -33,10 +33,6 @@ export function Navbar() {
     }
   };
 
-  // Function to open links in new tabs
-  const openInNewTab = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
 
   const serviceFeatures = {
   business_formation: [
@@ -126,68 +122,78 @@ export function Navbar() {
 
             {/* Regular Links */}
             <NavigationMenuItem>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
+                asChild
                 className="text-foreground hover:text-accent hover:no-underline"
-                onClick={() => openInNewTab('/about')}
               >
-                <span className="flex items-center">
-                  About Us
-                  <ExternalLink className="ml-1 h-3 w-3" />
-                </span>
+                <a href="/about" target="_blank" rel="noopener noreferrer">
+                  <span className="flex items-center">
+                    About Us
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </span>
+                </a>
               </Button>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
+                asChild
                 className="text-foreground hover:text-accent hover:no-underline"
-                onClick={() => openInNewTab('/consultation')}
               >
-                <span className="flex items-center">
-                  Consultation
-                  <ExternalLink className="ml-1 h-3 w-3" />
-                </span>
+                <a href="/consultation" target="_blank" rel="noopener noreferrer">
+                  <span className="flex items-center">
+                    Consultation
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </span>
+                </a>
               </Button>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
+                asChild
                 className="text-foreground hover:text-accent hover:no-underline"
-                onClick={() => openInNewTab('/contact')}
               >
-                <span className="flex items-center">
-                  Contact
-                  <ExternalLink className="ml-1 h-3 w-3" />
-                </span>
+                <a href="/contact" target="_blank" rel="noopener noreferrer">
+                  <span className="flex items-center">
+                    Contact
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </span>
+                </a>
               </Button>
             </NavigationMenuItem>
 
             {/* New Sections */}
             <NavigationMenuItem>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
+                asChild
                 className="text-foreground hover:text-accent hover:no-underline"
-                onClick={() => openInNewTab('/business-map')}
               >
-                <span className="flex items-center">
-                  Business Map
-                  <ExternalLink className="ml-1 h-3 w-3" />
-                </span>
+                <a href="/business-map" target="_blank" rel="noopener noreferrer">
+                  <span className="flex items-center">
+                    Business Map
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </span>
+                </a>
               </Button>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
+                asChild
                 className="text-foreground hover:text-accent hover:no-underline"
-                onClick={() => openInNewTab('/work-feed')}
               >
-                <span className="flex items-center">
-                  Work Feed
-                  <ExternalLink className="ml-1 h-3 w-3" />
-                </span>
+                <a href="/work-feed" target="_blank" rel="noopener noreferrer">
+                  <span className="flex items-center">
+                    Work Feed
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </span>
+                </a>
               </Button>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -195,12 +201,14 @@ export function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <Button 
-            variant="default" 
+          <Button
+            variant="default"
+            asChild
             className="h-11 rounded-md px-8 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
-            onClick={() => openInNewTab('/consultation')}
           >
-            Free Consultation
+            <a href="/consultation" target="_blank" rel="noopener noreferrer">
+              Free Consultation
+            </a>
           </Button>
         </div>
 
@@ -219,80 +227,94 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 top-[64px] z-30 flex flex-col bg-white shadow-lg p-6 space-y-6 animate-in slide-in-from-right">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
+            asChild
             className="justify-start text-lg font-medium"
-            onClick={() => openInNewTab('/services')}
           >
-            <span className="flex items-center">
-              Services
-              <ExternalLink className="ml-1 h-3 w-3" />
-            </span>
+            <a href="/services" target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center">
+                Services
+                <ExternalLink className="ml-1 h-3 w-3" />
+              </span>
+            </a>
           </Button>
           
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
+            asChild
             className="justify-start text-lg font-medium"
-            onClick={() => openInNewTab('/about')}
           >
-            <span className="flex items-center">
-              About Us
-              <ExternalLink className="ml-1 h-3 w-3" />
-            </span>
+            <a href="/about" target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center">
+                About Us
+                <ExternalLink className="ml-1 h-3 w-3" />
+              </span>
+            </a>
           </Button>
           
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
+            asChild
             className="justify-start text-lg font-medium"
-            onClick={() => openInNewTab('/consultation')}
           >
-            <span className="flex items-center">
-              Consultation
-              <ExternalLink className="ml-1 h-3 w-3" />
-            </span>
+            <a href="/consultation" target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center">
+                Consultation
+                <ExternalLink className="ml-1 h-3 w-3" />
+              </span>
+            </a>
           </Button>
           
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
+            asChild
             className="justify-start text-lg font-medium"
-            onClick={() => openInNewTab('/contact')}
           >
-            <span className="flex items-center">
-              Contact
-              <ExternalLink className="ml-1 h-3 w-3" />
-            </span>
+            <a href="/contact" target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center">
+                Contact
+                <ExternalLink className="ml-1 h-3 w-3" />
+              </span>
+            </a>
           </Button>
           
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
+            asChild
             className="justify-start text-lg font-medium"
-            onClick={() => openInNewTab('/business-map')}
           >
-            <span className="flex items-center">
-              Business Map
-              <ExternalLink className="ml-1 h-3 w-3" />
-            </span>
+            <a href="/business-map" target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center">
+                Business Map
+                <ExternalLink className="ml-1 h-3 w-3" />
+              </span>
+            </a>
           </Button>
           
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
+            asChild
             className="justify-start text-lg font-medium"
-            onClick={() => openInNewTab('/work-feed')}
           >
-            <span className="flex items-center">
-              Work Feed
-              <ExternalLink className="ml-1 h-3 w-3" />
-            </span>
+            <a href="/work-feed" target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center">
+                Work Feed
+                <ExternalLink className="ml-1 h-3 w-3" />
+              </span>
+            </a>
           </Button>
           
-          <Button 
+          <Button
+            asChild
             className="h-11 rounded-md px-8 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 w-full text-white"
-            onClick={() => openInNewTab('/consultation')}
           >
-            <span className="flex items-center justify-center">
-              Free Consultation
-              <ExternalLink className="ml-1 h-3 w-3" />
-            </span>
+            <a href="/consultation" target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center justify-center">
+                Free Consultation
+                <ExternalLink className="ml-1 h-3 w-3" />
+              </span>
+            </a>
           </Button>
         </div>
       )}
@@ -310,12 +332,10 @@ interface ListItemProps {
 }
 
 const ListItem = ({ className, title, href, newTab = false, onClick, children }: ListItemProps) => {
-  const handleClick = (e: React.MouseEvent) => {
-    if (newTab) {
-      e.preventDefault();
-      window.open(href, '_blank', 'noopener,noreferrer');
-    }
-    
+  // The anchor below already carries target="_blank", so opening the window
+  // here as well would fight the browser's own handling - and a scripted
+  // window.open is what pop-up blockers and sandboxed frames refuse.
+  const handleClick = () => {
     if (onClick) {
       onClick();
     }

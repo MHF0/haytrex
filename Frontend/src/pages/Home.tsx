@@ -31,11 +31,6 @@ const CAPABILITIES = [
 export default function Home() {
   const skewRef = useScrollSkew<HTMLElement>(0.9);
 
-  // Function to open links in new tabs
-  const openInNewTab = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollProgress />
@@ -91,14 +86,13 @@ export default function Home() {
                       </p>
                     </CardContent>
                     <CardFooter>
-                      <Button
-                        onClick={() => openInNewTab('/business-map')}
-                        className="w-full group/btn"
-                      >
-                        <span className="flex items-center justify-center">
-                          Explore Map
-                          <ExternalLink className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
-                        </span>
+                      <Button asChild className="w-full group/btn">
+                        <a href="/business-map" target="_blank" rel="noopener noreferrer">
+                          <span className="flex items-center justify-center">
+                            Explore Map
+                            <ExternalLink className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                          </span>
+                        </a>
                       </Button>
                     </CardFooter>
                   </Card>
@@ -124,14 +118,13 @@ export default function Home() {
                       </p>
                     </CardContent>
                     <CardFooter>
-                      <Button
-                        onClick={() => openInNewTab('/work-feed')}
-                        className="w-full group/btn"
-                      >
-                        <span className="flex items-center justify-center">
-                          View Live Feed
-                          <ExternalLink className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
-                        </span>
+                      <Button asChild className="w-full group/btn">
+                        <a href="/work-feed" target="_blank" rel="noopener noreferrer">
+                          <span className="flex items-center justify-center">
+                            View Live Feed
+                            <ExternalLink className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                          </span>
+                        </a>
                       </Button>
                     </CardFooter>
                   </Card>

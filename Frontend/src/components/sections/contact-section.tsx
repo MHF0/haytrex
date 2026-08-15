@@ -226,7 +226,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   </Button>
                   
                   <p className="text-xs text-muted-foreground text-center">
-                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.
                   </p>
                 </form>
               )}
@@ -290,7 +290,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   </Button>
                   
                   <p className="text-xs text-muted-foreground text-center">
-                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.
                   </p>
                 </form>
               )}
@@ -343,7 +343,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   </Button>
                   
                   <p className="text-xs text-muted-foreground text-center">
-                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.
                   </p>
                 </form>
               )}
