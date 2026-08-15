@@ -89,7 +89,7 @@ export function Navbar() {
                   <ListItem 
                     title="Business Formation" 
                     href="/service/business_formation" 
-                    newTab={false}
+                    newTab={true}
                     className="hover:bg-accent/10"
                   >
                     Establish your business entity with expert guidance
@@ -97,7 +97,7 @@ export function Navbar() {
                   <ListItem 
                     title="Business Consulting" 
                     href="/service/business_consulting" 
-                    newTab={false}
+                    newTab={true}
                     className="hover:bg-accent/10"
                   >
                     Strategic advice for business growth and optimization
@@ -107,7 +107,7 @@ export function Navbar() {
                   <ListItem
                     title="Accounting Services"
                     href="/services"
-                    newTab={false}
+                    newTab={true}
                     className="hover:bg-accent/10"
                   >
                     Professional financial management and reporting
@@ -115,7 +115,7 @@ export function Navbar() {
                   <ListItem 
                     title="Business Plan Development" 
                     href="/service/business_plan" 
-                    newTab={false}
+                    newTab={true}
                     className="hover:bg-accent/10"
                   >
                     Comprehensive business plans for funding and strategy

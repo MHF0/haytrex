@@ -503,6 +503,689 @@ const statesData = {
       "Varying local regulations",
     ],
   },
+  // Remaining states referenced by the region lists.
+  idaho: {
+    name: "Idaho",
+    formationTime: "3-5 business days",
+    annualFee: "$0 annual report (filing required)",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "No fee on the annual report",
+      "Low overall business costs",
+      "Fast online filing",
+    ],
+    challenges: [
+      "Small local market",
+      "Limited access to venture capital",
+      "Fewer specialised service providers",
+    ],
+  },
+  montana: {
+    name: "Montana",
+    formationTime: "3-5 business days",
+    annualFee: "$20 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Series LLC",
+    ],
+    keyBenefits: [
+      "No general sales tax",
+      "Very low annual report fee",
+      "Straightforward filing process",
+    ],
+    challenges: [
+      "Small population and local market",
+      "Distance from major distribution hubs",
+      "Limited local talent pool",
+    ],
+  },
+  nebraska: {
+    name: "Nebraska",
+    formationTime: "3-5 business days",
+    annualFee: "$25 biennial report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional Corporation",
+    ],
+    keyBenefits: [
+      "Low biennial filing cost",
+      "Central location for logistics",
+      "Stable, low-cost operating base",
+    ],
+    challenges: [
+      "Publication requirement for new LLCs",
+      "Smaller consumer market",
+      "Limited startup funding locally",
+    ],
+  },
+  kansas: {
+    name: "Kansas",
+    formationTime: "2-4 business days",
+    annualFee: "$50 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Low formation and maintenance costs",
+      "Central US location",
+      "Simple online filing",
+    ],
+    challenges: [
+      "Smaller local market",
+      "Limited venture funding",
+      "Local tax layers vary by county",
+    ],
+  },
+  iowa: {
+    name: "Iowa",
+    formationTime: "3-5 business days",
+    annualFee: "$30 biennial report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Low biennial fee",
+      "Strong agricultural and manufacturing base",
+      "Affordable operating costs",
+    ],
+    challenges: [
+      "Smaller consumer market",
+      "Winter weather disruption",
+      "Limited access to coastal investors",
+    ],
+  },
+  minnesota: {
+    name: "Minnesota",
+    formationTime: "2-4 business days",
+    annualFee: "$0 annual renewal (filing required)",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional Firm",
+    ],
+    keyBenefits: [
+      "No fee on the annual renewal",
+      "Large corporate headquarters base",
+      "Skilled, educated workforce",
+    ],
+    challenges: [
+      "Higher personal and corporate income tax",
+      "Higher cost of labour",
+      "Cold-weather operating costs",
+    ],
+  },
+  wisconsin: {
+    name: "Wisconsin",
+    formationTime: "3-5 business days",
+    annualFee: "$25 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Low annual report fee",
+      "Strong manufacturing supply chain",
+      "Reasonable operating costs",
+    ],
+    challenges: [
+      "Moderate income tax rates",
+      "Smaller tech investment scene",
+      "Seasonal demand swings",
+    ],
+  },
+  indiana: {
+    name: "Indiana",
+    formationTime: "1-3 business days",
+    annualFee: "$32 biennial report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Benefit Corporation",
+    ],
+    keyBenefits: [
+      "Low biennial filing fee",
+      "Flat, competitive corporate tax rate",
+      "Central logistics location",
+    ],
+    challenges: [
+      "Smaller venture capital presence",
+      "County-level tax variation",
+      "Limited coastal market access",
+    ],
+  },
+  missouri: {
+    name: "Missouri",
+    formationTime: "1-3 business days",
+    annualFee: "$0 for LLCs (no annual report)",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "No annual report requirement for LLCs",
+      "Low cost of living and labour",
+      "Two large metro markets",
+    ],
+    challenges: [
+      "Corporations still file annually",
+      "Local licence requirements vary",
+      "Smaller investor network",
+    ],
+  },
+  kentucky: {
+    name: "Kentucky",
+    formationTime: "2-4 business days",
+    annualFee: "$15 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Very low annual report fee",
+      "Logistics and air-freight hub",
+      "Low operating costs",
+    ],
+    challenges: [
+      "Limited liability entity tax applies",
+      "Local occupational taxes",
+      "Smaller local market",
+    ],
+  },
+  tennessee: {
+    name: "Tennessee",
+    formationTime: "1-3 business days",
+    annualFee: "$300 minimum annual report (LLC)",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "No personal income tax on wages",
+      "Strong logistics and music/health sectors",
+      "Fast online filing",
+    ],
+    challenges: [
+      "Franchise and excise tax on entities",
+      "Annual fee scales with membership",
+      "Higher LLC maintenance cost",
+    ],
+  },
+  alabama: {
+    name: "Alabama",
+    formationTime: "5-7 business days",
+    annualFee: "$50 minimum business privilege tax",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Low overall operating costs",
+      "Growing manufacturing base",
+      "Affordable commercial property",
+    ],
+    challenges: [
+      "Business privilege tax filing each year",
+      "County and city licensing layers",
+      "Smaller professional talent pool",
+    ],
+  },
+  mississippi: {
+    name: "Mississippi",
+    formationTime: "2-4 business days",
+    annualFee: "$0 annual report (filing required)",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "No fee on the annual report",
+      "Lowest operating costs in the region",
+      "Simple online filing",
+    ],
+    challenges: [
+      "Small consumer market",
+      "Limited access to capital",
+      "Fewer specialised advisers",
+    ],
+  },
+  louisiana: {
+    name: "Louisiana",
+    formationTime: "3-5 business days",
+    annualFee: "$35 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Port access for import and export",
+      "Industry incentives for film and energy",
+      "Moderate filing costs",
+    ],
+    challenges: [
+      "Parish-level tax complexity",
+      "Hurricane insurance costs",
+      "Franchise tax on corporations",
+    ],
+  },
+  arkansas: {
+    name: "Arkansas",
+    formationTime: "2-4 business days",
+    annualFee: "$150 annual franchise tax (LLC)",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Low cost of doing business",
+      "Central distribution location",
+      "Straightforward formation",
+    ],
+    challenges: [
+      "Flat franchise tax regardless of income",
+      "Smaller local market",
+      "Limited investor network",
+    ],
+  },
+  oklahoma: {
+    name: "Oklahoma",
+    formationTime: "2-4 business days",
+    annualFee: "$25 annual certificate (LLC)",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Low annual maintenance cost",
+      "Energy sector opportunities",
+      "Affordable commercial space",
+    ],
+    challenges: [
+      "Franchise tax for corporations",
+      "Weather-related risk",
+      "Smaller talent pool",
+    ],
+  },
+  pennsylvania: {
+    name: "Pennsylvania",
+    formationTime: "5-10 business days",
+    annualFee: "$7 annual report",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Very low annual report fee",
+      "Large consumer market and ports",
+      "Strong healthcare and education sectors",
+    ],
+    challenges: [
+      "Newspaper publication required for corporations",
+      "Local earned income taxes",
+      "Slower processing than neighbours",
+    ],
+  },
+  maryland: {
+    name: "Maryland",
+    formationTime: "5-7 business days",
+    annualFee: "$300 annual report",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Benefit Corporation",
+    ],
+    keyBenefits: [
+      "Proximity to federal agencies and contracts",
+      "Highly educated workforce",
+      "Strong biotech corridor",
+    ],
+    challenges: [
+      "$300 flat annual report fee",
+      "Higher tax burden",
+      "Personal property tax filing",
+    ],
+  },
+  virginia: {
+    name: "Virginia",
+    formationTime: "2-4 business days",
+    annualFee: "$50 annual registration (LLC)",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Benefit Corporation",
+    ],
+    keyBenefits: [
+      "Major federal contracting market",
+      "Data centre and tech corridor",
+      "Reasonable annual fees",
+    ],
+    challenges: [
+      "Local BPOL business licence tax",
+      "Higher costs in Northern Virginia",
+      "Registered agent must be in state",
+    ],
+  },
+  connecticut: {
+    name: "Connecticut",
+    formationTime: "3-5 business days",
+    annualFee: "$80 annual report",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Access to New York and Boston markets",
+      "Strong finance and insurance sectors",
+      "High household income base",
+    ],
+    challenges: [
+      "Higher annual report fee",
+      "Business entity tax history",
+      "High cost of living and wages",
+    ],
+  },
+  maine: {
+    name: "Maine",
+    formationTime: "3-5 business days",
+    annualFee: "$85 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Benefit Corporation",
+    ],
+    keyBenefits: [
+      "Strong tourism and food sectors",
+      "Quality of life attracts remote founders",
+      "Simple filing process",
+    ],
+    challenges: [
+      "Seasonal revenue swings",
+      "Small year-round market",
+      "Distance from major hubs",
+    ],
+  },
+  vermont: {
+    name: "Vermont",
+    formationTime: "3-5 business days",
+    annualFee: "$35 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Benefit Corporation",
+    ],
+    keyBenefits: [
+      "Low annual report fee",
+      "Benefit corporation friendly",
+      "Simple online filing",
+    ],
+    challenges: [
+      "Very small local market",
+      "Limited workforce",
+      "Higher income tax rates",
+    ],
+  },
+  new_jersey: {
+    name: "New Jersey",
+    formationTime: "3-5 business days",
+    annualFee: "$75 annual report",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Direct access to the New York metro market",
+      "Major port and logistics network",
+      "Dense professional talent pool",
+    ],
+    challenges: [
+      "Higher corporate tax rates",
+      "High cost of commercial space",
+      "Layered local regulation",
+    ],
+  },
+  new_hampshire: {
+    name: "New Hampshire",
+    formationTime: "3-5 business days",
+    annualFee: "$100 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "No sales tax and no tax on wages",
+      "Close to the Boston market",
+      "Straightforward filing",
+    ],
+    challenges: [
+      "Business profits and enterprise taxes",
+      "Small local workforce",
+      "Seasonal tourism swings",
+    ],
+  },
+  rhode_island: {
+    name: "Rhode Island",
+    formationTime: "3-5 business days",
+    annualFee: "$50 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Compact market close to Boston",
+      "Port access",
+      "Low annual report fee",
+    ],
+    challenges: [
+      "Minimum corporate tax applies",
+      "Smallest state market",
+      "Higher energy costs",
+    ],
+  },
+  north_carolina: {
+    name: "North Carolina",
+    formationTime: "3-5 business days",
+    annualFee: "$200 annual report (LLC)",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Research Triangle talent and universities",
+      "Competitive flat corporate tax rate",
+      "Fast-growing population",
+    ],
+    challenges: [
+      "$200 annual report fee for LLCs",
+      "Rising metro costs",
+      "Franchise tax on corporations",
+    ],
+  },
+  south_carolina: {
+    name: "South Carolina",
+    formationTime: "3-5 business days",
+    annualFee: "$0 annual report for LLCs",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "No annual report requirement for most LLCs",
+      "Port of Charleston access",
+      "Low operating costs",
+    ],
+    challenges: [
+      "Corporations file annually with tax return",
+      "Smaller professional talent pool",
+      "Coastal insurance costs",
+    ],
+  },
+  west_virginia: {
+    name: "West Virginia",
+    formationTime: "3-5 business days",
+    annualFee: "$25 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Very low annual report fee",
+      "Low property and operating costs",
+      "Incentives for new employers",
+    ],
+    challenges: [
+      "Small consumer market",
+      "Terrain complicates logistics",
+      "Limited local investment capital",
+    ],
+  },
+  north_dakota: {
+    name: "North Dakota",
+    formationTime: "3-5 business days",
+    annualFee: "$50 annual report",
+    popularity: "Medium",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Strong energy and agriculture sectors",
+      "Low unemployment",
+      "Business-friendly filing process",
+    ],
+    challenges: [
+      "Very small population",
+      "Severe winter conditions",
+      "Distance from major markets",
+    ],
+  },
+  south_dakota: {
+    name: "South Dakota",
+    formationTime: "2-4 business days",
+    annualFee: "$50 annual report",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "No corporate or personal income tax",
+      "Strong trust and banking framework",
+      "Low annual maintenance",
+    ],
+    challenges: [
+      "Small local market",
+      "Limited talent pool",
+      "Winter weather disruption",
+    ],
+  },
+  district_of_columbia: {
+    name: "District of Columbia",
+    formationTime: "5-7 business days",
+    annualFee: "$300 biennial report",
+    popularity: "High",
+    businessTypes: [
+      "LLC",
+      "C-Corporation",
+      "S-Corporation",
+      "Professional LLC",
+    ],
+    keyBenefits: [
+      "Direct access to federal agencies and contracts",
+      "Dense professional and policy network",
+      "International presence",
+    ],
+    challenges: [
+      "Higher franchise tax floor",
+      "Expensive commercial rent",
+      "Clean Hands certification required",
+    ],
+  },
 };
 
 type StateKey = keyof typeof statesData;
@@ -567,6 +1250,10 @@ export function USBusinessMap() {
             Explore different states for business formation by region. Click on
             a state to learn more about incorporation requirements, fees, and
             strategic advantages.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-xs text-muted-foreground">
+            Filing times and fees are indicative and change from year to year. We
+            confirm the current figures for your state before filing.
           </p>
         </div>
 

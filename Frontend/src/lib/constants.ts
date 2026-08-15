@@ -23,6 +23,20 @@ export const COMPANY = {
   }
 };
 
+/**
+ * Where chatbot leads are delivered.
+ *
+ * `endpoint` posts the lead straight through without the visitor's mail client
+ * opening. FormSubmit sends a one-off confirmation email to the recipient the
+ * first time it is used - until that link is clicked, nothing is delivered.
+ * Swap in any endpoint that accepts a JSON POST (Formspree, EmailJS, or your
+ * own handler); set it to an empty string to fall back to a mailto draft.
+ */
+export const LEADS = {
+  recipient: "ceo@haytrex.com",
+  endpoint: "https://formsubmit.co/ajax/ceo@haytrex.com",
+};
+
 /** Copy shown inside the portal demo mock. */
 export const PORTAL = {
   /** Greeting at the top of the mock's workspace. */

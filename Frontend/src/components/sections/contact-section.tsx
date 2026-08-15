@@ -70,7 +70,9 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
 
   return (
     <section className="section section relative bg-[#FFFFFF] mt-[0px] mr-[0px] mb-[0px] ml-[0px] pt-[96px] pr-[0px] pb-[96px] pl-[0px] text-[16px] font-normal font-sans opacity-100 text-[#020817]" id="contact">
-      <div className="container bg-[#00000000] mt-[0px] mr-[0px] mb-[0px] ml-[0px] pt-[0px] pr-[32px] pb-[0px] pl-[32px] text-[16px] font-normal font-sans opacity-100 text-[#020817]">
+      {/* No ml/mr overrides here: they would cancel the container's auto
+          margins and pin the whole section to the left of the viewport. */}
+      <div className="container mx-auto bg-[#00000000] mt-[0px] mb-[0px] pt-[0px] pr-[32px] pb-[0px] pl-[32px] text-[16px] font-normal font-sans opacity-100 text-[#020817]">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <Badge variant="outline" className="mb-4 text-accent border-accent">Contact Us</Badge>
           <h2 className="tracking-tight bg-[#00000000] mt-[0px] mr-[0px] mb-[16px] ml-[0px] pt-[0px] pr-[0px] pb-[0px] pl-[0px] text-[30px] font-bold text-center font-sans opacity-100 text-[#020817]">Get In Touch With <span className="font-bold text-3xl bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{COMPANY.name}</span></h2>

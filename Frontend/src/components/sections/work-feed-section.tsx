@@ -12,103 +12,144 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CalendarDays, Clock, Briefcase, Check, Loader2 } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 
-// Mock data for the work feed
+// Dates are expressed as an offset in days from today so the feed always
+// reads as current work rather than drifting into the past.
+const daysAgo = (days: number) => {
+  const date = new Date();
+  date.setDate(date.getDate() - days);
+  return date.toISOString().slice(0, 10);
+};
+
 const workFeedData = {
   recentProjects: [
     {
       id: 1,
-      title: "E-commerce Store Formation",
+      title: "Wyoming LLC + EIN for an overseas founder",
       clientInitial: "TG",
       clientImg: null,
-      date: "2025-08-01",
+      date: daysAgo(3),
       status: "completed",
       description:
-        "Formed an LLC for an e-commerce business in Delaware, including EIN registration and operating agreement drafting.",
+        "Formed a Wyoming LLC for a founder based outside the US, secured the EIN without an SSN, and opened a business bank account remotely. Operating agreement and registered agent are in place.",
       type: "Business Formation",
     },
     {
       id: 2,
-      title: "Tech Startup Incorporation",
+      title: "Client portal for a 12-person agency",
       clientInitial: "RC",
       clientImg: null,
-      date: "2025-07-28",
+      date: daysAgo(6),
       status: "completed",
       description:
-        "Incorporated a C-Corp in California for a tech startup, including board structure and investor-ready documentation.",
-      type: "Business Formation",
+        "Delivered a custom portal replacing four separate tools: work orders, branded proposals that convert to invoices, team chat and a client login for approvals and document downloads.",
+      type: "Portal Build",
     },
     {
       id: 3,
-      title: "Annual Business Plan Review",
+      title: "Delaware C-Corp for a seed-stage startup",
       clientInitial: "AM",
       clientImg: null,
-      date: "2025-07-25",
+      date: daysAgo(9),
       status: "completed",
       description:
-        "Complete annual business plan revision including financial projections and strategy adjustments for a retail business.",
-      type: "Business Planning",
+        "Incorporated in Delaware with a founder vesting schedule, 83(b) guidance, board consents and a cap table ready for the investor's diligence request.",
+      type: "Business Formation",
+    },
+    {
+      id: 4,
+      title: "Marketing site rebuild with lead capture",
+      clientInitial: "KP",
+      clientImg: null,
+      date: daysAgo(13),
+      status: "completed",
+      description:
+        "Rebuilt an eight-page site on a faster stack, added quote-request forms wired into the client's portal, and improved the mobile score from 42 to 96.",
+      type: "Website Development",
     },
   ],
   inProgress: [
     {
-      id: 4,
-      title: "Restaurant Group Restructuring",
+      id: 5,
+      title: "Restaurant group holding structure",
       clientInitial: "BH",
       clientImg: null,
-      date: "2025-08-02",
+      date: daysAgo(1),
       status: "in-progress",
       description:
-        "Restructuring a restaurant group with multiple locations into a holding company structure for better liability protection and tax efficiency.",
+        "Restructuring three locations under a holding company for liability separation and cleaner tax treatment. Entity filings are done; intercompany agreements are in review.",
       type: "Business Consulting",
       progress: 75,
     },
     {
-      id: 5,
-      title: "Consulting Firm Setup",
+      id: 6,
+      title: "Finance module for a logistics portal",
       clientInitial: "LT",
       clientImg: null,
-      date: "2025-08-03",
+      date: daysAgo(2),
       status: "in-progress",
       description:
-        "Establishing a professional consulting firm including business entity formation, contract templates, and service pricing structure.",
-      type: "Business Formation",
-      progress: 45,
+        "Adding invoicing, payment links and expense tracking to an existing client portal, with automated reminders and a live outstanding-balance report.",
+      type: "Portal Build",
+      progress: 55,
     },
     {
-      id: 6,
-      title: "SaaS Business Plan",
+      id: 7,
+      title: "Series A business plan and model",
       clientInitial: "DP",
       clientImg: null,
-      date: "2025-07-30",
+      date: daysAgo(4),
       status: "in-progress",
       description:
-        "Creating a comprehensive business plan for a SaaS startup seeking Series A funding, including market research and financial modeling.",
+        "Building the market analysis, five-year financial model and investor deck for a SaaS company raising a Series A. Model is complete; the narrative is being tightened.",
       type: "Business Planning",
       progress: 60,
+    },
+    {
+      id: 8,
+      title: "E-commerce brand: multi-state sales tax",
+      clientInitial: "NV",
+      clientImg: null,
+      date: daysAgo(5),
+      status: "in-progress",
+      description:
+        "Reviewing economic nexus across eleven states after a growth year, registering where thresholds are crossed and setting up automated filing.",
+      type: "Accounting",
+      progress: 40,
     },
   ],
   upcomingProjects: [
     {
-      id: 7,
-      title: "Healthcare Practice Formation",
+      id: 9,
+      title: "Medical practice formation",
       clientInitial: "MS",
       clientImg: null,
-      date: "2025-08-10",
+      date: daysAgo(-4),
       status: "upcoming",
       description:
-        "Scheduled formation of a medical practice including professional entity structure, compliance documentation, and operational procedures.",
+        "Professional entity formation for a two-physician practice, including licensing checks, compliance documentation and operating procedures.",
       type: "Business Formation",
     },
     {
-      id: 8,
-      title: "Non-Profit Organization Setup",
+      id: 10,
+      title: "501(c)(3) application for a conservation non-profit",
       clientInitial: "CJ",
       clientImg: null,
-      date: "2025-08-15",
+      date: daysAgo(-7),
       status: "upcoming",
       description:
-        "Assisting with 501(c)(3) application and formation of a non-profit organization focused on environmental conservation.",
+        "Incorporation, bylaws, conflict-of-interest policy and the Form 1023 application for an environmental organisation.",
       type: "Business Formation",
+    },
+    {
+      id: 11,
+      title: "Onboarding portal for a staffing firm",
+      clientInitial: "RW",
+      clientImg: null,
+      date: daysAgo(-11),
+      status: "upcoming",
+      description:
+        "Scoped build covering candidate onboarding checklists, document signing, role-based access and timesheet approval.",
+      type: "Portal Build",
     },
   ],
 };
