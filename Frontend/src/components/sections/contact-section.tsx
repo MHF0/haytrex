@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { COMPANY } from "@/lib/constants";
+import { COMPANY, LEADS } from "@/lib/constants";
+import { sendEnquiry } from "@/lib/enquiry";
 import { Mail, Phone, MapPin, Globe } from "lucide-react";
 import { 
   Select,
@@ -35,26 +36,33 @@ const FIELD_LABELS: Record<string, string> = {
 export function ContactSection({ initialContactType = null }: ContactSectionProps) {
   // Language selection state
   const [language, setLanguage] = React.useState('english');
+  const [status, setStatus] = React.useState<'idle' | 'sending' | 'sent' | 'draft'>('idle');
 
   /**
-   * There is no backend to post to, so a submission is composed into an email
-   * addressed to the company and handed to the visitor's mail client. Nothing
-   * is claimed to have been sent that has not been.
+   * Submissions are delivered to the contact address. They post straight
+   * through where possible, and fall back to a pre-filled mail draft, with the
+   * confirmation below stating which of the two actually happened.
    */
-  const sendByEmail = (subject: string) => (event: React.FormEvent<HTMLFormElement>) => {
+  const submit = (subject: string) => async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
 
-    const data = new FormData(event.currentTarget);
-    const lines = Array.from(data.entries())
-      .filter(([, value]) => String(value).trim() !== "")
-      .map(([field, value]) => `${FIELD_LABELS[field] ?? field}: ${value}`);
+    const fields: [string, string][] = Array.from(data.entries()).map(([field, value]) => [
+      FIELD_LABELS[field] ?? field,
+      String(value),
+    ]);
+    fields.push(["Preferred language", language]);
 
-    lines.push(`Preferred language: ${language}`);
+    setStatus('sending');
+    const outcome = await sendEnquiry({
+      recipient: LEADS.contactRecipient,
+      subject,
+      fields,
+    });
 
-    window.location.href =
-      `mailto:${COMPANY.email}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(lines.join("\n"))}`;
+    setStatus(outcome);
+    if (outcome === 'sent') form.reset();
   };
 
   // Handle form type based on initialContactType
@@ -174,7 +182,7 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
               
               {/* General Form */}
               {formType === 'general' && (
-                <form onSubmit={sendByEmail("General enquiry from haytrex.com")} className="space-y-6">
+                <form onSubmit={submit("General enquiry from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name</Label>
@@ -221,19 +229,27 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                     <Textarea id="message" name="message" placeholder="Please describe how we can assist you..." required className="min-h-[150px]" />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" disabled={status === 'sending'} className="w-full">
                     Send Message
                   </Button>
                   
-                  <p className="text-xs text-muted-foreground text-center">
-                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.
+                  <p className="text-xs text-center" aria-live="polite">
+                    {status === 'sending' ? (
+                      <span className="text-muted-foreground">Sending…</span>
+                    ) : status === 'sent' ? (
+                      <span className="font-medium text-emerald-600">Thank you — your message is with our team. We reply within one working day.</span>
+                    ) : status === 'draft' ? (
+                      <span className="text-muted-foreground">We could not send it directly, so an email draft has been opened — press send, or write to {COMPANY.email}.</span>
+                    ) : (
+                      <span className="text-muted-foreground">Your message goes straight to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.</span>
+                    )}
                   </p>
                 </form>
               )}
 
               {/* Consultation Form */}
               {formType === 'consultation' && (
-                <form onSubmit={sendByEmail("Consultation request from haytrex.com")} className="space-y-6">
+                <form onSubmit={submit("Consultation request from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="consult-name">Full Name</Label>
@@ -285,19 +301,27 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                     <Textarea id="consult-details" name="message" placeholder="Please provide any specific questions or information about your business needs..." className="min-h-[150px]" />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" disabled={status === 'sending'} className="w-full">
                     Schedule Consultation
                   </Button>
                   
-                  <p className="text-xs text-muted-foreground text-center">
-                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.
+                  <p className="text-xs text-center" aria-live="polite">
+                    {status === 'sending' ? (
+                      <span className="text-muted-foreground">Sending…</span>
+                    ) : status === 'sent' ? (
+                      <span className="font-medium text-emerald-600">Thank you — your message is with our team. We reply within one working day.</span>
+                    ) : status === 'draft' ? (
+                      <span className="text-muted-foreground">We could not send it directly, so an email draft has been opened — press send, or write to {COMPANY.email}.</span>
+                    ) : (
+                      <span className="text-muted-foreground">Your message goes straight to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.</span>
+                    )}
                   </p>
                 </form>
               )}
 
               {/* Callback Form */}
               {formType === 'callback' && (
-                <form onSubmit={sendByEmail("Callback request from haytrex.com")} className="space-y-6">
+                <form onSubmit={submit("Callback request from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="callback-name">Full Name</Label>
@@ -338,12 +362,20 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                     <Textarea id="callback-reason" name="message" placeholder="Please briefly describe what you'd like to discuss..." className="min-h-[150px]" required />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" disabled={status === 'sending'} className="w-full">
                     Request Callback
                   </Button>
                   
-                  <p className="text-xs text-muted-foreground text-center">
-                    This opens your email app with the details filled in, addressed to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.
+                  <p className="text-xs text-center" aria-live="polite">
+                    {status === 'sending' ? (
+                      <span className="text-muted-foreground">Sending…</span>
+                    ) : status === 'sent' ? (
+                      <span className="font-medium text-emerald-600">Thank you — your message is with our team. We reply within one working day.</span>
+                    ) : status === 'draft' ? (
+                      <span className="text-muted-foreground">We could not send it directly, so an email draft has been opened — press send, or write to {COMPANY.email}.</span>
+                    ) : (
+                      <span className="text-muted-foreground">Your message goes straight to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.</span>
+                    )}
                   </p>
                 </form>
               )}

@@ -33,8 +33,15 @@ export const COMPANY = {
  * own handler); set it to an empty string to fall back to a mailto draft.
  */
 export const LEADS = {
+  /** Chat assistant leads. */
   recipient: "ceo@haytrex.com",
-  endpoint: "https://formsubmit.co/ajax/ceo@haytrex.com",
+  /** Contact form submissions. */
+  contactRecipient: "info@haytrex.com",
+  /**
+   * `{recipient}` is substituted with the address above. Set this to an empty
+   * string to stop posting and fall back to opening a mail draft instead.
+   */
+  endpointTemplate: "https://formsubmit.co/ajax/{recipient}",
 };
 
 /** Copy shown inside the portal demo mock. */

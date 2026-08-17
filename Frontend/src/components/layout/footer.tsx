@@ -29,14 +29,14 @@ export function Footer() {
                 <Linkedin size={20} />
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a 
-                href={COMPANY.socialMedia.twitter} 
-                target="_blank" 
+              <a
+                href={COMPANY.socialMedia.instagram}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-accent transition-colors"
               >
-                <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
+                <Instagram size={20} />
+                <span className="sr-only">Instagram</span>
               </a>
               <a 
                 href={COMPANY.socialMedia.facebook} 

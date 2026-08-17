@@ -529,6 +529,31 @@
   }
 }
 
+/* These four are referenced from the hand-written rules above rather than
+   through an `animate-*` utility. Tailwind only emits a @keyframes block when
+   it sees the matching class in the source, so without these definitions the
+   ticker, the gradient headline, the text shimmer and the travelling card
+   border all render completely static. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+
+@keyframes border-travel {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @keyframes cue {
   0% { transform: translateY(-105%); }
   100% { transform: translateY(240%); }
