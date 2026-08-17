@@ -29,14 +29,14 @@ export function Footer() {
                 <Linkedin size={20} />
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a 
-                href={COMPANY.socialMedia.twitter} 
-                target="_blank" 
+              <a
+                href={COMPANY.socialMedia.instagram}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-accent transition-colors"
               >
-                <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
+                <Instagram size={20} />
+                <span className="sr-only">Instagram</span>
               </a>
               <a 
                 href={COMPANY.socialMedia.facebook} 
@@ -57,37 +57,41 @@ export function Footer() {
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Our Services
+                  <Link to="/services">
+                  Our Services</Link>
                 </Button>
               </li>
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
-                  onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  About Us
+                  <Link to="/about">
+                  About Us</Link>
                 </Button>
               </li>
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
-                  onClick={() => document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Free Consultation
+                  <Link to="/consultation">
+                  Free Consultation</Link>
                 </Button>
               </li>
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Contact Us
+                  <Link to="/contact">
+                  Contact Us</Link>
                 </Button>
               </li>
             </ul>
@@ -100,33 +104,37 @@ export function Footer() {
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
                 >
-                  Business Formation
+                  <Link to="/service/business_formation">Business Formation</Link>
                 </Button>
               </li>
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
                 >
-                  Business Consulting
+                  <Link to="/service/business_consulting">Business Consulting</Link>
                 </Button>
               </li>
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
                 >
-                  Accounting Services
+                  <Link to="/services">Accounting Services</Link>
                 </Button>
               </li>
               <li>
                 <Button 
                   variant="link" 
+                  asChild
                   className="text-gray-300 hover:text-accent p-0 h-auto font-normal text-sm hover:no-underline"
                 >
-                  Business Plan Development
+                  <Link to="/service/business_plan">Business Plan Development</Link>
                 </Button>
               </li>
             </ul>
@@ -162,7 +170,9 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
           <p>&copy; {currentYear} {COMPANY.name}. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link to="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
+            {/* There is no privacy policy page yet, so this points at the
+                inbox rather than a route that lands on Not Found. */}
+            <a href={`mailto:${COMPANY.email}`} className="hover:text-accent transition-colors">Privacy enquiries</a>
             <Link to="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
           </div>
         </div>

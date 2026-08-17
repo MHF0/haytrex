@@ -1,10 +1,12 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { COMPANY } from "@/lib/constants";
+import { COMPANY, LEADS } from "@/lib/constants";
+import { sendEnquiry } from "@/lib/enquiry";
 import { Mail, Phone, MapPin, Globe } from "lucide-react";
 import { 
   Select,
@@ -19,19 +21,53 @@ interface ContactSectionProps {
   initialContactType?: string | null;
 }
 
+/** Readable labels for the field names, used to lay out the email body. */
+const FIELD_LABELS: Record<string, string> = {
+  name: "Name",
+  email: "Email",
+  phone: "Phone",
+  subject: "Subject",
+  company: "Company",
+  service: "Service interested in",
+  callTime: "Best time to call",
+  message: "Message",
+};
+
 export function ContactSection({ initialContactType = null }: ContactSectionProps) {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real app, this would send the form data to a backend
-    alert("Message sent successfully! We'll get back to you soon.");
-  };
-  
-  // Handle form type based on initialContactType
-  const [formType, setFormType] = React.useState<'general' | 'consultation' | 'callback'>('general');
-  
   // Language selection state
   const [language, setLanguage] = React.useState('english');
-  
+  const [status, setStatus] = React.useState<'idle' | 'sending' | 'sent' | 'draft'>('idle');
+
+  /**
+   * Submissions are delivered to the contact address. They post straight
+   * through where possible, and fall back to a pre-filled mail draft, with the
+   * confirmation below stating which of the two actually happened.
+   */
+  const submit = (subject: string) => async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    const fields: [string, string][] = Array.from(data.entries()).map(([field, value]) => [
+      FIELD_LABELS[field] ?? field,
+      String(value),
+    ]);
+    fields.push(["Preferred language", language]);
+
+    setStatus('sending');
+    const outcome = await sendEnquiry({
+      recipient: LEADS.contactRecipient,
+      subject,
+      fields,
+    });
+
+    setStatus(outcome);
+    if (outcome === 'sent') form.reset();
+  };
+
+  // Handle form type based on initialContactType
+  const [formType, setFormType] = React.useState<'general' | 'consultation' | 'callback'>('general');
+
   React.useEffect(() => {
     if (initialContactType === 'consultation') {
       setFormType('consultation');
@@ -42,7 +78,9 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
 
   return (
     <section className="section section relative bg-[#FFFFFF] mt-[0px] mr-[0px] mb-[0px] ml-[0px] pt-[96px] pr-[0px] pb-[96px] pl-[0px] text-[16px] font-normal font-sans opacity-100 text-[#020817]" id="contact">
-      <div className="container bg-[#00000000] mt-[0px] mr-[0px] mb-[0px] ml-[0px] pt-[0px] pr-[32px] pb-[0px] pl-[32px] text-[16px] font-normal font-sans opacity-100 text-[#020817]">
+      {/* No ml/mr overrides here: they would cancel the container's auto
+          margins and pin the whole section to the left of the viewport. */}
+      <div className="container mx-auto bg-[#00000000] mt-[0px] mb-[0px] pt-[0px] pr-[32px] pb-[0px] pl-[32px] text-[16px] font-normal font-sans opacity-100 text-[#020817]">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <Badge variant="outline" className="mb-4 text-accent border-accent">Contact Us</Badge>
           <h2 className="tracking-tight bg-[#00000000] mt-[0px] mr-[0px] mb-[16px] ml-[0px] pt-[0px] pr-[0px] pb-[0px] pl-[0px] text-[30px] font-bold text-center font-sans opacity-100 text-[#020817]">Get In Touch With <span className="font-bold text-3xl bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{COMPANY.name}</span></h2>
@@ -144,26 +182,26 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
               
               {/* General Form */}
               {formType === 'general' && (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={submit("General enquiry from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name</Label>
-                      <Input id="name" placeholder="John Doe" required />
+                      <Input id="name" name="name" placeholder="John Doe" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john@example.com" required />
+                      <Input id="email" name="email" type="email" placeholder="john@example.com" required />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone (Optional)</Label>
-                      <Input id="phone" placeholder="(555) 123-4567" />
+                      <Input id="phone" name="phone" placeholder="(555) 123-4567" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="subject">Subject</Label>
-                      <Input id="subject" placeholder="How can we help you?" required />
+                      <Input id="subject" name="subject" placeholder="How can we help you?" required />
                     </div>
                   </div>
                   
@@ -188,48 +226,56 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   
                   <div className="space-y-2">
                     <Label htmlFor="message">Your Message</Label>
-                    <Textarea id="message" placeholder="Please describe how we can assist you..." required className="min-h-[150px]" />
+                    <Textarea id="message" name="message" placeholder="Please describe how we can assist you..." required className="min-h-[150px]" />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" disabled={status === 'sending'} className="w-full">
                     Send Message
                   </Button>
                   
-                  <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                  <p className="text-xs text-center" aria-live="polite">
+                    {status === 'sending' ? (
+                      <span className="text-muted-foreground">Sending…</span>
+                    ) : status === 'sent' ? (
+                      <span className="font-medium text-emerald-600">Thank you — your message is with our team. We reply within one working day.</span>
+                    ) : status === 'draft' ? (
+                      <span className="text-muted-foreground">We could not send it directly, so an email draft has been opened — press send, or write to {COMPANY.email}.</span>
+                    ) : (
+                      <span className="text-muted-foreground">Your message goes straight to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.</span>
+                    )}
                   </p>
                 </form>
               )}
 
               {/* Consultation Form */}
               {formType === 'consultation' && (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={submit("Consultation request from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="consult-name">Full Name</Label>
-                      <Input id="consult-name" placeholder="John Doe" required />
+                      <Input id="consult-name" name="name" placeholder="John Doe" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="consult-email">Email</Label>
-                      <Input id="consult-email" type="email" placeholder="john@example.com" required />
+                      <Input id="consult-email" name="email" type="email" placeholder="john@example.com" required />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="consult-phone">Phone Number</Label>
-                      <Input id="consult-phone" placeholder="(555) 123-4567" required />
+                      <Input id="consult-phone" name="phone" placeholder="(555) 123-4567" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="consult-company">Company (Optional)</Label>
-                      <Input id="consult-company" placeholder="Your Company" />
+                      <Input id="consult-company" name="company" placeholder="Your Company" />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="consult-service">Service Interested In</Label>
-                      <Input id="consult-service" placeholder="Business Formation, Strategic Planning, etc." required />
+                      <Input id="consult-service" name="service" placeholder="Business Formation, Strategic Planning, etc." required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="language" className="flex items-center gap-2">
@@ -252,37 +298,45 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   
                   <div className="space-y-2">
                     <Label htmlFor="consult-details">Additional Details</Label>
-                    <Textarea id="consult-details" placeholder="Please provide any specific questions or information about your business needs..." className="min-h-[150px]" />
+                    <Textarea id="consult-details" name="message" placeholder="Please provide any specific questions or information about your business needs..." className="min-h-[150px]" />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" disabled={status === 'sending'} className="w-full">
                     Schedule Consultation
                   </Button>
                   
-                  <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                  <p className="text-xs text-center" aria-live="polite">
+                    {status === 'sending' ? (
+                      <span className="text-muted-foreground">Sending…</span>
+                    ) : status === 'sent' ? (
+                      <span className="font-medium text-emerald-600">Thank you — your message is with our team. We reply within one working day.</span>
+                    ) : status === 'draft' ? (
+                      <span className="text-muted-foreground">We could not send it directly, so an email draft has been opened — press send, or write to {COMPANY.email}.</span>
+                    ) : (
+                      <span className="text-muted-foreground">Your message goes straight to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.</span>
+                    )}
                   </p>
                 </form>
               )}
 
               {/* Callback Form */}
               {formType === 'callback' && (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={submit("Callback request from haytrex.com")} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="callback-name">Full Name</Label>
-                      <Input id="callback-name" placeholder="John Doe" required />
+                      <Input id="callback-name" name="name" placeholder="John Doe" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="callback-phone">Phone Number</Label>
-                      <Input id="callback-phone" placeholder="(555) 123-4567" required />
+                      <Input id="callback-phone" name="phone" placeholder="(555) 123-4567" required />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="callback-time">Best Time to Call</Label>
-                      <Input id="callback-time" placeholder="e.g., Weekdays 2-5pm EST" required />
+                      <Input id="callback-time" name="callTime" placeholder="e.g., Weekdays 2-5pm EST" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="language" className="flex items-center gap-2">
@@ -305,15 +359,23 @@ export function ContactSection({ initialContactType = null }: ContactSectionProp
                   
                   <div className="space-y-2">
                     <Label htmlFor="callback-reason">Reason for Callback</Label>
-                    <Textarea id="callback-reason" placeholder="Please briefly describe what you'd like to discuss..." className="min-h-[150px]" required />
+                    <Textarea id="callback-reason" name="message" placeholder="Please briefly describe what you'd like to discuss..." className="min-h-[150px]" required />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" disabled={status === 'sending'} className="w-full">
                     Request Callback
                   </Button>
                   
-                  <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our <a href="#" className="underline hover:text-accent">Privacy Policy</a>.
+                  <p className="text-xs text-center" aria-live="polite">
+                    {status === 'sending' ? (
+                      <span className="text-muted-foreground">Sending…</span>
+                    ) : status === 'sent' ? (
+                      <span className="font-medium text-emerald-600">Thank you — your message is with our team. We reply within one working day.</span>
+                    ) : status === 'draft' ? (
+                      <span className="text-muted-foreground">We could not send it directly, so an email draft has been opened — press send, or write to {COMPANY.email}.</span>
+                    ) : (
+                      <span className="text-muted-foreground">Your message goes straight to {COMPANY.email}. By sending it you agree to our <a href="/terms" className="underline hover:text-accent">Terms and Conditions</a>.</span>
+                    )}
                   </p>
                 </form>
               )}

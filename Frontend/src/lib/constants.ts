@@ -1,18 +1,66 @@
 export const COMPANY = {
   name: "Haytrex",
-  tagline: "Simplify Your Success Journey with Haytrex",
-  shortDescription: "Expert business formation and consulting services for entrepreneurs.",
-  longDescription: "Haytrex provides comprehensive business formation, consulting, and accounting services to entrepreneurs looking to establish and grow their businesses in the United States.",
+  tagline: "Your Strategic Partner in Business Growth and Digital Transformation",
+  shortDescription:
+    "We build the digital tools and business foundations entrepreneurs need to run, scale, and succeed in today's global market.",
+  longDescription:
+    "At Haytrex, we believe managing and growing a business should be straightforward, fast, and scalable.",
+  aboutMission:
+    "we serve ambitious business owners and organizations worldwide, bridging the gap between strategic operational support and custom digital solutions.",
+  aboutDetail:
+    "Whether you are launching a new brand, expanding into international markets, or replacing messy paperwork with automated software, Haytrex delivers tailored systems built around your specific goals. We focus on giving you full control over your operations, helping you save time, reduce overhead, and deliver exceptional experiences to your clients.",
   foundingYear: 2020,
   address: "1120 Avenue of the Americas, New York, NY 10036",
   phone: "(646) 640-0050",
   email: "info@haytrex.com",
+  /** Every "book a meeting" action on the site points here. */
+  calendly: "https://calendly.com/ceo-haytrex/30min",
   socialMedia: {
     twitter: "https://twitter.com/haytrex",
     facebook: "https://facebook.com/haytrex",
     linkedin: "https://linkedin.com/company/haytrex",
     instagram: "https://instagram.com/haytrex"
   }
+};
+
+/**
+ * Where chatbot leads are delivered.
+ *
+ * `endpoint` posts the lead straight through without the visitor's mail client
+ * opening. FormSubmit sends a one-off confirmation email to the recipient the
+ * first time it is used - until that link is clicked, nothing is delivered.
+ * Swap in any endpoint that accepts a JSON POST (Formspree, EmailJS, or your
+ * own handler); set it to an empty string to fall back to a mailto draft.
+ */
+export const LEADS = {
+  /** Chat assistant leads. */
+  recipient: "ceo@haytrex.com",
+  /** Contact form submissions. */
+  contactRecipient: "info@haytrex.com",
+  /**
+   * `{recipient}` is substituted with the address above. Set this to an empty
+   * string to stop posting and fall back to opening a mail draft instead.
+   */
+  endpointTemplate: "https://formsubmit.co/ajax/{recipient}",
+};
+
+/** Copy shown inside the portal demo mock. */
+export const PORTAL = {
+  /** Greeting at the top of the mock's workspace. */
+  greeting: "Hi Ivy",
+  greetingSub: "3 tasks due today",
+  demoUrl: "portal.haytrex.com",
+  workspaceLabel: "Workspace",
+  tagline: "All in One Portal.",
+};
+
+/**
+ * Headline figures shown in the hero and About sections. These drive the
+ * animated counters - edit the numbers here and both sections follow.
+ */
+export const STATS = {
+  clientsServed: 200,
+  countriesReached: 30,
 };
 
 export const COLORS = {

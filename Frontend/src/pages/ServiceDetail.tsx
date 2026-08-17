@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getServiceById } from "@/data/services";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { COMPANY } from "@/lib/constants";
 
 // ArrowLeftIcon component
 const ArrowLeftIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -103,7 +104,7 @@ export default function ServiceDetail() {
           <Button
             size="lg"
             onClick={() =>
-              (window.location.href = `https://calendly.com/haytrex-info/consultation-meeting`)
+              (window.location.href = COMPANY.calendly)
             }
           >
             Schedule a Consultation

@@ -1,5 +1,5 @@
 import React from "react";
-import { Building2, LineChart, FileText, Plane } from "lucide-react";
+import { Building2, LineChart, FileText } from "lucide-react";
 
 export interface ServiceFeature {
   title: string;
@@ -171,74 +171,6 @@ export const services: Service[] = [
       }
     ],
     icon: <FileText className="w-6 h-6" />
-  },
-  {
-    id: "immigration_services",
-    title: "Immigration Services for Entrepreneurs",
-    description: "Navigate the US immigration process with our expert guidance. We provide comprehensive support for business visas, investor visas, and immigration planning for entrepreneurs.",
-    features: [
-      {
-        title: "Business Visa Applications",
-        description: "We assist entrepreneurs in securing the appropriate business visas to legally establish and operate their ventures in the United States.",
-        details: [
-          "Visa option assessment and eligibility evaluation",
-          "Application preparation and documentation",
-          "Petition filing and case management",
-          "Interview preparation and coaching",
-          "Expedited processing strategy when available",
-          "Status extension and renewal assistance"
-        ]
-      },
-      {
-        title: "Investor Visa Programs",
-        description: "Our specialists guide investors through the complex requirements of E-2 and EB-5 investor visa programs, creating pathways to U.S. residency through business investment.",
-        details: [
-          "E-2 Treaty Investor visa qualification assessment",
-          "EB-5 Immigrant Investor Program navigation",
-          "Investment amount and structure guidance",
-          "Business plan development for visa approval",
-          "Source of funds documentation",
-          "Job creation planning and documentation"
-        ]
-      },
-      {
-        title: "Extraordinary Ability Visas",
-        description: "We help exceptional entrepreneurs and professionals qualify for O-1 visas by showcasing their extraordinary abilities and achievements in business and innovation.",
-        details: [
-          "Eligibility assessment and strategy development",
-          "Evidence compilation and presentation",
-          "Recommendation letter acquisition",
-          "Achievement documentation and narrative",
-          "Petition preparation and submission",
-          "RFE (Request for Evidence) response preparation"
-        ]
-      },
-      {
-        title: "Immigration Compliance for Businesses",
-        description: "We ensure your business remains compliant with U.S. immigration laws and regulations when hiring international talent or expanding operations.",
-        details: [
-          "I-9 employment verification system setup",
-          "Employee immigration status verification",
-          "Compliance audit preparation",
-          "Work authorization monitoring systems",
-          "Immigration policy development",
-          "Training for HR personnel on compliance issues"
-        ]
-      },
-      {
-        title: "Family Immigration Planning",
-        description: "We assist entrepreneurs in planning for the immigration needs of their families, ensuring they can accompany them to the United States.",
-        details: [
-          "Dependent visa application preparation",
-          "Family unification strategy development",
-          "Education and employment options for family members",
-          "Long-term immigration planning for family",
-          "Adjustment of status guidance",
-          "Naturalization planning and preparation"
-        ]
-      }
-    ],
-    icon: <Plane className="w-6 h-6" />
   }
 ];
 
