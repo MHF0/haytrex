@@ -61,7 +61,14 @@ export async function sendEnquiry(enquiry: Enquiry): Promise<Delivery> {
 
     if (!response.ok) throw new Error(`Enquiry endpoint returned ${response.status}`);
     return "sent";
-  } catch {
+  } catch (error) {
+    // Surface the real reason. A silent fallback here is how a broken form
+    // stays broken: the visitor sees a draft open and assumes that is normal,
+    // while the endpoint has been rejecting every submission.
+    console.error(
+      `[enquiry] Could not post to ${endpoint} — falling back to a mail draft.`,
+      error,
+    );
     openMailDraft(enquiry);
     return "draft";
   }
