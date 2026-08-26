@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MM Services LLC</title>
+  <meta name="description" content="MM Services LLC — handyman, plumbing, electrical and landscaping services in Houston, TX. Licensed, insured, uniformed pros. Call (844) 620-0012 for a free estimate.">
+  <meta name="author" content="MM Services LLC">
+  <meta property="og:title" content="MM Services LLC — Houston Home &amp; Property Services">
+  <meta property="og:description" content="Handyman, plumbing, electrical and landscaping — one call fixes it all. Free estimates: (844) 620-0012.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ====== shared logo emblem ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="chromeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fa"/><stop offset="0.45" stop-color="#c8d0d9"/>
+      <stop offset="0.55" stop-color="#9aa7b4"/><stop offset="1" stop-color="#e6ebf0"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a659c"/><stop offset="1" stop-color="#0d2740"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffb347"/><stop offset="1" stop-color="#e87410"/>
+    </linearGradient>
+    <symbol id="logo-emblem" viewBox="0 0 320 310">
+      <g fill="#39434f">
+        <rect x="146" y="4" width="28" height="26" rx="4"/>
+        <rect x="146" y="4" width="28" height="26" rx="4" transform="rotate(30 160 105)"/>
+        <rect x="146" y="4" width="28" height="26" rx="4" transform="rotate(-30 160 105)"/>
+        <rect x="146" y="4" width="28" height="26" rx="4" transform="rotate(60 160 105)"/>
+        <rect x="146" y="4" width="28" height="26" rx="4" transform="rotate(-60 160 105)"/>
+        <rect x="146" y="4" width="28" height="26" rx="4" transform="rotate(90 160 105)"/>
+        <rect x="146" y="4" width="28" height="26" rx="4" transform="rotate(-90 160 105)"/>
+      </g>
+      <circle cx="160" cy="105" r="86" fill="#242d37"/>
+      <circle cx="160" cy="105" r="72" fill="#39434f"/>
+      <path d="M52 58 h216 v66 q0 84 -108 128 q-108 -44 -108 -128 z" fill="#10151C"/>
+      <path d="M60 66 h200 v58 q0 76 -100 116 q-100 -40 -100 -116 z" fill="url(#chromeGrad)"/>
+      <path d="M70 76 h180 v48 q0 66 -90 102 q-90 -36 -90 -102 z" fill="url(#shieldGrad)"/>
+      <path d="M12 132 C90 74 240 72 308 118 C240 96 100 100 12 132 z" fill="url(#chromeGrad)"/>
+      <path d="M6 146 C96 84 250 84 314 132 C310 140 300 146 292 148 C230 112 104 118 6 146 z" fill="url(#flameGrad)"/>
+      <text x="160" y="188" text-anchor="middle" font-family="'Barlow Condensed', 'Arial Narrow', sans-serif" font-style="italic" font-weight="800" font-size="74" letter-spacing="1" textLength="252" lengthAdjust="spacingAndGlyphs" fill="url(#chromeGrad)" stroke="#10151C" stroke-width="3" paint-order="stroke">MM SVCS</text>
+      <path d="M60 210 C130 236 200 236 262 208 C210 246 116 248 60 210 z" fill="url(#flameGrad)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ====== top bar ====== -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="topbar-note">Licensed &amp; Insured &bull; Free Estimates &bull; Serving Greater Houston</span>
+    <div class="topbar-links">
+      <a href="mailto:info@mmsvcs.com">info@mmsvcs.com</a>
+      <a href="tel:+18446200012" class="topbar-phone">(844) 620-0012</a>
+    </div>
+  </div>
+</div>
+
+<!-- ====== header ====== -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="MM Services LLC home">
+      <svg class="brand-emblem" aria-hidden="true"><use href="#logo-emblem"></use></svg>
+      <span class="brand-text">
+        <span class="brand-name">MM Services</span>
+        <span class="brand-tag">Houston, Texas &bull; LLC</span>
+      </span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#team">Our Team</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Free Quote</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- ====== hero ====== -->
+  <section class="hero">
+    <div class="hero-swoosh" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Home &amp; property services &mdash; Houston, TX</p>
+        <h1 class="hero-title"><span class="chrome-text">One call.</span><br>Every&nbsp;fix.</h1>
+        <p class="hero-sub">Handyman repairs, plumbing, electrical and landscaping &mdash; handled by one
+          licensed, insured and uniformed crew. Tell us what needs fixing and we&rsquo;ll take it from there.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary btn-lg">Request a Free Quote</a>
+          <a href="#work" class="btn btn-ghost btn-lg">See Before &amp; After</a>
+        </div>
+        <ul class="trust-chips">
+          <li>Licensed &amp; insured</li>
+          <li>Upfront pricing</li>
+          <li>Uniformed pros</li>
+          <li>Work guaranteed</li>
+        </ul>
+      </div>
+      <div class="hero-emblem" aria-hidden="true">
+        <svg><use href="#logo-emblem"></use></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== services ====== -->
+  <section class="section section-light" id="services">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Four trades. One team.</h2>
+        <p class="section-lede">No juggling contractors. Our crews cover the everyday jobs that keep a
+          home or business running &mdash; and the big ones too.</p>
+      </header>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M40 12l-7 7-4-4 7-7a10 10 0 0 0-13 13L8 36a4 4 0 1 0 6 6l15-15a10 10 0 0 0 11-15z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>General Handyman</h3>
+          <p>The fix-it list you never get to &mdash; done in one visit.</p>
+          <ul>
+            <li>Drywall repair &amp; painting</li>
+            <li>Door, window &amp; lock repair</li>
+            <li>Fixture &amp; TV mounting</li>
+            <li>Caulking &amp; weatherproofing</li>
+            <li>Furniture &amp; equipment assembly</li>
+          </ul>
+          <a class="service-link" href="#contact" data-service="General Handyman">Request this service &rarr;</a>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M14 6v10M34 6v10M10 16h28v8a10 10 0 0 1-10 10h-2v8h-4v-8h-2a10 10 0 0 1-10-10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Plumbing</h3>
+          <p>From slow drips to full re-pipes &mdash; fixed right, warrantied.</p>
+          <ul>
+            <li>Leak detection &amp; repair</li>
+            <li>Drain cleaning &amp; unclogging</li>
+            <li>Water heater service &amp; install</li>
+            <li>Faucet, toilet &amp; disposal install</li>
+            <li>Gas &amp; water line work</li>
+          </ul>
+          <a class="service-link" href="#contact" data-service="Plumbing">Request this service &rarr;</a>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M26 4L10 28h10l-4 16 18-26H24z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Electrical</h3>
+          <p>Safe, code-compliant work from panel to plug.</p>
+          <ul>
+            <li>Panel upgrades &amp; breakers</li>
+            <li>Outlets, switches &amp; GFCI</li>
+            <li>Lighting &amp; ceiling fans</li>
+            <li>EV charger installation</li>
+            <li>Troubleshooting &amp; safety checks</li>
+          </ul>
+          <a class="service-link" href="#contact" data-service="Electrical">Request this service &rarr;</a>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M24 42V22M24 22c-8 0-14-6-14-16 10 0 14 6 14 16zm0 0c8 0 14-6 14-16-10 0-14 6-14 16zM10 42h28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Landscaping</h3>
+          <p>Curb appeal, built and maintained season after season.</p>
+          <ul>
+            <li>Lawn care &amp; maintenance</li>
+            <li>Tree &amp; shrub trimming</li>
+            <li>Sod, mulch &amp; flower beds</li>
+            <li>Fences, decks &amp; pressure washing</li>
+            <li>Irrigation &amp; drainage</li>
+          </ul>
+          <a class="service-link" href="#contact" data-service="Landscaping">Request this service &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== why us band ====== -->
+  <section class="band band-steel">
+    <div class="container band-grid">
+      <div class="band-item">
+        <span class="band-figure">4-in-1</span>
+        <span class="band-label">Trades under one roof &mdash; one call covers the whole job list</span>
+      </div>
+      <div class="band-item">
+        <span class="band-figure">Free</span>
+        <span class="band-label">Estimates with upfront, no-surprise pricing</span>
+      </div>
+      <div class="band-item">
+        <span class="band-figure">Insured</span>
+        <span class="band-label">Licensed, insured and background-checked crews</span>
+      </div>
+      <div class="band-item">
+        <span class="band-figure">Local</span>
+        <span class="band-label">Houston-based &mdash; Tomball, Spring, Cypress, Katy &amp; The Woodlands</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== before / after ====== -->
+  <section class="section section-light" id="work">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Proof, not promises</p>
+        <h2>Before &amp; after</h2>
+        <p class="section-lede">Drag the handle to compare. Sample illustrations shown &mdash; real project
+          photos from our crews are being added as jobs wrap up.</p>
+      </header>
+      <div class="ba-grid">
+        <figure class="ba-figure">
+          <div class="ba-compare" data-ba>
+            <img class="ba-img-before" src="assets/gallery/plumbing-before.svg" alt="Bathroom before renovation">
+            <div class="ba-after-wrap"><img class="ba-img-after" src="assets/gallery/plumbing-after.svg" alt="Bathroom after renovation"></div>
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle" aria-hidden="true"><span></span></div>
+            <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Reveal after photo">
+          </div>
+          <figcaption><strong>Plumbing &mdash; bathroom refresh.</strong> Corroded lines replaced, new vanity, faucet and supply lines.</figcaption>
+        </figure>
+        <figure class="ba-figure">
+          <div class="ba-compare" data-ba>
+            <img class="ba-img-before" src="assets/gallery/electrical-before.svg" alt="Old electrical panel before upgrade">
+            <div class="ba-after-wrap"><img class="ba-img-after" src="assets/gallery/electrical-after.svg" alt="New electrical panel after upgrade"></div>
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle" aria-hidden="true"><span></span></div>
+            <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Reveal after photo">
+          </div>
+          <figcaption><strong>Electrical &mdash; panel upgrade.</strong> Outdated fuse box swapped for a labeled 200-amp panel, wiring dressed and inspected.</figcaption>
+        </figure>
+        <figure class="ba-figure">
+          <div class="ba-compare" data-ba>
+            <img class="ba-img-before" src="assets/gallery/landscaping-before.svg" alt="Overgrown yard before landscaping">
+            <div class="ba-after-wrap"><img class="ba-img-after" src="assets/gallery/landscaping-after.svg" alt="Manicured yard after landscaping"></div>
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle" aria-hidden="true"><span></span></div>
+            <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Reveal after photo">
+          </div>
+          <figcaption><strong>Landscaping &mdash; full yard makeover.</strong> Cleared, graded and sodded, with new beds, stone path and fence repair.</figcaption>
+        </figure>
+        <figure class="ba-figure">
+          <div class="ba-compare" data-ba>
+            <img class="ba-img-before" src="assets/gallery/handyman-before.svg" alt="Damaged drywall before repair">
+            <div class="ba-after-wrap"><img class="ba-img-after" src="assets/gallery/handyman-after.svg" alt="Repaired and painted wall after handyman work"></div>
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle" aria-hidden="true"><span></span></div>
+            <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Reveal after photo">
+          </div>
+          <figcaption><strong>Handyman &mdash; drywall &amp; paint.</strong> Hole patched, wall skimmed and repainted, shelving mounted level and anchored.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== team ====== -->
+  <section class="section section-chrome" id="team">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Who shows up</p>
+        <h2>A crew you can let in the door</h2>
+        <p class="section-lede">Every MM Services tech arrives in uniform with the badge on their chest,
+          drives a marked vehicle, and is background-checked before they ever reach your driveway.</p>
+      </header>
+      <div class="team-grid">
+        <article class="team-card">
+          <img src="assets/team/tech-field.svg" alt="MM Services field technician in branded uniform">
+          <div class="team-info">
+            <h3>Field Technicians</h3>
+            <p>Handyman, plumbing and electrical techs who show up on time and clean up after the job.</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <img src="assets/team/tech-lead.svg" alt="MM Services crew lead in branded hard hat and vest">
+          <div class="team-info">
+            <h3>Crew Leads</h3>
+            <p>Seasoned leads who walk the job with you before and after, so nothing is left to guesswork.</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <img src="assets/team/office-admin.svg" alt="MM Services office coordinator with headset">
+          <div class="team-info">
+            <h3>Office &amp; Scheduling</h3>
+            <p>Real people answering the phone &mdash; quotes, scheduling and follow-up handled fast.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== careers ====== -->
+  <section class="section section-dark" id="careers">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Join the crew</p>
+        <h2>Work with MM Services</h2>
+        <p class="section-lede">We&rsquo;re growing across Greater Houston and hiring for the field and the
+          front office. Steady work, real training, and a team that has your back.</p>
+      </header>
+      <div class="careers-grid">
+        <article class="career-card">
+          <h3>Field Technicians</h3>
+          <p class="career-sub">Handyman &bull; Plumbing &bull; Electrical &bull; Landscaping</p>
+          <ul>
+            <li>Hands-on residential &amp; light commercial work</li>
+            <li>Company uniform, tools and vehicle support</li>
+            <li>Paid training toward trade licensing</li>
+            <li>Valid driver&rsquo;s license and clean background required</li>
+          </ul>
+        </article>
+        <article class="career-card">
+          <h3>Administration &amp; Office</h3>
+          <p class="career-sub">Scheduling &bull; Dispatch &bull; Customer service &bull; Bookkeeping</p>
+          <ul>
+            <li>Front-office role at our Highway 249 headquarters</li>
+            <li>Answer calls, build quotes and route crews</li>
+            <li>Growth path into operations management</li>
+            <li>Friendly phone manner and organization required</li>
+          </ul>
+        </article>
+        <form class="apply-card" id="apply-form" novalidate>
+          <h3>Apply now</h3>
+          <p class="form-note">Submitting opens an email to our hiring team &mdash; attach your resume before sending.</p>
+          <div class="field-row">
+            <label>Full name<input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+          </div>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Position
+            <select name="position" required>
+              <option value="" disabled selected>Choose a position&hellip;</option>
+              <option>Handyman Technician</option>
+              <option>Plumbing Technician</option>
+              <option>Electrical Technician</option>
+              <option>Landscaping Crew</option>
+              <option>Administration / Office</option>
+            </select>
+          </label>
+          <label>Experience &amp; availability<textarea name="message" rows="4" placeholder="Years of experience, certifications, when you can start&hellip;"></textarea></label>
+          <button type="submit" class="btn btn-primary btn-block">Send Application</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== contact ====== -->
+  <section class="section section-light" id="contact">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Get your free quote</p>
+        <h2>Tell us what needs fixing</h2>
+        <p class="section-lede">Call, email, or send the form &mdash; we&rsquo;ll get back to you with a
+          straight answer and an upfront price.</p>
+      </header>
+      <div class="contact-grid">
+        <form class="contact-card" id="contact-form" novalidate>
+          <div class="field-row">
+            <label>Full name<input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+          </div>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Service needed
+            <select name="service" id="service-select" required>
+              <option value="" disabled selected>Choose a service&hellip;</option>
+              <option>General Handyman</option>
+              <option>Plumbing</option>
+              <option>Electrical</option>
+              <option>Landscaping</option>
+              <option>Multiple / Not sure</option>
+            </select>
+          </label>
+          <label>What needs doing?<textarea name="message" rows="5" placeholder="Describe the job — the more detail, the faster we can quote it." required></textarea></label>
+          <button type="submit" class="btn btn-primary btn-block">Request Free Quote</button>
+          <p class="form-note">Submitting opens an email to info@mmsvcs.com with your details filled in.</p>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <aside class="contact-aside">
+          <div class="contact-block">
+            <h3>Call or text</h3>
+            <a class="contact-big" href="tel:+18446200012">(844) 620-0012</a>
+            <p>Mon&ndash;Sat, 7:00 AM &ndash; 7:00 PM</p>
+          </div>
+          <div class="contact-block">
+            <h3>Email</h3>
+            <a class="contact-big contact-email" href="mailto:info@mmsvcs.com">info@mmsvcs.com</a>
+            <p>We reply within one business day.</p>
+          </div>
+          <div class="contact-block">
+            <h3>Visit us</h3>
+            <p>20333 State Highway 249, Ste 200<br>Houston, TX 77070</p>
+          </div>
+          <div class="contact-block">
+            <h3>Service area</h3>
+            <p>Houston &bull; Tomball &bull; Spring &bull; Cypress &bull; The Woodlands &bull; Katy</p>
+          </div>
+        </aside>
+      </div>
+      <div class="map-embed">
+        <iframe title="Map to MM Services LLC — 20333 State Highway 249 Ste 200, Houston TX"
+          src="https://www.google.com/maps?q=20333+State+Highway+249+Suite+200,+Houston,+TX+77070&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ====== footer ====== -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <svg class="footer-emblem" aria-hidden="true"><use href="#logo-emblem"></use></svg>
+      <p>MM Services LLC &mdash; handyman, plumbing, electrical and landscaping for Greater Houston.
+        One call. Every fix.</p>
+    </div>
+    <nav class="footer-col" aria-label="Footer">
+      <h4>Explore</h4>
+      <a href="#services">Services</a>
+      <a href="#work">Before &amp; After</a>
+      <a href="#team">Our Team</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#contact" data-service="General Handyman">General Handyman</a>
+      <a href="#contact" data-service="Plumbing">Plumbing</a>
+      <a href="#contact" data-service="Electrical">Electrical</a>
+      <a href="#contact" data-service="Landscaping">Landscaping</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+18446200012">(844) 620-0012</a>
+      <a href="mailto:info@mmsvcs.com">info@mmsvcs.com</a>
+      <p>20333 State Highway 249, Ste 200<br>Houston, TX 77070</p>
+      <p>Mon&ndash;Sat &bull; 7:00 AM &ndash; 7:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> MM Services LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

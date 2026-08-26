@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Crew lead in MM Services hard hat (placeholder illustration)">
+  <defs>
+    <linearGradient id="bgB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3a4a"/><stop offset="1" stop-color="#1C2733"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bgB)"/>
+  <path d="M0 340 L400 500 L0 500 z" fill="#F58A1F" opacity="0.12"/>
+  <!-- shoulders / hi-vis vest over navy shirt -->
+  <path d="M60 500 q0 -130 140 -130 q140 0 140 130 z" fill="#1E4E7A"/>
+  <path d="M92 500 q6 -96 56 -116 l16 116 z" fill="#F58A1F"/>
+  <path d="M308 500 q-6 -96 -56 -116 l-16 116 z" fill="#F58A1F"/>
+  <path d="M104 470 l52 0 M244 470 l52 0" stroke="#e9edf2" stroke-width="10"/>
+  <!-- collar -->
+  <path d="M164 380 L200 410 L236 380 L236 402 L200 428 L164 402 z" fill="#10151C"/>
+  <!-- head -->
+  <circle cx="200" cy="272" r="76" fill="#8d5a3b"/>
+  <path d="M124 272 q0 -76 76 -76 l0 152 q-76 0 -76 -76 z" fill="#815236"/>
+  <circle cx="124" cy="278" r="14" fill="#815236"/><circle cx="276" cy="278" r="14" fill="#8d5a3b"/>
+  <!-- beard -->
+  <path d="M148 300 q0 52 52 52 q52 0 52 -52 l0 -6 q-24 26 -52 26 q-28 0 -52 -26 z" fill="#3a2c20"/>
+  <path d="M178 312 q22 12 44 0 l0 14 q-22 10 -44 0 z" fill="#8d5a3b"/>
+  <circle cx="172" cy="270" r="7" fill="#241a12"/><circle cx="228" cy="270" r="7" fill="#241a12"/>
+  <!-- hard hat -->
+  <path d="M126 244 q0 -74 74 -74 q74 0 74 74 z" fill="#F58A1F"/>
+  <rect x="186" y="164" width="28" height="30" rx="8" fill="#F58A1F"/>
+  <path d="M112 244 h176 q16 0 16 12 t-16 12 h-176 q-16 0 -16 -12 t16 -12 z" fill="#d97613"/>
+  <!-- chest badge -->
+  <g transform="translate(174 448)">
+    <path d="M0 -26 h52 v22 q0 22 -26 34 q-26 -12 -26 -34 z" fill="#10151C" stroke="#d7dde4" stroke-width="4"/>
+    <circle cx="26" cy="-2" r="12" fill="none" stroke="#F58A1F" stroke-width="5"/>
+    <circle cx="26" cy="-2" r="4" fill="#F58A1F"/>
+  </g>
+  <rect x="0" y="464" width="400" height="36" fill="#10151C" opacity="0.85"/>
+  <text x="200" y="488" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="2" fill="#E9EDF2">PLACEHOLDER — ADD YOUR TEAM PHOTO</text>
+</svg>
