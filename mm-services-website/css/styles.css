@@ -331,27 +331,6 @@ a:hover { text-decoration: underline; }
 .hero-photos { animation: riseIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
 @keyframes riseIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
 
-/* ---------- marquee ---------- */
-
-.marquee {
-  background: linear-gradient(90deg, var(--flame-500), var(--flame-600));
-  color: #ffffff;
-  overflow: hidden;
-  position: relative;
-  z-index: 3;
-}
-.marquee-track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee-track span {
-  font-family: var(--font-display);
-  font-style: italic; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 0.12em; font-size: 1.15rem;
-  padding: 10px 28px;
-  white-space: nowrap;
-  display: flex; align-items: center; gap: 26px;
-}
-.marquee-track span::after { content: "\2726"; font-size: 0.8em; }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ---------- page hero (subpages) ---------- */
 
