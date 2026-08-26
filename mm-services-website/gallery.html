@@ -20,77 +20,74 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="chromeGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff"/><stop offset="0.38" stop-color="#d3dae2"/>
-      <stop offset="0.5" stop-color="#8e9ca9"/><stop offset="0.62" stop-color="#c6cfd8"/>
-      <stop offset="1" stop-color="#f2f5f8"/>
+      <stop offset="0" stop-color="#ffffff"/><stop offset="0.42" stop-color="#d7dee6"/>
+      <stop offset="0.52" stop-color="#97a5b2"/><stop offset="0.66" stop-color="#c9d2db"/>
+      <stop offset="1" stop-color="#eef2f6"/>
     </linearGradient>
-    <linearGradient id="ribbonChrome" x1="0" y1="0" x2="1" y2="0.2">
-      <stop offset="0" stop-color="#e8edf2"/><stop offset="0.5" stop-color="#aab6c2"/>
-      <stop offset="0.8" stop-color="#67757f"/><stop offset="1" stop-color="#39434f"/>
+    <linearGradient id="ribbonSilver" x1="0" y1="0" x2="0.9" y2="0.4">
+      <stop offset="0" stop-color="#f4f7fa"/><stop offset="0.45" stop-color="#b9c4cf"/>
+      <stop offset="0.75" stop-color="#7c8b98"/><stop offset="1" stop-color="#3d4854"/>
     </linearGradient>
-    <radialGradient id="gearGrad" cx="0.5" cy="0.35" r="0.8">
-      <stop offset="0" stop-color="#5a6672"/><stop offset="0.6" stop-color="#39434f"/>
-      <stop offset="1" stop-color="#1c232c"/>
-    </radialGradient>
+    <linearGradient id="toothGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c6cfd8"/><stop offset="0.5" stop-color="#8b99a7"/>
+      <stop offset="1" stop-color="#39434f"/>
+    </linearGradient>
     <linearGradient id="shieldInner" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3b7cc0"/><stop offset="0.42" stop-color="#1d4f7f"/>
-      <stop offset="0.55" stop-color="#13293f"/><stop offset="1" stop-color="#080f18"/>
+      <stop offset="0" stop-color="#57a0e0"/><stop offset="0.34" stop-color="#2465a8"/>
+      <stop offset="0.52" stop-color="#123354"/><stop offset="1" stop-color="#060d15"/>
     </linearGradient>
     <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#ffb347"/><stop offset="0.55" stop-color="#F58A1F"/>
+      <stop offset="0" stop-color="#ffc25e"/><stop offset="0.5" stop-color="#F58A1F"/>
       <stop offset="1" stop-color="#d3620a"/>
     </linearGradient>
     <linearGradient id="flameGrad2" x1="1" y1="0" x2="0" y2="0">
       <stop offset="0" stop-color="#ffb347"/><stop offset="0.6" stop-color="#F58A1F"/>
-      <stop offset="1" stop-color="#b24f06"/>
+      <stop offset="1" stop-color="#c25806"/>
     </linearGradient>
-    <filter id="embShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.35"/>
-    </filter>
-    <symbol id="logo-emblem" viewBox="0 0 640 440">
-      <!-- back chrome ribbon sweeping over the top -->
-      <path d="M14 218 C150 62 478 58 626 196 C520 96 190 100 14 218 Z" fill="url(#ribbonChrome)"/>
-      <path d="M30 208 C170 84 460 80 610 190 C500 112 200 118 30 208 Z" fill="#10151C" opacity="0.55"/>
-      <!-- gear -->
-      <g filter="url(#embShadow)">
-        <g fill="#242d37">
-          <rect x="302" y="52" width="36" height="30" rx="5"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(30 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(60 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(90 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(120 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(150 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(180 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(210 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(240 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(270 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(300 320 185)"/>
-          <rect x="302" y="52" width="36" height="30" rx="5" transform="rotate(330 320 185)"/>
-        </g>
-        <circle cx="320" cy="185" r="122" fill="url(#gearGrad)"/>
-        <circle cx="320" cy="185" r="122" fill="none" stroke="#8e9ca9" stroke-width="3" opacity="0.6"/>
-        <circle cx="320" cy="185" r="100" fill="#1c232c"/>
+    <symbol id="logo-emblem" viewBox="0 0 640 470">
+      <!-- right-side ribbon tail wrapping behind the gear -->
+      <path d="M574 172 C628 232 630 296 588 344 C616 288 608 232 556 190 Z"
+            fill="url(#ribbonSilver)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
+      <!-- gear: beveled chrome teeth with black keylines -->
+      <g stroke="#0b0e12" stroke-width="5" stroke-linejoin="round" fill="url(#toothGrad)">
+        <path d="M292 44 L348 44 L356 80 L284 80 Z"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(30 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-30 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(60 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-60 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(90 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-90 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(120 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-120 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(150 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-150 320 200)"/>
+        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(180 320 200)"/>
       </g>
+      <circle cx="320" cy="200" r="122" fill="#262e37" stroke="#0b0e12" stroke-width="6"/>
+      <circle cx="320" cy="200" r="99" fill="#161b21"/>
       <!-- shield -->
-      <g filter="url(#embShadow)">
-        <path d="M198 88 h244 v84 q0 100 -122 152 q-122 -52 -122 -152 z" fill="#0c1117"/>
-        <path d="M206 96 h228 v78 q0 92 -114 140 q-114 -48 -114 -140 z" fill="url(#chromeGrad)"/>
-        <path d="M218 108 h204 v68 q0 82 -102 124 q-102 -42 -102 -124 z" fill="url(#shieldInner)"/>
-        <path d="M218 108 h204 v14 h-204 z" fill="#ffffff" opacity="0.18"/>
-      </g>
-      <!-- front ribbons: chrome pass + orange pass, sweeping across the shield -->
-      <path d="M6 250 C160 138 452 128 634 212 C470 150 180 172 6 250 Z" fill="url(#ribbonChrome)"/>
-      <path d="M0 268 C170 152 470 146 640 224 q-8 14 -24 20 C468 176 180 196 0 268 Z" fill="url(#flameGrad)"/>
+      <path d="M194 100 h252 v92 q0 110 -126 162 q-126 -52 -126 -162 z" fill="#0b0e12"/>
+      <path d="M204 110 h232 v82 q0 98 -116 148 q-116 -50 -116 -148 z" fill="url(#chromeGrad)"/>
+      <path d="M218 124 h204 v68 q0 86 -102 130 q-102 -44 -102 -130 z" fill="url(#shieldInner)"/>
+      <path d="M218 124 h204 v12 h-204 z" fill="#ffffff" opacity="0.22"/>
+      <path d="M284 292 L320 342 L356 292 L320 314 Z" fill="#2E9BE6" opacity="0.85"/>
+      <!-- big swoosh: silver loop over the top -->
+      <path d="M24 236 C140 96 466 66 620 200 C612 220 594 230 574 234 C458 118 176 136 24 236 Z"
+            fill="url(#ribbonSilver)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
+      <path d="M60 216 C180 122 420 108 560 180 C440 130 200 146 60 216 Z" fill="#ffffff" opacity="0.55"/>
+      <!-- orange leading crescent of the swoosh -->
+      <path d="M14 250 C80 172 180 130 300 122 C204 148 100 200 42 264 Z"
+            fill="url(#flameGrad)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
+      <path d="M34 236 C90 180 170 146 252 134 C176 158 100 198 52 248 Z" fill="#ffd98f" opacity="0.8"/>
       <!-- wordmark -->
-      <g filter="url(#embShadow)">
-        <text x="320" y="304" text-anchor="middle" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-style="italic" font-weight="800" font-size="128" letter-spacing="2" textLength="584" lengthAdjust="spacingAndGlyphs" fill="url(#chromeGrad)" stroke="#0c1117" stroke-width="10" paint-order="stroke">MM SVCS</text>
-      </g>
-      <!-- sparkles on the chrome -->
-      <path d="M84 232 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4 z" fill="#ffffff" opacity="0.9"/>
-      <path d="M540 210 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 z" fill="#ffffff" opacity="0.8"/>
-      <!-- bottom orange swoosh under the wordmark -->
-      <path d="M96 330 C240 388 420 386 556 318 C460 408 210 410 96 330 Z" fill="url(#flameGrad2)"/>
-      <path d="M150 356 C270 396 400 394 500 352 C420 412 240 412 150 356 Z" fill="url(#ribbonChrome)" opacity="0.7"/>
+      <text x="320" y="316" text-anchor="middle" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-style="italic" font-weight="800" font-size="136" letter-spacing="2" textLength="596" lengthAdjust="spacingAndGlyphs" fill="url(#chromeGrad)" stroke="#0b0e12" stroke-width="14" paint-order="stroke" stroke-linejoin="round">MM SVCS</text>
+      <!-- sparkles -->
+      <path d="M76 252 l5 14 14 5 -14 5 -5 14 -5 -14 -14 -5 14 -5 z" fill="#ffffff"/>
+      <path d="M534 226 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 z" fill="#ffffff" opacity="0.9"/>
+      <!-- bottom orange swoosh -->
+      <path d="M86 342 C240 404 442 402 588 304 C500 424 206 430 86 342 Z"
+            fill="url(#flameGrad2)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
+      <path d="M140 368 C270 410 420 406 520 352 C430 424 230 424 140 368 Z" fill="#ffb347" opacity="0.55"/>
     </symbol>
   </defs>
 </svg>
