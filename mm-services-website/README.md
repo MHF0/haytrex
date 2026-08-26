@@ -1,6 +1,6 @@
 # MM Services LLC — Website
 
-Professional single-page website for **MM Services LLC**, Houston, TX.
+Professional multi-page website for **MM Services LLC**, Houston, TX.
 Handyman • Plumbing • Electrical • Landscaping.
 
 Pure HTML/CSS/JS — no build step, no dependencies. Upload the folder to any
@@ -8,57 +8,78 @@ static host (Netlify, Vercel, GitHub Pages, cPanel, etc.) and it works.
 
 ```
 mm-services-website/
-├── index.html          the whole site (hero, services, before/after,
-│                       team, careers, contact)
-├── css/styles.css      brand stylesheet (colors pulled from the logo)
-├── js/main.js          mobile nav, before/after sliders, forms
+├── index.html          home — hero, services overview, stats, featured
+│                       before/after, auto-rotating client reviews
+├── services.html       detailed service pages (handyman, plumbing,
+│                       electrical, landscaping)
+├── gallery.html        before/after comparison sliders
+├── careers.html        job tracks + application form
+├── contact.html        quote form, contact info, Google Map
+├── css/styles.css      brand stylesheet + animations
+├── js/main.js          nav, sliders, reviews carousel, counters, forms
 └── assets/
     ├── favicon.svg
-    ├── gallery/        before/after images (placeholders — see below)
-    └── team/           team photos (placeholders — see below)
+    └── gallery/        before/after images (see below)
 ```
 
-## Replace the placeholder images with real photos
+Navigation links open each page **in a new tab** (as requested). To switch to
+normal same-tab navigation, remove `target="_blank" rel="noopener"` from the
+nav/footer links in each HTML file.
 
-The before/after gallery and team cards currently use **labeled sample
-illustrations** so the layout looks finished. Swap them for real job photos:
+## Use the exact logo file
 
-1. Take before and after shots **from the same angle**, landscape, ideally
-   4:3 (e.g. 1600×1200). For team photos use portrait 4:5 shots of employees
-   in uniform.
-2. Drop the files into `assets/gallery/` / `assets/team/`.
-3. In `index.html`, update the matching `src` attributes, e.g. change
-   `assets/gallery/plumbing-before.svg` → `assets/gallery/plumbing-before.jpg`.
-4. Update the `alt` text and the caption under each figure.
+The emblem on the site is a high-fidelity SVG recreation of the MM SVCS logo
+(defined once per page as `#logo-emblem`). To use the **original logo file**
+instead:
 
-To add more before/after pairs, copy one whole `<figure class="ba-figure">…
-</figure>` block — the slider wires itself up automatically.
+1. Export the logo as PNG **with a transparent background** (the white-
+   background version will show a white box on the dark header). Name it
+   `assets/logo.png`.
+2. In each HTML file, replace every
+   `<svg class="..."><use href="#logo-emblem"></use></svg>` with
+   `<img class="..." src="assets/logo.png" alt="MM Services LLC">`.
 
-## Logo
+Tip: committing the PNG to this repo (drag &amp; drop on github.com works)
+lets Claude wire it in for you on the next session.
 
-The emblem is an SVG recreation drawn from the real logo (defined once at the
-top of `index.html` as `#logo-emblem`). To use the original logo file instead,
-save it as `assets/logo.png` and replace the `<svg><use …></svg>` elements in
-the header/footer with `<img src="assets/logo.png" alt="MM Services LLC">`.
+## Replace the gallery images with real job photos
+
+The before/after sliders use styled illustration imagery so the site looks
+finished today. Real photos of your own jobs will always sell better:
+
+1. Take before and after shots **from the same angle**, landscape 4:3
+   (e.g. 1600×1200).
+2. Drop them into `assets/gallery/` — e.g. `plumbing-before.jpg`,
+   `plumbing-after.jpg`.
+3. Update the matching `src` attributes in `index.html`, `gallery.html`
+   and `services.html` (search for `assets/gallery/`).
+
+## Client reviews
+
+The reviews carousel on the home page auto-rotates every ~4 seconds (arrows,
+dots, pauses on hover). The six reviews in `index.html` are **sample
+placeholder content — replace them with real customer reviews before going
+live**; publishing invented reviews as real ones can violate FTC rules.
+
+To pull your Google reviews in automatically, the simplest options are an
+embed widget (e.g. Elfsight, SociableKIT) pasted into the reviews section, or
+the Google Places API if you want it fully custom.
 
 ## Forms
 
 Both forms (quote request + job application) open the visitor's email app
-with everything pre-filled, addressed to **info@mmsvcs.com** — this works on
-any static host with zero setup.
-
-To collect submissions in a dashboard instead, create a free
-[Formspree](https://formspree.io) form and replace the `hookForm(...)` mailto
-logic in `js/main.js` with a `fetch()` POST to your Formspree endpoint (a
-comment in the file marks the spot).
+with everything pre-filled, addressed to **info@mmsvcs.com** — works on any
+static host with zero setup. To collect submissions in a dashboard instead,
+create a free [Formspree](https://formspree.io) form and replace the
+`hookForm(...)` mailto logic in `js/main.js` with a `fetch()` POST (a comment
+in the file marks the spot).
 
 ## Editing the basics
 
-- **Phone / email / address / hours** — search `index.html` for
-  `(844) 620-0012`, `info@mmsvcs.com`, and `20333 State Highway 249`.
-- **Colors** — all brand colors are CSS variables at the top of
-  `css/styles.css` (`--flame-500` is the logo orange, `--steel-800` the dark
-  steel, `--shield-600` the shield blue).
-- **Service lists, careers copy** — plain text in `index.html`.
-- **Map** — the Google Maps embed in the contact section is keyed to the
-  office address; edit the iframe `src` if you move.
+- **Phone / email / address / hours** — search the HTML files for
+  `(844) 620-0012`, `info@mmsvcs.com`, `20333 State Highway 249`.
+- **Colors** — CSS variables at the top of `css/styles.css`
+  (`--flame-500` is the logo orange, `--steel-800` the dark steel,
+  `--shield-600` the shield blue).
+- **Stats band numbers** — `data-count` attributes in `index.html`.
+- **Map** — the Google Maps iframe in `contact.html`.

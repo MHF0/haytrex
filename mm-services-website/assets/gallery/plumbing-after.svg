@@ -1,41 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="After: renovated bright bathroom (placeholder illustration)">
-  <rect width="800" height="600" fill="#dfe6ec"/>
-  <rect width="800" height="380" fill="#eef3f7"/>
-  <!-- clean tile wall -->
-  <g fill="#ffffff">
-    <rect x="0" y="0" width="196" height="120"/><rect x="204" y="0" width="196" height="120"/><rect x="408" y="0" width="196" height="120"/><rect x="612" y="0" width="188" height="120"/>
-    <rect x="0" y="128" width="196" height="120"/><rect x="204" y="128" width="196" height="120"/><rect x="408" y="128" width="196" height="120"/><rect x="612" y="128" width="188" height="120"/>
-    <rect x="0" y="256" width="196" height="120"/><rect x="204" y="256" width="196" height="120"/><rect x="408" y="256" width="196" height="120"/><rect x="612" y="256" width="188" height="120"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="After: renovated bright bathroom with new vanity and chrome fixtures">
+  <defs>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.6 0.6 0.6 0 0"/><feComposite operator="in" in2="SourceGraphic"/></filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="soft4" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+    <radialGradient id="vig" cx="0.5" cy="0.45" r="0.75">
+      <stop offset="0.62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.32"/>
+    </radialGradient>
+    <linearGradient id="toplight" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.5" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="paWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f7fa"/><stop offset="1" stop-color="#e2e9ef"/></linearGradient>
+    <linearGradient id="paTile" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef2f6"/></linearGradient>
+    <linearGradient id="paFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdd6df"/><stop offset="1" stop-color="#b4bfca"/></linearGradient>
+    <linearGradient id="paNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27384a"/><stop offset="1" stop-color="#18232f"/></linearGradient>
+    <linearGradient id="paChrome" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8edf2"/><stop offset="0.5" stop-color="#9fb0bf"/><stop offset="1" stop-color="#d4dce4"/></linearGradient>
+    <linearGradient id="paMirror" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#cfe0ed"/><stop offset="0.5" stop-color="#aec8dc"/><stop offset="1" stop-color="#cadeed"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#paWall)"/>
+  <g>
+    <rect x="4" y="4" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="204" y="4" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="404" y="4" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="604" y="4" width="192" height="118" rx="2" fill="url(#paTile)"/>
+    <rect x="104" y="130" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="4" y="130" width="92" height="118" rx="2" fill="url(#paTile)"/><rect x="304" y="130" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="504" y="130" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="704" y="130" width="92" height="118" rx="2" fill="url(#paTile)"/>
+    <rect x="4" y="256" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="204" y="256" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="404" y="256" width="192" height="118" rx="2" fill="url(#paTile)"/><rect x="604" y="256" width="192" height="118" rx="2" fill="url(#paTile)"/>
   </g>
-  <!-- accent tile stripe -->
-  <rect x="0" y="122" width="800" height="4" fill="#1E4E7A" opacity="0.5"/>
-  <!-- floor -->
-  <rect y="380" width="800" height="220" fill="#c3ccd6"/>
-  <rect y="380" width="800" height="8" fill="#aeb9c6"/>
-  <!-- new vanity -->
-  <rect x="120" y="300" width="300" height="180" rx="8" fill="#1C2733"/>
-  <rect x="140" y="330" width="120" height="130" rx="6" fill="#2b3a4a"/>
-  <rect x="280" y="330" width="120" height="130" rx="6" fill="#2b3a4a"/>
-  <rect x="244" y="384" width="14" height="40" rx="6" fill="#d7dde4"/>
-  <rect x="284" y="384" width="14" height="40" rx="6" fill="#d7dde4"/>
-  <rect x="106" y="282" width="328" height="24" rx="6" fill="#f4f0e9"/>
-  <!-- basin + chrome faucet -->
-  <ellipse cx="270" cy="282" rx="86" ry="14" fill="#ffffff" stroke="#c3ccd6" stroke-width="3"/>
-  <path d="M270 252 q0 -36 34 -36 h10 v14 h-10 q-18 0 -18 22 z" fill="#9fb0bf"/>
-  <rect x="308" y="212" width="12" height="16" rx="4" fill="#9fb0bf"/>
-  <!-- mirror -->
-  <rect x="180" y="40" width="180" height="150" rx="10" fill="#bfd4e4" stroke="#9fb0bf" stroke-width="6"/>
-  <path d="M210 170 L330 60" stroke="#e6f0f7" stroke-width="14" opacity="0.7"/>
-  <!-- new chrome pipe -->
-  <rect x="560" y="250" width="26" height="230" fill="#aab6c2"/>
-  <rect x="548" y="250" width="50" height="20" rx="6" fill="#8b99a7"/>
-  <rect x="548" y="362" width="50" height="20" rx="6" fill="#8b99a7"/>
-  <rect x="566" y="256" width="6" height="220" fill="#e2e8ee" opacity="0.8"/>
-  <!-- towel -->
-  <rect x="640" y="300" width="110" height="150" rx="8" fill="#F58A1F"/>
-  <rect x="640" y="300" width="110" height="26" rx="8" fill="#d97613"/>
-  <rect x="628" y="288" width="134" height="12" rx="6" fill="#9fb0bf"/>
-  <!-- placeholder tag -->
-  <rect x="0" y="556" width="800" height="44" fill="#10151C" opacity="0.85"/>
-  <text x="20" y="584" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="2" fill="#E9EDF2">SAMPLE ILLUSTRATION — REPLACE WITH YOUR JOB PHOTO</text>
+  <rect x="0" y="124" width="800" height="4" fill="#1E4E7A" opacity="0.45"/>
+  <rect y="380" width="800" height="220" fill="url(#paFloor)"/>
+  <rect y="380" width="800" height="8" fill="#9fabb8"/>
+  <path d="M60 600 L200 388 M260 600 L400 388 M460 600 L600 388 M660 600 L790 400" stroke="#a8b4c0" stroke-width="2" opacity="0.55"/>
+  <ellipse cx="270" cy="494" rx="190" ry="24" fill="#5b6b7d" opacity="0.28" filter="url(#soft)"/>
+  <g>
+    <rect x="118" y="298" width="304" height="184" rx="8" fill="url(#paNavy)"/>
+    <rect x="138" y="328" width="126" height="134" rx="6" fill="#2b3b4c"/>
+    <rect x="276" y="328" width="126" height="134" rx="6" fill="#2b3b4c"/>
+    <rect x="248" y="382" width="10" height="44" rx="5" fill="url(#paChrome)"/>
+    <rect x="284" y="382" width="10" height="44" rx="5" fill="url(#paChrome)"/>
+    <rect x="104" y="280" width="332" height="24" rx="5" fill="#f7f4ee"/>
+    <rect x="104" y="280" width="332" height="8" rx="4" fill="#ffffff"/>
+  </g>
+  <ellipse cx="270" cy="280" rx="88" ry="14" fill="#ffffff" stroke="#c3ccd6" stroke-width="3"/>
+  <path d="M270 250 q0 -36 34 -36 h11 v15 h-11 q-18 0 -18 21 z" fill="url(#paChrome)"/>
+  <rect x="309" y="206" width="12" height="17" rx="4" fill="url(#paChrome)"/>
+  <path d="M272 248 q3 -28 30 -30" stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.9"/>
+  <g>
+    <rect x="172" y="36" width="196" height="158" rx="10" fill="url(#paMirror)" stroke="#9fb0bf" stroke-width="7"/>
+    <path d="M204 178 L336 52" stroke="#e8f2f9" stroke-width="16" opacity="0.75"/>
+    <path d="M232 182 L344 76" stroke="#e8f2f9" stroke-width="6" opacity="0.6"/>
+  </g>
+  <g>
+    <rect x="556" y="246" width="28" height="236" fill="url(#paChrome)"/>
+    <rect x="566" y="246" width="7" height="236" fill="#ffffff" opacity="0.85"/>
+    <rect x="544" y="246" width="52" height="20" rx="6" fill="#8b99a7"/>
+    <rect x="544" y="360" width="52" height="20" rx="6" fill="#8b99a7"/>
+  </g>
+  <g>
+    <rect x="636" y="298" width="112" height="152" rx="8" fill="#F58A1F"/>
+    <rect x="636" y="298" width="112" height="26" rx="8" fill="#d97613"/>
+    <path d="M652 340 h80 M652 362 h80 M652 384 h80 M652 406 h80" stroke="#e07c14" stroke-width="5" opacity="0.65"/>
+    <rect x="624" y="286" width="136" height="12" rx="6" fill="url(#paChrome)"/>
+  </g>
+  <g fill="#3f7d4a">
+    <rect x="60" y="238" width="26" height="34" rx="4" fill="#c9d2db"/>
+    <path d="M73 240 q-20 -34 2 -52 q22 18 4 52 z" opacity="0.9"/>
+    <path d="M73 240 q-30 -12 -30 -40 q26 2 32 38 z" opacity="0.8"/>
+  </g>
+  <path d="M690 70 l5 15 15 5 -15 5 -5 15 -5 -15 -15 -5 15 -5 z" fill="#ffffff" opacity="0.9">
+    <animate attributeName="opacity" values="0.2;0.95;0.2" dur="2.6s" repeatCount="indefinite"/>
+  </path>
+  <path d="M120 210 l4 11 11 4 -11 4 -4 11 -4 -11 -11 -4 11 -4 z" fill="#ffffff" opacity="0.8">
+    <animate attributeName="opacity" values="0.85;0.15;0.85" dur="3.1s" repeatCount="indefinite"/>
+  </path>
+  <rect width="800" height="600" fill="url(#toplight)"/>
+  <rect width="800" height="600" fill="url(#vig)"/>
+  <rect width="800" height="600" fill="#808080" opacity="0.10" filter="url(#grain)"/>
 </svg>

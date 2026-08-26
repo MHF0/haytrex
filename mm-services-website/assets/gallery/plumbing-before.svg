@@ -1,37 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Before: worn bathroom with leaking pipe (placeholder illustration)">
-  <rect width="800" height="600" fill="#8a8577"/>
-  <rect width="800" height="380" fill="#9b9585"/>
-  <!-- stained tile wall -->
-  <g fill="#a8a291">
-    <rect x="0" y="0" width="196" height="120"/><rect x="204" y="0" width="196" height="120"/><rect x="408" y="0" width="196" height="120"/><rect x="612" y="0" width="188" height="120"/>
-    <rect x="0" y="128" width="196" height="120"/><rect x="204" y="128" width="196" height="120"/><rect x="408" y="128" width="196" height="120"/><rect x="612" y="128" width="188" height="120"/>
-    <rect x="0" y="256" width="196" height="120"/><rect x="204" y="256" width="196" height="120"/><rect x="408" y="256" width="196" height="120"/><rect x="612" y="256" width="188" height="120"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Before: worn bathroom with corroded leaking pipe">
+  <defs>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.6 0.6 0.6 0 0"/><feComposite operator="in" in2="SourceGraphic"/></filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="soft4" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+    <radialGradient id="vig" cx="0.5" cy="0.45" r="0.75">
+      <stop offset="0.62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.32"/>
+    </radialGradient>
+    <linearGradient id="toplight" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.5" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pbWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a49d8b"/><stop offset="1" stop-color="#8a8271"/></linearGradient>
+    <linearGradient id="pbTile" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0" stop-color="#b3ac9a"/><stop offset="1" stop-color="#9c9483"/></linearGradient>
+    <linearGradient id="pbFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a7263"/><stop offset="1" stop-color="#5f5849"/></linearGradient>
+    <linearGradient id="pbPipe" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6b5c44"/><stop offset="0.5" stop-color="#8a7757"/><stop offset="1" stop-color="#5c4e39"/></linearGradient>
+    <linearGradient id="pbWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63503c"/><stop offset="1" stop-color="#4a3b2c"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#pbWall)"/>
+  <g>
+    <rect x="4" y="4" width="192" height="118" rx="2" fill="url(#pbTile)"/><rect x="204" y="4" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.94"/><rect x="404" y="4" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.9"/><rect x="604" y="4" width="192" height="118" rx="2" fill="url(#pbTile)"/>
+    <rect x="104" y="130" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.92"/><rect x="4" y="130" width="92" height="118" rx="2" fill="url(#pbTile)"/><rect x="304" y="130" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.96"/><rect x="504" y="130" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.88"/><rect x="704" y="130" width="92" height="118" rx="2" fill="url(#pbTile)"/>
+    <rect x="4" y="256" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.9"/><rect x="204" y="256" width="192" height="118" rx="2" fill="url(#pbTile)"/><rect x="404" y="256" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.93"/><rect x="604" y="256" width="192" height="118" rx="2" fill="url(#pbTile)" opacity="0.9"/>
   </g>
-  <!-- stains and crack -->
-  <ellipse cx="620" cy="180" rx="90" ry="60" fill="#7d7462" opacity="0.55"/>
-  <ellipse cx="160" cy="90" rx="70" ry="40" fill="#7d7462" opacity="0.4"/>
-  <path d="M300 0 L322 70 L306 130 L336 210" stroke="#6b6353" stroke-width="5" fill="none"/>
-  <!-- floor -->
-  <rect y="380" width="800" height="220" fill="#6e6858"/>
-  <!-- old vanity -->
-  <rect x="120" y="300" width="300" height="180" rx="6" fill="#5c4a38"/>
-  <rect x="140" y="330" width="120" height="130" rx="4" fill="#4a3b2c"/>
-  <rect x="280" y="330" width="120" height="130" rx="4" fill="#4a3b2c"/>
-  <circle cx="252" cy="395" r="7" fill="#8a8577"/><circle cx="292" cy="395" r="7" fill="#8a8577"/>
-  <rect x="110" y="286" width="320" height="22" rx="4" fill="#77624c"/>
-  <!-- basin + old faucet -->
-  <ellipse cx="270" cy="286" rx="90" ry="16" fill="#b7b1a0"/>
-  <path d="M270 258 q0 -34 30 -34 h8 v14 h-8 q-16 0 -16 20 z" fill="#8f8a7d"/>
-  <!-- corroded pipe with drip -->
-  <rect x="560" y="250" width="26" height="230" fill="#7a6a52"/>
-  <rect x="548" y="250" width="50" height="22" rx="4" fill="#66573f"/>
-  <rect x="548" y="360" width="50" height="22" rx="4" fill="#66573f"/>
-  <circle cx="573" cy="410" r="7" fill="#5f83a3"/>
-  <circle cx="573" cy="452" r="5" fill="#5f83a3"/>
-  <!-- puddle -->
-  <ellipse cx="573" cy="520" rx="120" ry="26" fill="#4f6f8d" opacity="0.8"/>
-  <ellipse cx="540" cy="514" rx="46" ry="10" fill="#6f8fab" opacity="0.7"/>
-  <!-- placeholder tag -->
-  <rect x="0" y="556" width="800" height="44" fill="#10151C" opacity="0.85"/>
-  <text x="20" y="584" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="2" fill="#E9EDF2">SAMPLE ILLUSTRATION — REPLACE WITH YOUR JOB PHOTO</text>
+  <ellipse cx="620" cy="170" rx="110" ry="70" fill="#6f6552" opacity="0.5" filter="url(#soft)"/>
+  <ellipse cx="140" cy="80" rx="80" ry="46" fill="#6f6552" opacity="0.38" filter="url(#soft)"/>
+  <path d="M298 4 L318 66 L303 128 L332 208 L322 252" stroke="#565040" stroke-width="4" fill="none" opacity="0.8"/>
+  <path d="M318 66 L342 96" stroke="#565040" stroke-width="3" fill="none" opacity="0.7"/>
+  <rect y="380" width="800" height="220" fill="url(#pbFloor)"/>
+  <rect y="380" width="800" height="10" fill="#4e4739"/>
+  <ellipse cx="270" cy="492" rx="190" ry="26" fill="#000" opacity="0.25" filter="url(#soft)"/>
+  <g>
+    <rect x="120" y="300" width="300" height="182" rx="6" fill="url(#pbWood)"/>
+    <rect x="120" y="300" width="300" height="182" rx="6" fill="none" stroke="#3a2e22" stroke-width="3"/>
+    <rect x="138" y="330" width="124" height="132" rx="4" fill="#413427"/>
+    <rect x="278" y="330" width="124" height="132" rx="4" fill="#413427"/>
+    <path d="M150 340 v112 M170 336 v118 M192 340 v110 M290 340 v112 M312 338 v114 M334 340 v110" stroke="#372b1f" stroke-width="3" opacity="0.7"/>
+    <circle cx="252" cy="396" r="7" fill="#8a8271"/><circle cx="290" cy="396" r="7" fill="#8a8271"/>
+    <rect x="108" y="284" width="324" height="24" rx="4" fill="#77624c"/>
+    <rect x="108" y="284" width="324" height="7" rx="3" fill="#8d7659"/>
+    <path d="M150 462 l-10 20 M400 462 l8 20" stroke="#3a2e22" stroke-width="4"/>
+  </g>
+  <ellipse cx="270" cy="284" rx="92" ry="16" fill="#b3ada0"/>
+  <ellipse cx="270" cy="281" rx="86" ry="13" fill="#c4beb1"/>
+  <path d="M270 256 q0 -34 30 -34 h9 v15 h-9 q-15 0 -15 19 z" fill="#8f8a7d"/>
+  <path d="M272 254 q2 -28 26 -29" stroke="#6d6759" stroke-width="2" fill="none"/>
+  <g>
+    <rect x="558" y="248" width="28" height="234" fill="url(#pbPipe)"/>
+    <rect x="546" y="248" width="52" height="24" rx="4" fill="#5c4e39"/><rect x="546" y="250" width="52" height="6" rx="3" fill="#78684e"/>
+    <rect x="546" y="356" width="52" height="24" rx="4" fill="#5c4e39"/><rect x="546" y="358" width="52" height="6" rx="3" fill="#78684e"/>
+    <path d="M560 272 q10 6 0 14 q12 8 2 18" stroke="#4a7d3f" stroke-width="3" fill="none" opacity="0.5"/>
+    <ellipse cx="572" cy="384" rx="10" ry="5" fill="#3f3526"/>
+    <circle cx="572" cy="400" r="6" fill="#6f93b3">
+      <animate attributeName="cy" values="400;510;400" keyTimes="0;0.72;1" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.9;0" keyTimes="0;0.7;0.78" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <ellipse cx="572" cy="522" rx="130" ry="28" fill="#41566b" opacity="0.85"/>
+  <ellipse cx="572" cy="518" rx="112" ry="20" fill="#4f6a84" opacity="0.9"/>
+  <ellipse cx="540" cy="514" rx="48" ry="9" fill="#7b99b3" opacity="0.8"/>
+  <ellipse cx="572" cy="522" rx="18" ry="5" fill="#8fb0c9" opacity="0.7">
+    <animate attributeName="rx" values="6;80" dur="2.2s" begin="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.7;0" dur="2.2s" begin="1.5s" repeatCount="indefinite"/>
+  </ellipse>
+  <rect width="800" height="600" fill="url(#toplight)"/>
+  <rect width="800" height="600" fill="url(#vig)"/>
+  <rect width="800" height="600" fill="#808080" opacity="0.10" filter="url(#grain)"/>
 </svg>

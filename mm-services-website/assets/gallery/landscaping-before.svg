@@ -1,31 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Before: overgrown backyard (placeholder illustration)">
-  <rect width="800" height="600" fill="#b9b28f"/>
-  <rect width="800" height="260" fill="#c9c3a4"/>
-  <!-- fence, weathered -->
-  <g fill="#8a7a5e">
-    <rect x="0" y="120" width="40" height="150"/><rect x="52" y="128" width="40" height="142" transform="rotate(2 72 199)"/><rect x="104" y="118" width="40" height="152"/><rect x="156" y="126" width="40" height="144" transform="rotate(-3 176 198)"/><rect x="208" y="120" width="40" height="150"/><rect x="260" y="130" width="40" height="140"/><rect x="312" y="118" width="40" height="152" transform="rotate(2 332 194)"/><rect x="364" y="124" width="40" height="146"/><rect x="416" y="120" width="40" height="150"/><rect x="468" y="132" width="40" height="138" transform="rotate(-2 488 201)"/><rect x="520" y="120" width="40" height="150"/><rect x="572" y="126" width="40" height="144"/><rect x="624" y="118" width="40" height="152" transform="rotate(3 644 194)"/><rect x="676" y="124" width="40" height="146"/><rect x="728" y="120" width="72" height="150"/>
-  </g>
-  <rect x="0" y="150" width="800" height="14" fill="#77683f" opacity="0.8"/>
-  <!-- patchy dead lawn -->
-  <rect y="260" width="800" height="340" fill="#a89f6f"/>
-  <ellipse cx="180" cy="380" rx="130" ry="46" fill="#8f8352" opacity="0.8"/>
-  <ellipse cx="560" cy="470" rx="170" ry="56" fill="#8f8352" opacity="0.7"/>
-  <ellipse cx="400" cy="320" rx="90" ry="30" fill="#c2b98a" opacity="0.9"/>
-  <!-- tall weeds -->
-  <g stroke="#6f7a3d" stroke-width="7" fill="none" stroke-linecap="round">
-    <path d="M100 470 q-14 -70 -30 -100"/><path d="M118 476 q4 -80 -6 -120"/><path d="M136 470 q18 -60 30 -90"/>
-    <path d="M640 400 q-12 -60 -26 -86"/><path d="M660 404 q2 -70 -4 -100"/><path d="M680 400 q16 -50 26 -76"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Before: overgrown patchy backyard with weathered fence">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.6 0.6 0.6 0 0"/><feComposite operator="in" in2="SourceGraphic"/></filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="soft4" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+    <radialGradient id="vig" cx="0.5" cy="0.45" r="0.75"><stop offset="0.62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.32"/></radialGradient>
+    <linearGradient id="toplight" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="lbSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfc9ad"/><stop offset="1" stop-color="#c0b998"/></linearGradient>
+    <linearGradient id="lbGrass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a89f6f"/><stop offset="1" stop-color="#8f8556"/></linearGradient>
+    <linearGradient id="lbFence" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#94815f"/><stop offset="1" stop-color="#77673f"/></linearGradient></defs>
+  <rect width="800" height="260" fill="url(#lbSky)"/>
+  <ellipse cx="620" cy="60" rx="120" ry="36" fill="#d8d3bb" opacity="0.7" filter="url(#soft)"/>
+<rect x="0" y="118" width="42" height="152" rx="3" fill="url(#lbFence)" /><path d="M21 126 v130" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="54" y="122" width="42" height="146" rx="3" fill="url(#lbFence)" transform="rotate(2 75 195)"/><path d="M75 130 v124" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="108" y="126" width="42" height="140" rx="3" fill="url(#lbFence)" /><path d="M129 134 v118" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="162" y="130" width="42" height="152" rx="3" fill="url(#lbFence)" transform="rotate(2 183 195)"/><path d="M183 138 v130" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="216" y="118" width="42" height="146" rx="3" fill="url(#lbFence)" /><path d="M237 126 v124" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="270" y="122" width="42" height="140" rx="3" fill="url(#lbFence)" transform="rotate(-3 291 195)"/><path d="M291 130 v118" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="324" y="126" width="42" height="152" rx="3" fill="url(#lbFence)" /><path d="M345 134 v130" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="378" y="130" width="42" height="146" rx="3" fill="url(#lbFence)" transform="rotate(2 399 195)"/><path d="M399 138 v124" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="432" y="118" width="42" height="140" rx="3" fill="url(#lbFence)" /><path d="M453 126 v118" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="486" y="122" width="42" height="152" rx="3" fill="url(#lbFence)" transform="rotate(2 507 195)"/><path d="M507 130 v130" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="540" y="126" width="42" height="146" rx="3" fill="url(#lbFence)" /><path d="M561 134 v124" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="594" y="130" width="42" height="140" rx="3" fill="url(#lbFence)" transform="rotate(2 615 195)"/><path d="M615 138 v118" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="648" y="118" width="42" height="152" rx="3" fill="url(#lbFence)" /><path d="M669 126 v130" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="702" y="122" width="42" height="146" rx="3" fill="url(#lbFence)" transform="rotate(2 723 195)"/><path d="M723 130 v124" stroke="#65563a" stroke-width="2" opacity="0.6"/><rect x="756" y="126" width="42" height="140" rx="3" fill="url(#lbFence)" /><path d="M777 134 v118" stroke="#65563a" stroke-width="2" opacity="0.6"/>
+  <rect x="0" y="152" width="800" height="13" fill="#6b5c3a" opacity="0.9"/>
+  <rect y="260" width="800" height="340" fill="url(#lbGrass)"/>
+  <ellipse cx="180" cy="380" rx="140" ry="50" fill="#877b4a" opacity="0.85" filter="url(#soft4)"/>
+  <ellipse cx="560" cy="470" rx="180" ry="60" fill="#877b4a" opacity="0.75" filter="url(#soft4)"/>
+  <ellipse cx="400" cy="320" rx="95" ry="32" fill="#c2b98a" opacity="0.9" filter="url(#soft4)"/>
+  <ellipse cx="640" cy="330" rx="70" ry="24" fill="#c2b98a" opacity="0.7" filter="url(#soft4)"/>
+  <g stroke="#6f7a3d" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M100 470 q-14 -70 -30 -100"><animateTransform attributeName="transform" type="rotate" values="-2 100 470;2 100 470;-2 100 470" dur="4s" repeatCount="indefinite"/></path>
+    <path d="M118 476 q4 -80 -6 -120"/><path d="M136 470 q18 -60 30 -90"/>
+    <path d="M640 400 q-12 -60 -26 -86"/><path d="M660 404 q2 -70 -4 -100"><animateTransform attributeName="transform" type="rotate" values="2 660 404;-2 660 404;2 660 404" dur="3.4s" repeatCount="indefinite"/></path>
+    <path d="M680 400 q16 -50 26 -76"/>
     <path d="M360 540 q-12 -60 -26 -86"/><path d="M382 546 q2 -66 -4 -96"/><path d="M404 540 q16 -50 28 -78"/>
+    <path d="M210 560 q-8 -50 -20 -72"/><path d="M232 566 q0 -54 -6 -80"/>
   </g>
-  <!-- dry bush -->
-  <circle cx="250" cy="250" r="52" fill="#7d8146"/>
-  <circle cx="292" cy="266" r="38" fill="#6f7a3d"/>
-  <circle cx="214" cy="270" r="34" fill="#6f7a3d"/>
-  <!-- junk: old tire and bucket -->
-  <circle cx="700" cy="540" r="42" fill="#3d3a33"/><circle cx="700" cy="540" r="20" fill="#a89f6f"/>
-  <rect x="520" y="300" width="54" height="60" rx="8" fill="#7c6c50"/>
-  <rect x="514" y="294" width="66" height="12" rx="6" fill="#66573f"/>
-  <!-- placeholder tag -->
-  <rect x="0" y="556" width="800" height="44" fill="#10151C" opacity="0.85"/>
-  <text x="20" y="584" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="2" fill="#E9EDF2">SAMPLE ILLUSTRATION — REPLACE WITH YOUR JOB PHOTO</text>
+  <ellipse cx="252" cy="298" rx="60" ry="16" fill="#000" opacity="0.18" filter="url(#soft4)"/>
+  <circle cx="250" cy="248" r="54" fill="#7d8146"/>
+  <circle cx="294" cy="264" r="40" fill="#6f7a3d"/>
+  <circle cx="212" cy="268" r="36" fill="#6f7a3d"/>
+  <circle cx="262" cy="230" r="30" fill="#89905a" opacity="0.9"/>
+  <ellipse cx="700" cy="546" rx="52" ry="14" fill="#000" opacity="0.22" filter="url(#soft4)"/>
+  <circle cx="700" cy="536" r="44" fill="#3d3a33"/><circle cx="700" cy="536" r="42" fill="none" stroke="#2c2a25" stroke-width="5"/>
+  <circle cx="700" cy="536" r="20" fill="#8f8556"/>
+  <path d="M672 512 a40 40 0 0 1 56 0" stroke="#57544c" stroke-width="4" fill="none"/>
+  <g>
+    <ellipse cx="548" cy="360" rx="42" ry="9" fill="#000" opacity="0.2" filter="url(#soft4)"/>
+    <rect x="520" y="300" width="56" height="58" rx="8" fill="#7c6c50"/>
+    <rect x="514" y="294" width="68" height="12" rx="6" fill="#66573f"/>
+    <path d="M530 310 v40 M548 308 v44 M566 310 v40" stroke="#6a5c42" stroke-width="3" opacity="0.7"/>
+  </g>
+<rect width="800" height="600" fill="url(#toplight)"/>
+  <rect width="800" height="600" fill="url(#vig)"/>
+  <rect width="800" height="600" fill="#808080" opacity="0.10" filter="url(#grain)"/>
 </svg>
