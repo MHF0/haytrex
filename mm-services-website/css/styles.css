@@ -193,7 +193,7 @@ a:hover { text-decoration: underline; }
 
 .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
 .brand:hover { text-decoration: none; }
-.brand-emblem { width: 92px; height: 63px; }
+.brand-emblem { width: 96px; height: auto; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name {
   font-family: var(--font-display);
@@ -356,7 +356,7 @@ a:hover { text-decoration: underline; }
   pointer-events: none;
   animation: floatY 7s ease-in-out infinite;
 }
-.page-hero-emblem svg { width: 100%; height: auto; aspect-ratio: 640 / 440; }
+.page-hero-emblem img { width: 100%; height: auto; }
 .page-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
@@ -788,7 +788,7 @@ textarea { resize: vertical; }
 .site-footer { background: var(--navy-900); color: var(--sky-200); border-top: 3px solid var(--flame-500); }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 0.7fr 0.8fr 1fr; gap: 36px; padding-block: 56px 40px; }
 .footer-brand p { font-size: 0.97rem; max-width: 34ch; }
-.footer-emblem { width: 170px; height: 117px; margin-bottom: 14px; }
+.footer-emblem { width: 180px; height: auto; margin-bottom: 14px; }
 .footer-col { display: flex; flex-direction: column; gap: 9px; }
 .footer-col h4 { color: #ffffff; font-size: 1.02rem; letter-spacing: 0.1em; margin-bottom: 4px; }
 .footer-col a { color: var(--sky-200); font-size: 0.97rem; transition: color 0.2s ease; }

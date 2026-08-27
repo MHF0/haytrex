@@ -17,80 +17,6 @@
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="chromeGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff"/><stop offset="0.42" stop-color="#d7dee6"/>
-      <stop offset="0.52" stop-color="#97a5b2"/><stop offset="0.66" stop-color="#c9d2db"/>
-      <stop offset="1" stop-color="#eef2f6"/>
-    </linearGradient>
-    <linearGradient id="ribbonSilver" x1="0" y1="0" x2="0.9" y2="0.4">
-      <stop offset="0" stop-color="#f4f7fa"/><stop offset="0.45" stop-color="#b9c4cf"/>
-      <stop offset="0.75" stop-color="#7c8b98"/><stop offset="1" stop-color="#3d4854"/>
-    </linearGradient>
-    <linearGradient id="toothGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#c6cfd8"/><stop offset="0.5" stop-color="#8b99a7"/>
-      <stop offset="1" stop-color="#39434f"/>
-    </linearGradient>
-    <linearGradient id="shieldInner" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#57a0e0"/><stop offset="0.34" stop-color="#2465a8"/>
-      <stop offset="0.52" stop-color="#123354"/><stop offset="1" stop-color="#060d15"/>
-    </linearGradient>
-    <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#ffc25e"/><stop offset="0.5" stop-color="#F58A1F"/>
-      <stop offset="1" stop-color="#d3620a"/>
-    </linearGradient>
-    <linearGradient id="flameGrad2" x1="1" y1="0" x2="0" y2="0">
-      <stop offset="0" stop-color="#ffb347"/><stop offset="0.6" stop-color="#F58A1F"/>
-      <stop offset="1" stop-color="#c25806"/>
-    </linearGradient>
-    <symbol id="logo-emblem" viewBox="0 0 640 470">
-      <!-- right-side ribbon tail wrapping behind the gear -->
-      <path d="M574 172 C628 232 630 296 588 344 C616 288 608 232 556 190 Z"
-            fill="url(#ribbonSilver)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
-      <!-- gear: beveled chrome teeth with black keylines -->
-      <g stroke="#0b0e12" stroke-width="5" stroke-linejoin="round" fill="url(#toothGrad)">
-        <path d="M292 44 L348 44 L356 80 L284 80 Z"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(30 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-30 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(60 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-60 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(90 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-90 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(120 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-120 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(150 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(-150 320 200)"/>
-        <path d="M292 44 L348 44 L356 80 L284 80 Z" transform="rotate(180 320 200)"/>
-      </g>
-      <circle cx="320" cy="200" r="122" fill="#262e37" stroke="#0b0e12" stroke-width="6"/>
-      <circle cx="320" cy="200" r="99" fill="#161b21"/>
-      <!-- shield -->
-      <path d="M194 100 h252 v92 q0 110 -126 162 q-126 -52 -126 -162 z" fill="#0b0e12"/>
-      <path d="M204 110 h232 v82 q0 98 -116 148 q-116 -50 -116 -148 z" fill="url(#chromeGrad)"/>
-      <path d="M218 124 h204 v68 q0 86 -102 130 q-102 -44 -102 -130 z" fill="url(#shieldInner)"/>
-      <path d="M218 124 h204 v12 h-204 z" fill="#ffffff" opacity="0.22"/>
-      <path d="M284 292 L320 342 L356 292 L320 314 Z" fill="#2E9BE6" opacity="0.85"/>
-      <!-- big swoosh: silver loop over the top -->
-      <path d="M24 236 C140 96 466 66 620 200 C612 220 594 230 574 234 C458 118 176 136 24 236 Z"
-            fill="url(#ribbonSilver)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
-      <path d="M60 216 C180 122 420 108 560 180 C440 130 200 146 60 216 Z" fill="#ffffff" opacity="0.55"/>
-      <!-- orange leading crescent of the swoosh -->
-      <path d="M14 250 C80 172 180 130 300 122 C204 148 100 200 42 264 Z"
-            fill="url(#flameGrad)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
-      <path d="M34 236 C90 180 170 146 252 134 C176 158 100 198 52 248 Z" fill="#ffd98f" opacity="0.8"/>
-      <!-- wordmark -->
-      <text x="320" y="316" text-anchor="middle" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-style="italic" font-weight="800" font-size="136" letter-spacing="2" textLength="596" lengthAdjust="spacingAndGlyphs" fill="url(#chromeGrad)" stroke="#0b0e12" stroke-width="14" paint-order="stroke" stroke-linejoin="round">MM SVCS</text>
-      <!-- sparkles -->
-      <path d="M76 252 l5 14 14 5 -14 5 -5 14 -5 -14 -14 -5 14 -5 z" fill="#ffffff"/>
-      <path d="M534 226 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 z" fill="#ffffff" opacity="0.9"/>
-      <!-- bottom orange swoosh -->
-      <path d="M86 342 C240 404 442 402 588 304 C500 424 206 430 86 342 Z"
-            fill="url(#flameGrad2)" stroke="#0b0e12" stroke-width="6" paint-order="stroke" stroke-linejoin="round"/>
-      <path d="M140 368 C270 410 420 406 520 352 C430 424 230 424 140 368 Z" fill="#ffb347" opacity="0.55"/>
-    </symbol>
-  </defs>
-</svg>
 
 <div class="topbar">
   <div class="container topbar-inner">
@@ -105,7 +31,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="index.html" aria-label="MM Services LLC home">
-      <svg class="brand-emblem" aria-hidden="true"><use href="#logo-emblem"></use></svg>
+      <img class="brand-emblem" src="assets/logo.png" alt="MM SVCS logo">
       <span class="brand-text">
         <span class="brand-name">MM Services LLC</span>
         <span class="brand-tag">Houston, Texas</span>
@@ -132,7 +58,7 @@
       <p>Call, email, or send the form &mdash; we&rsquo;ll get back to you with a straight answer and an
         upfront price.</p>
     </div>
-    <div class="page-hero-emblem" aria-hidden="true"><svg><use href="#logo-emblem"></use></svg></div>
+    <div class="page-hero-emblem" aria-hidden="true"><img src="assets/logo.png" alt=""></div>
   </section>
 
   <section class="section section-light">
@@ -192,7 +118,7 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <svg class="footer-emblem" aria-hidden="true"><use href="#logo-emblem"></use></svg>
+      <img class="footer-emblem" src="assets/logo.png" alt="MM SVCS logo">
       <p>MM Services LLC &mdash; handyman, plumbing, electrical and landscaping for Greater Houston.
         One call. Every fix.</p>
     </div>
