@@ -496,55 +496,6 @@ a:hover { text-decoration: underline; }
   clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
-/* ---------- before / after ---------- */
-
-.ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 34px; }
-.ba-figure { margin: 0; }
-.ba-compare {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 4px solid #ffffff;
-  outline: 1px solid var(--sky-100);
-  background: var(--sky-100);
-  --pos: 50%;
-}
-.ba-compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none; }
-.ba-after-wrap { position: absolute; inset: 0; overflow: hidden; clip-path: inset(0 0 0 var(--pos)); }
-.ba-after-wrap img { position: absolute; inset: 0; }
-.ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 4px; margin-left: -2px; background: var(--flame-500); pointer-events: none; }
-.ba-handle span {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, var(--flame-400), var(--flame-600));
-  border: 3px solid #ffffff;
-  box-shadow: 0 4px 14px rgba(16, 42, 67, 0.4);
-}
-.ba-handle span::before {
-  content: "\2194";
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  color: #ffffff;
-  font-size: 1.3rem; font-weight: 700;
-}
-.ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; -webkit-appearance: none; appearance: none; }
-.ba-tag {
-  position: absolute; top: 14px;
-  font-family: var(--font-display);
-  font-style: italic; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; font-size: 0.85rem;
-  padding: 4px 12px; border-radius: 4px; z-index: 2;
-}
-.ba-tag-before { left: 14px; background: rgba(15, 47, 76, 0.8); color: #ffffff; }
-.ba-tag-after { right: 14px; background: var(--flame-500); color: #ffffff; }
-.ba-figure figcaption { padding: 14px 6px 0; font-size: 0.97rem; color: var(--slate); }
-.ba-figure figcaption strong { color: var(--ink); }
-.gallery-note { margin-top: 30px; font-size: 0.92rem; color: var(--slate); text-align: center; }
-
 /* ---------- reviews ---------- */
 
 .reviews-wrap { position: relative; }

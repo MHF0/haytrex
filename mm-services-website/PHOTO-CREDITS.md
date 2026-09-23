@@ -9,15 +9,7 @@ or replace the photos with your own and delete it.
 
 | File | Photographer | Source |
 |---|---|---|
-| hero-handyman.jpg | Glen MacLarty | https://www.flickr.com/photos/glenmaclarty/5213645871 |
-| plumbing-before.jpg | Possible | https://www.flickr.com/photos/nyayahealth/7522225148 |
-| plumbing-after.jpg | Brad Coy | https://www.flickr.com/photos/bradfordcoy/4393182016 |
-| electrical-before.jpg | jnyemb | https://www.flickr.com/photos/jnyemb/5225841771 |
 | electrical-after.jpg | Brian Jackson | https://www.flickr.com/photos/jaxzin/5751706244 |
-| landscaping-before.jpg | EvelynGiggles | https://www.flickr.com/photos/evelynishere/3642041101 |
-| landscaping-after.jpg | Earle Klosterman | https://www.flickr.com/photos/earle_klosterman/6710129019 |
-| handyman-before.jpg | The Wu's Photo Land | https://www.flickr.com/photos/photowu/47953303 |
-| handyman-after.jpg | pointnshoot | https://www.flickr.com/photos/pointnshoot/718427369 |
 | svc-handyman.jpg | 7th Army Joint Multinational Training Command | https://www.flickr.com/photos/7armyjmtc/16184351650 |
 | svc-plumbing.jpg | Brent Newhall | https://www.flickr.com/photos/brentnewhall/5082097591 |
 | svc-landscaping.jpg | Ian Brown | https://www.flickr.com/photos/igb/5541908487 |

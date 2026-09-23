@@ -28,15 +28,6 @@
     }, { passive: true });
   }
 
-  /* ----- before / after comparison sliders ----- */
-  document.querySelectorAll("[data-ba]").forEach(function (widget) {
-    var range = widget.querySelector(".ba-range");
-    if (!range) return;
-    var update = function () { widget.style.setProperty("--pos", range.value + "%"); };
-    range.addEventListener("input", update);
-    update();
-  });
-
   /* ----- animated counters ----- */
   function animateCounter(el) {
     var target = parseInt(el.getAttribute("data-count"), 10) || 0;
@@ -55,7 +46,7 @@
 
   /* ----- scroll reveal with stagger + counter trigger ----- */
   var revealTargets = document.querySelectorAll(
-    ".section-head, .service-card, .ba-figure, .career-card, .apply-card, .contact-card, .contact-block, .band-item, .service-row, .perks-chips, .cta-band h2, .cta-band p, .cta-band .hero-ctas, .reviews-wrap, .reviews-summary, .gallery-note, .map-embed"
+    ".section-head, .service-card, .career-card, .apply-card, .contact-card, .contact-block, .band-item, .service-row, .perks-chips, .cta-band h2, .cta-band p, .cta-band .hero-ctas, .reviews-wrap, .reviews-summary, .map-embed"
   );
   if ("IntersectionObserver" in window && !reduceMotion) {
     revealTargets.forEach(function (el) {

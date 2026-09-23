@@ -8,51 +8,36 @@ static host (Netlify, Vercel, GitHub Pages, cPanel, etc.) and it works.
 
 ```
 mm-services-website/
-├── index.html          home — hero, services overview, stats, featured
-│                       before/after, auto-rotating client reviews
+├── index.html          home — hero, services overview, stats, about,
+│                       auto-rotating client reviews
 ├── services.html       detailed service pages (handyman, plumbing,
 │                       electrical, landscaping)
-├── gallery.html        before/after comparison sliders
 ├── careers.html        job tracks + application form
 ├── contact.html        quote form, contact info, Google Map
 ├── css/styles.css      brand stylesheet + animations
-├── js/main.js          nav, sliders, reviews carousel, counters, forms
+├── js/main.js          nav, reviews carousel, counters, forms
 └── assets/
     ├── favicon.svg
-    └── gallery/        before/after images (see below)
+    ├── logo.png        company logo (transparent background)
+    └── photos/         site photography
 ```
 
 Navigation links open each page **in a new tab** (as requested). To switch to
 normal same-tab navigation, remove `target="_blank" rel="noopener"` from the
 nav/footer links in each HTML file.
 
-## Use the exact logo file
+## Logo
 
-The emblem on the site is a high-fidelity SVG recreation of the MM SVCS logo
-(defined once per page as `#logo-emblem`). To use the **original logo file**
-instead:
+The site uses the company logo at `assets/logo.png` (transparent background;
+a white-background copy is at `assets/logo-white-bg.png`). To update it,
+replace those files with a new export.
 
-1. Export the logo as PNG **with a transparent background** (the white-
-   background version will show a white box on the dark header). Name it
-   `assets/logo.png`.
-2. In each HTML file, replace every
-   `<svg class="..."><use href="#logo-emblem"></use></svg>` with
-   `<img class="..." src="assets/logo.png" alt="MM Services LLC">`.
+## Photos
 
-Tip: committing the PNG to this repo (drag &amp; drop on github.com works)
-lets Claude wire it in for you on the next session.
-
-## Replace the gallery images with real job photos
-
-The before/after sliders use styled illustration imagery so the site looks
-finished today. Real photos of your own jobs will always sell better:
-
-1. Take before and after shots **from the same angle**, landscape 4:3
-   (e.g. 1600×1200).
-2. Drop them into `assets/gallery/` — e.g. `plumbing-before.jpg`,
-   `plumbing-after.jpg`.
-3. Update the matching `src` attributes in `index.html`, `gallery.html`
-   and `services.html` (search for `assets/gallery/`).
+Site photography lives in `assets/photos/` (hero and careers images are the
+company's own; the rest are CC BY 2.0 stock listed in PHOTO-CREDITS.md).
+To swap any photo, drop a new 4:3 image into that folder and update the
+matching `src` in the HTML.
 
 ## Client reviews
 
