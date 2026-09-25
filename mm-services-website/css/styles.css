@@ -671,6 +671,10 @@ input:focus, select:focus, textarea:focus {
 textarea { resize: vertical; }
 .form-note { font-size: 0.88rem; color: var(--slate); }
 .form-status { font-size: 0.95rem; font-weight: 600; color: var(--sky-700); min-height: 1.2em; }
+.form-status.is-error { color: #b42318; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+input[type="file"] { padding: 9px 12px; background: var(--paper); }
+button[disabled] { opacity: 0.7; cursor: progress; }
 
 /* ---------- contact ---------- */
 

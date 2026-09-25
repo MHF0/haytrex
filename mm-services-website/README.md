@@ -3,8 +3,8 @@
 Professional multi-page website for **MM Services LLC**, Houston, TX.
 Handyman • Plumbing • Electrical • Landscaping.
 
-Pure HTML/CSS/JS — no build step, no dependencies. Upload the folder to any
-static host (Netlify, Vercel, GitHub Pages, cPanel, etc.) and it works.
+Pure HTML/CSS/JS, served together with its backend by `../mm-services-backend`
+(see that folder's README for running it and deploying to the Hostinger VPS).
 
 ```
 mm-services-website/
@@ -52,12 +52,12 @@ the Google Places API if you want it fully custom.
 
 ## Forms
 
-Both forms (quote request + job application) open the visitor's email app
-with everything pre-filled, addressed to **info@mmsvcs.com** — works on any
-static host with zero setup. To collect submissions in a dashboard instead,
-create a free [Formspree](https://formspree.io) form and replace the
-`hookForm(...)` mailto logic in `js/main.js` with a `fetch()` POST (a comment
-in the file marks the spot).
+The quote form posts to `/api/quotes` and the job application form (with
+optional resume upload) posts to `/api/applications`. Both are saved in the
+backend's database, emailed to info@mmsvcs.com, and listed in the admin
+dashboard at `/admin`. If the site is opened without the backend running,
+the forms fall back to opening the visitor's email app with the details
+filled in.
 
 ## Editing the basics
 

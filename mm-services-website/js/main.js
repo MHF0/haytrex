@@ -147,37 +147,74 @@
     }
   }
 
-  /* ----- forms: compose an email with the entered details -----
-     To switch to a form service later (Formspree, Netlify, etc.),
-     replace buildMailto() with a fetch() to your endpoint. */
-  function hookForm(formId, subjectPrefix, intro) {
-    var form = document.getElementById(formId);
+  /* ----- forms: send to the backend; when the site runs without one
+     (static hosting, preview), hand the details to the visitor's email app ----- */
+  function openEmailDraft(form, subject, intro) {
+    var lines = [intro, ""];
+    new FormData(form).forEach(function (value, key) {
+      if (key === "website" || typeof value !== "string" || value.trim() === "") return;
+      lines.push(key.charAt(0).toUpperCase() + key.slice(1) + ": " + value);
+    });
+    lines.push("", "Sent from mmsvcs.com");
+    window.location.href = "mailto:info@mmsvcs.com?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(lines.join("\n"));
+  }
+
+  function hookForm(opts) {
+    var form = document.getElementById(opts.formId);
     if (!form) return;
-    form.addEventListener("submit", function (e) {
+    var status = form.querySelector(".form-status");
+    var button = form.querySelector('button[type="submit"]');
+    function say(text, isError) {
+      if (!status) return;
+      status.textContent = text;
+      status.classList.toggle("is-error", Boolean(isError));
+    }
+
+    form.addEventListener("submit", async function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      var data = new FormData(form);
-      var subject = subjectPrefix;
-      var pick = data.get("position") || data.get("service");
-      if (pick) subject += " — " + pick;
-      var lines = [intro, ""];
-      data.forEach(function (value, key) {
-        if (String(value).trim() === "") return;
-        var label = key.charAt(0).toUpperCase() + key.slice(1);
-        lines.push(label + ": " + value);
-      });
-      lines.push("", "Sent from mmsvcs.com");
-      window.location.href = "mailto:info@mmsvcs.com?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(lines.join("\n"));
-      var status = form.querySelector(".form-status");
-      if (status) {
-        status.textContent = "Your email app should open with everything filled in. " +
-          "If it doesn't, email us directly at info@mmsvcs.com.";
+      button.disabled = true;
+      say("Sending\u2026");
+
+      var res = null;
+      try {
+        res = await fetch(opts.endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+      } catch (err) { /* network error or no backend: fall through to email */ }
+      button.disabled = false;
+
+      if (res && res.ok) {
+        form.reset();
+        say(opts.successText);
+        return;
       }
+      if (res && (res.status === 400 || res.status === 429)) {
+        var data = await res.json().catch(function () { return {}; });
+        var errors = data.errors ? Object.values(data.errors) : [];
+        say(errors[0] || data.error || "Please check the form and try again.", true);
+        return;
+      }
+
+      var pick = form.elements.position ? form.elements.position.value : form.elements.service.value;
+      openEmailDraft(form, opts.subject + (pick ? " \u2014 " + pick : ""), opts.intro);
+      say("Your email app should open with everything filled in. If it doesn't, email us at info@mmsvcs.com.");
     });
   }
-  hookForm("contact-form", "Quote request", "New quote request from the website:");
-  hookForm("apply-form", "Job application", "New job application from the website:");
+
+  hookForm({
+    formId: "contact-form",
+    endpoint: "/api/quotes",
+    subject: "Quote request",
+    intro: "New quote request from the website:",
+    successText: "Thanks! We got your request and will reply within one business day.",
+  });
+  hookForm({
+    formId: "apply-form",
+    endpoint: "/api/applications",
+    subject: "Job application",
+    intro: "New job application from the website:",
+    successText: "Thanks for applying! Our hiring team will be in touch.",
+  });
 
   /* ----- footer year ----- */
   var year = document.getElementById("year");

@@ -94,9 +94,9 @@
           </ul>
         </article>
       </div>
-      <form class="apply-card" id="apply-form" novalidate>
+      <form class="apply-card" id="apply-form" enctype="multipart/form-data" novalidate>
         <h3>Apply now</h3>
-        <p class="form-note">Submitting opens an email to our hiring team &mdash; attach your resume before sending.</p>
+        <p class="form-note">Takes two minutes. Our hiring team reviews every application.</p>
         <div class="field-row">
           <label>Full name<input type="text" name="name" autocomplete="name" required></label>
           <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
@@ -115,6 +115,8 @@
           </label>
         </div>
         <label>Experience &amp; availability<textarea name="message" rows="4" placeholder="Years of experience, certifications, when you can start&hellip;"></textarea></label>
+        <label>Resume (PDF or Word, up to 5 MB &mdash; optional)<input type="file" name="resume" accept=".pdf,.doc,.docx"></label>
+        <div class="hp-field" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="btn btn-primary btn-block">Send Application</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
