@@ -172,9 +172,11 @@ In Squarespace: **Domains → mmsvcs.com → DNS → DNS settings**.
 Delete any other A, AAAA or CNAME records for `@` and `www`.
 **Do not change MX or TXT records** — they deliver email for info@mmsvcs.com.
 
-> The domain currently points to an IONOS server (74.208.236.20). If Squarespace's DNS page doesn't
-> list editable records, or says the domain uses custom nameservers, the DNS is managed at that other
-> provider: make the same two A-record changes there.
+> The domain currently points to an IONOS server (74.208.236.20). If Squarespace's DNS page says
+> **"You're using custom nameservers"**, the records on that page are not live: DNS is run by whichever
+> provider those nameservers belong to. Make the changes there instead. Or switch the domain to
+> Squarespace nameservers, but only after recreating the old provider's email records (MX and TXT) in
+> Squarespace, or email for info@mmsvcs.com stops working.
 
 Then check from the server (as root). Wait until both `A` lines show only your server's IP and both
 `AAAA` lines are empty. This usually takes minutes, occasionally a few hours. `ping` alone isn't enough:
