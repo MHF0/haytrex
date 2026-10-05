@@ -6,7 +6,7 @@ module.exports = {
     {
       name: "mm-services",
       cwd: path.resolve(__dirname, ".."),
-      script: "src/server.js",
+      script: "src/start.js",
       node_args: "--env-file=.env --disable-warning=ExperimentalWarning",
       max_memory_restart: "400M",
     },

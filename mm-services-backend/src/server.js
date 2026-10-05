@@ -1,14 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
-import { pathToFileURL } from "node:url";
 import express from "express";
 import helmet from "helmet";
 import multer from "multer";
 import rateLimit from "express-rate-limit";
-import { loadConfig } from "./config.js";
-import { openDatabase } from "./db.js";
-import { createMailer } from "./mailer.js";
 import { createAuth } from "./auth.js";
 import { createAdminRouter } from "./admin.js";
 import { validateQuote, validateApplication, isSpam } from "./validate.js";
@@ -123,13 +119,4 @@ export function createApp(config, { db, mailer, log = console }) {
   });
 
   return app;
-}
-
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const config = loadConfig();
-  const db = openDatabase(config.dataDir);
-  const app = createApp(config, { db, mailer: createMailer(config) });
-  app.listen(config.port, config.host, () => {
-    console.log(`MM Services running at http://${config.host}:${config.port} (site: ${config.siteDir})`);
-  });
 }
