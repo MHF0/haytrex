@@ -176,7 +176,14 @@ Delete any other A, AAAA or CNAME records for `@` and `www`.
 > list editable records, or says the domain uses custom nameservers, the DNS is managed at that other
 > provider: make the same two A-record changes there.
 
-Wait until `ping mmsvcs.com` shows your server's IP. This usually takes minutes, occasionally a few hours.
+Then check from the server (as root). Wait until both `A` lines show only your server's IP and both
+`AAAA` lines are empty. This usually takes minutes, occasionally a few hours. `ping` alone isn't enough:
+it ignores AAAA (IPv6) records, but Let's Encrypt checks them first.
+
+```bash
+apt install -y dnsutils
+for h in mmsvcs.com www.mmsvcs.com; do for t in A AAAA; do echo "$h $t: $(dig +short $t $h @1.1.1.1)"; done; done
+```
 
 ## Step 7 — Nginx and HTTPS
 
@@ -303,6 +310,7 @@ run `git -C ~/haytrex checkout main` on the server.
 | Browser: 502 Bad Gateway | App not running | `pm2 status`, then `pm2 logs mm-services` |
 | App log: `ERR_UNKNOWN_BUILTIN_MODULE` | Node older than 22.13 | Reinstall Node 22 (step 2) |
 | App log: "SESSION_SECRET must be set" | Missing in `.env` | Step 4 |
+| Certbot: "unauthorized … Invalid response … 204" (or 404) | DNS still points to the old host; an IPv6 address in the message means a leftover AAAA record | Fix the records in step 6, run its `dig` check, then rerun Certbot |
 | Admin login keeps returning to the login page | Site not on HTTPS yet | Step 7 |
 | No notification emails | SMTP settings wrong | Check `.env`; look for "Notification email failed" in `pm2 logs` |
 | Form: "Too many submissions" | Over 10 submissions in 15 minutes from one visitor | Wait, or confirm `TRUST_PROXY=1` in `.env` |
