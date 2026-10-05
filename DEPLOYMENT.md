@@ -153,7 +153,8 @@ As `mm`:
 
 It should end with `==> Live: <commit> is healthy on port 3000`.
 
-Make the app start again after a server reboot. As `root` (type `exit` to leave the `mm` user):
+Make the app start again after a server reboot. This needs **root**: type `exit` until your
+prompt starts with `root@` instead of `mm@`, then run:
 
 ```bash
 pm2 startup systemd -u mm --hp /home/mm
@@ -179,16 +180,16 @@ Wait until `ping mmsvcs.com` shows your server's IP. This usually takes minutes,
 
 ## Step 7 — Nginx and HTTPS
 
-As `root`:
+Every command here needs **root**: your prompt must start with `root@`, not `mm@` (type `exit` to
+get back to root). Run the Certbot line only once DNS points at the server.
 
 ```bash
 cp /home/mm/haytrex/mm-services-backend/deploy/nginx-mmsvcs.conf /etc/nginx/sites-available/mmsvcs.conf
-ln -s /etc/nginx/sites-available/mmsvcs.conf /etc/nginx/sites-enabled/mmsvcs.conf
+ln -sf /etc/nginx/sites-available/mmsvcs.conf /etc/nginx/sites-enabled/mmsvcs.conf
 rm -f /etc/nginx/sites-enabled/default
 nginx -t && systemctl reload nginx
 
-certbot --nginx -d mmsvcs.com -d www.mmsvcs.com --redirect \
-  --agree-tos -m info@mmsvcs.com --no-eff-email
+certbot --nginx -d mmsvcs.com -d www.mmsvcs.com --redirect --agree-tos -m info@mmsvcs.com --no-eff-email
 ```
 
 The site is now live at https://mmsvcs.com and the dashboard at https://mmsvcs.com/admin.
