@@ -165,18 +165,18 @@ pm2 startup systemd -u mm --hp /home/mm
 mmsvcs.com uses Squarespace's nameservers (moved from IONOS on Oct 5, 2026), so every DNS record lives in
 Squarespace: **Domains → mmsvcs.com → DNS → DNS settings → Custom records**.
 
-| Type | Name | Priority | Data | For |
-| --- | --- | --- | --- | --- |
-| A | @ | | YOUR_SERVER_IP | Website |
-| A | www | | YOUR_SERVER_IP | Website |
-| MX | @ | 10 | mx00.ionos.com | Receiving email |
-| MX | @ | 10 | mx01.ionos.com | Receiving email |
-| TXT | @ | | `v=spf1 include:_spf-us.ionos.com ~all` | Sent email not landing in spam |
-| TXT | _dmarc | | `v=DMARC1; p=none;` | Sent email not landing in spam |
+| Type | Name | Data | For |
+| --- | --- | --- | --- |
+| A | @ | YOUR_SERVER_IP | Website |
+| A | www | YOUR_SERVER_IP | Website |
+| TXT | @ | `v=spf1 include:_spf.google.com ~all` | Sent email not landing in spam |
+| TXT | _dmarc | `v=DMARC1; p=none;` | Sent email not landing in spam |
 
-The info@mmsvcs.com mailbox is hosted at **IONOS**, so the email records point there. Delete the
-**Google Workspace** preset on the same page: it sends incoming mail to Google, where there is no mailbox
-for this domain. There should be no AAAA records.
+Email for info@mmsvcs.com runs on **Google Workspace**: keep the **Google Workspace** preset (its MX records)
+on the same page, and don't add any other MX records. There should be no AAAA records. For the best
+deliverability, also turn on DKIM: Google Admin → Apps → Google Workspace → Gmail → **Authenticate
+email** → Generate new record, add it in Squarespace as a TXT record named `google._domainkey`, then click
+**Start authentication**.
 
 Then check from the server (as root). Wait until both `A` lines show only your server's IP and both
 `AAAA` lines are empty. This usually takes minutes, occasionally a few hours. `ping` alone isn't enough:
