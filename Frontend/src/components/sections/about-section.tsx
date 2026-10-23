@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { COMPANY, STATS } from "@/lib/constants";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { COMPANY, COUNTRIES, STATS } from "@/lib/constants";
+import { CheckCircle2, ArrowRight, Globe } from "lucide-react";
 import { Curtain, Reveal } from "@/components/motion/reveal";
 import { Magnetic, TiltCard } from "@/components/motion/tilt-card";
 import { Odometer } from "@/components/motion/interactions";
@@ -24,8 +24,8 @@ const PILLARS = [
 
 const METRICS = [
   { value: COMPANY.foundingYear, label: "Founded", plain: true },
-  { value: STATS.clientsServed, suffix: "+", label: "Clients served" },
-  { value: STATS.countriesReached, suffix: "+", label: "Countries reached" },
+  { value: STATS.businessesLaunched, suffix: "+", label: "Businesses launched" },
+  { value: STATS.countriesOperating, suffix: "", label: "Countries operating in" },
 ];
 
 export function AboutSection() {
@@ -118,7 +118,37 @@ export function AboutSection() {
               ))}
             </div>
 
-            <Reveal direction="right" delay={680} className="flex flex-col sm:flex-row gap-4">
+            {/* The markets we work in, with what we actually do in each. */}
+            <Reveal direction="right" delay={640} className="mb-8">
+              <div className="rounded-xl border border-border/60 bg-muted/20 p-5">
+                <div className="mb-4 flex items-center gap-2">
+                  <Globe className="h-4 w-4 text-accent" />
+                  <h3 className="text-base font-semibold text-primary">
+                    Operating in {STATS.countriesOperating} countries
+                  </h3>
+                </div>
+
+                <ul className="space-y-3">
+                  {COUNTRIES.map((country, index) => (
+                    <li
+                      key={country.code}
+                      className="group flex items-start gap-3 animate-fade-up"
+                      style={{ animationDelay: `${index * 80}ms` }}
+                    >
+                      <span className="mt-0.5 flex h-6 w-9 shrink-0 items-center justify-center rounded border border-border/60 bg-background text-[10px] font-semibold tracking-wide text-accent transition-colors duration-300 group-hover:border-accent/50">
+                        {country.code}
+                      </span>
+                      <p className="text-sm leading-snug">
+                        <span className="font-medium text-primary">{country.name}</span>
+                        <span className="text-muted-foreground"> — {country.focus}</span>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            <Reveal direction="right" delay={760} className="flex flex-col sm:flex-row gap-4">
               <Magnetic>
                 <Button
                   className="bg-accent hover:bg-accent-dark text-white hover-effect group shine shadow-lg shadow-accent/20"

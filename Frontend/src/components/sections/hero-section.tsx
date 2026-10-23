@@ -9,9 +9,9 @@ import { ParticleField } from "@/components/motion/particle-field";
 import { useParallax } from "@/hooks/use-motion";
 
 const HERO_STATS = [
-  { value: STATS.clientsServed, suffix: "+", label: "Businesses launched" },
+  { value: STATS.businessesLaunched, suffix: "+", label: "Businesses launched" },
+  { value: STATS.countriesOperating, suffix: "", label: "Countries operating in" },
   { value: COMPANY.foundingYear, suffix: "", label: "Serving clients since", plain: true },
-  { value: 24, suffix: "/7", label: "Portal access" },
 ];
 
 export function HeroSection() {

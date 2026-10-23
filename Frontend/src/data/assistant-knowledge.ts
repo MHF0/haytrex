@@ -1,4 +1,4 @@
-import { COMPANY, PORTAL } from "@/lib/constants";
+import { COMPANY, COUNTRIES, PORTAL, STATS } from "@/lib/constants";
 
 export interface KnowledgeEntry {
   /** Words and phrases that should route a question to this answer. */
@@ -52,10 +52,20 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     followUps: ["Open the Business Map", "Book a consultation"],
   },
   {
+    keywords: [
+      "where are you based", "which countries", "what countries", "where do you operate",
+      "germany", "jordan", "saudi", "ksa", "uae", "dubai", "emirates", "middle east", "europe",
+    ],
+    answer:
+      `We operate in ${STATS.countriesOperating} countries:\n\n` +
+      COUNTRIES.map((country) => `• ${country.name} — ${country.focus}`).join("\n"),
+    followUps: ["Can I form from outside the US?", "Book a consultation"],
+  },
+  {
     keywords: ["international", "outside the us", "foreign", "non-resident", "abroad", "overseas", "not a citizen"],
     answer:
       `Yes — a large share of our clients are based outside the United States. You do not need to be a citizen or resident to own a US company. We handle the formation, the EIN without an SSN, the registered agent, and remote bank account opening.`,
-    followUps: ["Which state should I choose?", "Book a consultation"],
+    followUps: ["Which countries do you operate in?", "Which state should I choose?", "Book a consultation"],
   },
   {
     keywords: ["consulting", "strategy", "growth", "scale", "optimi"],
@@ -107,7 +117,7 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     keywords: ["who are you", "about", "company", "experience", "founded", "how long have you"],
     answer:
-      `${COMPANY.name} has been running since ${COMPANY.foundingYear}, working with business owners worldwide. We sit between two things most firms separate: the operational and legal side of getting a company running, and the software that runs it day to day.`,
+      `${COMPANY.name} has been running since ${COMPANY.foundingYear}, with ${STATS.businessesLaunched}+ businesses launched and teams operating across ${COUNTRIES.map((c) => c.short).join(", ")}. We sit between two things most firms separate: the operational and legal side of getting a company running, and the software that runs it day to day.`,
     followUps: ["What services do you offer?", "Book a consultation"],
   },
   {
