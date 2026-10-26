@@ -19,7 +19,7 @@ export const COMPANY = {
     twitter: "https://twitter.com/haytrex",
     facebook: "https://facebook.com/haytrex",
     linkedin: "https://linkedin.com/company/haytrex",
-    instagram: "https://instagram.com/haytrex"
+    instagram: "https://www.instagram.com/haytrexllc?vrfl=MmRwc2tzZDNrYnVr"
   }
 };
 
@@ -59,9 +59,46 @@ export const PORTAL = {
  * animated counters - edit the numbers here and both sections follow.
  */
 export const STATS = {
-  clientsServed: 200,
-  countriesReached: 30,
+  businessesLaunched: 29,
+  countriesOperating: 5,
 };
+
+/**
+ * The markets we operate in. The order here is the order they appear on the
+ * site, and `focus` is the one line shown under each market.
+ */
+export const COUNTRIES = [
+  {
+    name: "United States",
+    short: "USA",
+    code: "US",
+    focus: "Formation in all 50 states, EIN and business banking, and ongoing state compliance.",
+  },
+  {
+    name: "Germany",
+    short: "Germany",
+    code: "DE",
+    focus: "GmbH and UG setup for founders entering the European market.",
+  },
+  {
+    name: "Jordan",
+    short: "Jordan",
+    code: "JO",
+    focus: "Regional base for operations, client support and portal delivery.",
+  },
+  {
+    name: "Saudi Arabia",
+    short: "KSA",
+    code: "SA",
+    focus: "Commercial registration and market entry for the Saudi market.",
+  },
+  {
+    name: "United Arab Emirates",
+    short: "UAE",
+    code: "AE",
+    focus: "Mainland and free zone company setup, with banking introductions.",
+  },
+];
 
 export const COLORS = {
   primary: {
